@@ -63,10 +63,15 @@ border-right: 7px solid #4cae4c;
         }
 
     }
-    @media and screen (max-width:768px){
+    @media (max-width: 768px){
         #loader{
-            display: none;
-        }
+        width: 100%;
+        height: 100vh;
+        background-color: transparent;
+        position: fixed;
+        z-index: 1;
+
+    }
     }
 </style>
 <script type="text/javascript">

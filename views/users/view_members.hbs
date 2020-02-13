@@ -1,0 +1,123 @@
+<header>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</header>
+{{>sidebar}}
+{{> store}}
+<div  class="thumbnail att">
+
+    <a  style="margin-top: -4px; margin-left:950px ; position: absolute; font-weight: bold" href="/users/Register_member/{{this._id}}" onclick="success()"  class=" btn btn-primary pull-right " role="button">Add members <i class="fas fa-user-plus"></i></a>
+    {{# each user}}
+
+        <div class="row">
+            {{# each this}}
+               <div class="col-sm-6 col-md-4">
+                    <div style="margin-top: 36px;" class="thumbnail">
+                        <img style="width: 300px; height:260px;" src="{{this.profile_image}}" class="img-responsive" alt="...">
+                        <div class="caption">
+                            <div class="description clearfix">
+                                <h3 class="name" style=" font-family: Verdana">{{this.firstname}} {{this.secondname}}</h3><br>
+
+                                <hr style="background-color: rgba(100% , 100%, 100%, 0.6); margin-top:-7px;">
+                                <p style="font-family: Verdana; font-weight: normal; font-size: 123%;" class="level">Level: {{this.level}} Level</p><br>
+                                <p  style="font-family: Verdana; font-weight: normal; font-size: 123%;" class="pull-left price ">Department: {{this.department}}</p><br>
+                                <p  style="font-family: Verdana;position: relative; font-weight: lighter; font-size: 123%;" class="pull-left price ">personal Quote:<span style="position: relative">"{{this.quote}}"</span> </p><br>
+                                <span><span><a style=" margin-right: 10px; font-weight: bold" href="/users/remove/{{this._id}}"   class="btn btn-primary " role="button"><i class="fas fa-trash-alt"></i> Remove Members</a>
+                                <a style=" font-weight: bold;  " href="/users/view/{{this._id}}"   class="btn btn-primary  " role="button"><i class="fas fa-address-book"></i> View Profile</a><br>
+
+                                </span></span>  </div>
+
+
+                        </div>
+                    </div>
+               </div>
+
+{{/each}}
+    </div>
+    {{/each}}
+
+
+    <footer style="margin-top: 300px; text-align: center; padding-top: 38px ; margin-left: -10px">
+        <p style=" font-size: 130%; font-family: Verdana; font-weight: bold">&copy; copyright 2020 Peculiar-tech</p>
+    </footer>
+</div>
+
+
+
+{{# each user}}
+
+    <div class="row up">
+        {{# each this}}
+            <div class="col-sm-12 col-md-4">
+                <div style="margin-top: 36px;" class=" thumbnail">
+                    <img style="width: 300px; height:200px;"   src="{{this.profile_image}}" >
+                    <div class="caption">
+                        <div class="description clearfix">
+                            <h3 class="name" style=" font-family: Verdana">{{this.firstname}} {{this.secondname}}</h3><br>
+
+                            <hr style="background-color: rgba(100% , 100%, 100%, 0.6); margin-top:-7px;">
+                            <p style="font-family: Verdana; font-weight: normal; font-size: 123%;" class="level">Level: {{this.level}} Level</p><br>
+                            <p  style="font-family: Verdana; font-weight: normal; font-size: 123%;" class="pull-left price ">Department: {{this.department}}</p><br>
+                            <p  style="font-family: Verdana;position: relative; font-weight: lighter; font-size: 123%;" class="pull-left price ">personal Quote:<span style="position: relative">"{{this.quote}}"</span> </p><br>
+                            <span><span><a style=" margin-right: 10px; font-weight: bold" href="/users/remove/{{this._id}}"   class="btn btn-primary " role="button"><i class="fas fa-trash-alt"></i> Remove Members</a>
+                                <a style=" font-weight: bold;  " href="/users/view/{{this._id}}"   class="btn btn-primary  " role="button"><i class="fas fa-address-book"></i> View Profile</a><br>
+
+                                </span></span> </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+        {{/each}}
+    </div>
+{{/each}}
+
+<a  style="margin-top: -4px; margin-bottom: 10px; position: absolute; font-weight: bold" href="/users/Register_member/{{this._id}}" onclick="success()"  class=" btn btn-primary form-control " role="button">Add members <i class="fas fa-user-plus"></i></a>
+<style type="text/css">
+    .up{
+        display: none;
+    }
+img{
+    height:100px;
+    width : 100px;
+}
+
+    .con{
+
+    }
+    .cont{
+        margin-top: -20px;
+        position: relative;
+    }
+
+
+.att{
+    padding: 10px 10px;
+    width : 1123px;
+
+    position:absolute;
+    /*border: 1px solid rgba(0 ,0, 0, 0.4);*/
+    margin-left: 224px;
+    margin-top: 35px;
+    background-color: white;
+}
+ @media (max-width: 768px) {
+        .mobile_view{
+            display: block;
+        }
+        .att{
+            display: none;
+        }
+        .up{
+            display: block;
+        }
+
+    }
+</style>
+
+
+
+
+

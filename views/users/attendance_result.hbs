@@ -1,0 +1,523 @@
+{{>sidebar}}
+{{>store}}
+
+<div class="mobile_view">
+    <div class="row" style="z-index: 1; width: 100%; margin-left: 3px;" >
+        <div  style=" text-align: center; font-size: 120%; color:white; padding: 2px; background-color: #2e6da4; height: 35px; border: 1px solid white" class="col-md-3"><a href="/users/attendance_result" style="color: white "><button style="width: 270px;">Sunday record</button></a></div>
+        <div style="text-align: center; font-size: 120%;  padding: 2px; background-color: white; height: 35px; border: 1px solid rgba(0,0,0,0.5) " class="col-md-3"><a href="/users/attendance_result_wednesday" style=""><button style="width: 270px;background-color: white; color: black">Wednesday record</button></a></div>
+        <div style="text-align: center; font-size: 120%; padding: 2px; background-color: white; height: 35px; border: 1px solid rgba(0,0,0,0.5) "  class="col-md-3"><a href="/users/attendance_result_friday" style=""><button style="width: 270px; background-color: white;color: black">Friday record</button></a></div>
+        <div style="text-align: center; font-size: 120%; padding: 2px; background-color: white; height: 35px; border: 1px solid rgba(0,0,0,0.5) "  class="col-md-3"><a href="/users/attendance_result_3days" style=""><button style="width: 270px;background-color: white;color: black">Three service days absentees</button></a></div>
+
+    </div>
+    <h4 style="font-size: 120%;
+        font-family: sans-serif;
+        font-weight: lighter;" >Here are the lists of the present and absent members of the church on Sunday</h4>
+    <a  href="/users/attendance_result_wednesday" style="float: right; margin-left: 60%;"><button style=" font-weight: bold; border-radius: 50%; width: 30px; height:30px;background-color: #2e6da4; color: white">
+        >
+    </button></a>
+    <a  href="/users/attendance_result_3days" style="float: left;"><button style=" font-weight: bold; border-radius: 50%; width: 30px; height:30px;background-color: #2e6da4; color: white">
+        <
+    </button></a>
+    <div class="box">
+        <div class="row"  >
+            <div   class="col-md-12 col-sm-3">
+
+                <div  style=" border-bottom: 1px solid rgba(0,0,0,0.2) ; " class="row">
+                    <div  class="l col-sm-6 col-md-6">
+                        <h4>Present members in 100 level</h4>
+                        <ul>
+                            {{# each user_present1}}
+                                <li class="list-group-item">{{this.firstname}} {{this.secondname}}
+
+                                    <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid lightgreen; border-radius: 50%">
+                                        <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color:lightgreen; border-radius: 50%"></div>
+                                    </div>
+
+                                </li>
+                            {{/each}}
+
+                        </ul>
+
+
+                    </div>
+
+                    <div  class="r col-sm-6 col-md-6">
+
+                        <h4>Absent members in 100 level</h4>
+                        <ul>
+                            {{# each user_absent1}}
+                                <li class="list-group-item">{{this.firstname}} {{this.secondname}}
+                                    <span style="margin-left: 10px">+{{this.phone_number}}</span>
+                                    <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid red; border-radius: 50%">
+                                        <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color:red; border-radius: 50%"></div>
+                                    </div>
+                                </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 col-sm-3">
+                        <div  style=" border-bottom: 1px solid rgba(0,0,0,0.2)" class="row">
+                            <div class="l col-sm-6 col-md-6">
+                                <h4>Present members in 200 level</h4>
+                                <ul>
+                                    {{# each user_present2}}
+                                        <li class="list-group-item">{{this.firstname}} {{this.secondname}}
+
+                                            <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid lightgreen; border-radius: 50%">
+                                                <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color: lightgreen; border-radius: 50%"></div>
+                                            </div>
+                                        </li>
+                                    {{/each}}
+
+
+                                </ul>
+
+
+                            </div>
+
+                            <div class="r col-sm-6 col-md-6">
+
+                                <h4>Absent members in 200 level</h4>
+                                <ul>
+                                    {{# each user_absent2}}
+                                        <li class="list-group-item">{{this.firstname}} {{this.secondname}}
+                                            <span style="margin-left: 10px">+{{this.phone_number}}</span>
+                                            <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid red; border-radius: 50%">
+                                                <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color:red; border-radius: 50%"></div>
+                                            </div>
+                                        </li>
+                                    {{/each}}
+                                </ul>
+
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-12 col-sm-3">
+                                <div  style=" border-bottom: 1px solid rgba(0,0,0,0.2)" class="row">
+                                    <div class="l col-sm-6 col-md-6">
+                                        <h4>Present members in 300 level</h4>
+                                        <ul>
+                                            {{# each user_present3}}
+                                                <li class="list-group-item">{{this.firstname}} {{this.secondname}}
+
+                                                    <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid lightgreen; border-radius: 50%">
+                                                        <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color: lightgreen; border-radius: 50%"></div>
+                                                    </div>
+                                                </li>
+                                            {{/each}}
+
+
+                                        </ul>
+
+
+                                    </div>
+
+                                    <div class="r col-sm-6 col-md-6">
+
+                                        <h4>Absent members in 300 level</h4>
+                                        <ul>
+                                            {{# each user_absent3}}
+                                                <li class="list-group-item">{{this.firstname}} {{this.secondname}}
+                                                    <span style="margin-left: 10px">+{{this.phone_number}}</span>
+                                                    <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid red; border-radius: 50%">
+                                                        <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color:red; border-radius: 50%"></div>
+                                                    </div>
+                                                </li>
+                                            {{/each}}
+                                        </ul>
+
+                                    </div>
+                                </div>
+
+
+
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-3">
+                                        <div  style=" border-bottom: 1px solid rgba(0,0,0,0.2)" class="row">
+                                            <div class="l col-sm-6 col-md-6">
+                                                <h4>Present members in 400 level</h4>
+                                                <ul>
+                                                    {{# each user_present4}}
+                                                        <li class="list-group-item">{{this.firstname}} {{this.secondname}}
+
+                                                            <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid lightgreen; border-radius: 50%">
+                                                                <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color: lightgreen; border-radius: 50%"></div>
+                                                            </div>
+                                                        </li>
+                                                    {{/each}}
+
+
+                                                </ul>
+
+
+                                            </div>
+
+                                            <div class="r col-sm-6 col-md-6">
+
+                                                <h4>Absent members in 400 level</h4>
+                                                <ul>
+                                                    {{# each user_absent4}}
+                                                        <li class="list-group-item">{{this.firstname}} {{this.secondname}}
+                                                            <span style="margin-left: 10px">+{{this.phone_number}}</span>
+                                                            <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid red; border-radius: 50%">
+                                                                <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color:red; border-radius: 50%"></div>
+                                                            </div>
+                                                        </li>
+                                                    {{/each}}
+                                                </ul>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-3">
+                                                <div  style=" border-bottom: 1px solid rgba(0,0,0,0.2)" class="row">
+                                                    <div class="l col-sm-6 col-md-6">
+                                                        <h4>Present members in 500 level</h4>
+                                                        <ul>
+                                                            {{# each user_present5}}
+                                                                <li class="list-group-item">{{this.firstname}} {{this.secondname}}
+
+                                                                    <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid lightgreen; border-radius: 50%">
+                                                                        <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color: lightgreen; border-radius: 50%"></div>
+                                                                    </div>
+                                                                </li>
+                                                            {{/each}}
+
+
+                                                        </ul>
+
+
+                                                    </div>
+
+                                                    <div class="r col-sm-6 col-md-6">
+
+                                                        <h4>Absent members in 500 level</h4>
+                                                        <ul>
+                                                            {{# each user_absent5}}
+                                                                <li class="list-group-item">{{this.firstname}} {{this.secondname}}
+                                                                    <span style="margin-left: 10px">+{{this.phone_number}}</span>
+                                                                    <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid red; border-radius: 50%">
+                                                                        <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color:red; border-radius: 50%"></div>
+                                                                    </div>
+                                                                </li>
+                                                            {{/each}}
+                                                        </ul>
+
+                                                    </div>
+
+
+                                                </div>
+
+
+                                            </div>
+                                            <a style="margin-left: 20px; font-size: 120%; font-weight: bold; font-family: Verdana; width:370px;padding-top: 11px; height:50px;margin-top:20px; " href="/users/message" class="btn btn-primary">Send message to missing members <i class="fas fa-sms"></i></a>
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="thumbnail att">
+   <div class="row" style="z-index: 1; width: 100%; margin-left: 3px;" >
+       <div  style=" text-align: center; font-size: 120%; color:white; padding: 2px; background-color: #2e6da4; height: 35px; border: 1px solid white" class="col-md-3"><a href="/users/attendance_result" style="color: white "><button style="width: 270px;">Sunday record</button></a></div>
+       <div style="text-align: center; font-size: 120%;  padding: 2px; background-color: white; height: 35px; border: 1px solid rgba(0,0,0,0.5) " class="col-md-3"><a href="/users/attendance_result_wednesday" style=""><button style="width: 270px;background-color: white; color: black">Wednesday record</button></a></div>
+       <div style="text-align: center; font-size: 120%; padding: 2px; background-color: white; height: 35px; border: 1px solid rgba(0,0,0,0.5) "  class="col-md-3"><a href="/users/attendance_result_friday" style=""><button style="width: 270px; background-color: white;color: black">Friday record</button></a></div>
+       <div style="text-align: center; font-size: 120%; padding: 2px; background-color: white; height: 35px; border: 1px solid rgba(0,0,0,0.5) "  class="col-md-3"><a href="/users/attendance_result_3days" style=""><button style="width: 270px;background-color: white;color: black">Three service days absentees</button></a></div>
+
+   </div>
+    <h4 style="font-size: 155%;
+        font-family: Verdana;
+        font-weight: lighter;" >Here are the lists of the present and absent members of the church on Sunday</h4>
+    <a  href="/users/attendance_result_wednesday" style="; margin-left: 1050px;"><button style=" font-weight: bold; border-radius: 50%; width: 30px; height:30px;background-color: #2e6da4; color: white">
+        >
+    </button></a>
+    <a  href="/users/attendance_result_3days" style=""><button style=" font-weight: bold; border-radius: 50%; width: 30px; height:30px;background-color: #2e6da4; color: white">
+        <
+    </button></a>
+    <div class="box">
+    <div class="row"  >
+<div   class="col-md-12 col-sm-3">
+
+        <div  style=" border-bottom: 1px solid rgba(0,0,0,0.2) ; " class="row">
+        <div  class="l col-sm-6 col-md-6">
+            <h4>Present members in 100 level</h4>
+            <ul>
+            {{# each user_present1}}
+                <li class="list-group-item">{{this.firstname}} {{this.secondname}}
+
+                    <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid lightgreen; border-radius: 50%">
+                        <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color:lightgreen; border-radius: 50%"></div>
+                    </div>
+
+                </li>
+            {{/each}}
+
+       </ul>
+
+
+        </div>
+
+    <div  class="r col-sm-6 col-md-6">
+
+            <h4>Absent members in 100 level</h4>
+            <ul>
+                {{# each user_absent1}}
+                    <li class="list-group-item">{{this.firstname}} {{this.secondname}}
+                        <span style="margin-left: 10px">+{{this.phone_number}}</span>
+                        <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid red; border-radius: 50%">
+                            <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color:red; border-radius: 50%"></div>
+                        </div>
+                    </li>
+                {{/each}}
+            </ul>
+    </div>
+</div>
+
+    <div class="row">
+        <div class="col-md-12 col-sm-3">
+            <div  style=" border-bottom: 1px solid rgba(0,0,0,0.2)" class="row">
+            <div class="l col-sm-6 col-md-6">
+                <h4>Present members in 200 level</h4>
+                <ul>
+                    {{# each user_present2}}
+                        <li class="list-group-item">{{this.firstname}} {{this.secondname}}
+
+                            <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid lightgreen; border-radius: 50%">
+                                <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color: lightgreen; border-radius: 50%"></div>
+                            </div>
+                        </li>
+                    {{/each}}
+
+
+                </ul>
+
+
+            </div>
+
+            <div class="r col-sm-6 col-md-6">
+
+                <h4>Absent members in 200 level</h4>
+                <ul>
+                    {{# each user_absent2}}
+                        <li class="list-group-item">{{this.firstname}} {{this.secondname}}
+                            <span style="margin-left: 10px">+{{this.phone_number}}</span>
+                            <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid red; border-radius: 50%">
+                                <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color:red; border-radius: 50%"></div>
+                            </div>
+                        </li>
+                    {{/each}}
+                </ul>
+
+            </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-12 col-sm-3">
+                    <div  style=" border-bottom: 1px solid rgba(0,0,0,0.2)" class="row">
+                    <div class="l col-sm-6 col-md-6">
+                        <h4>Present members in 300 level</h4>
+                        <ul>
+                            {{# each user_present3}}
+                                <li class="list-group-item">{{this.firstname}} {{this.secondname}}
+
+                                    <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid lightgreen; border-radius: 50%">
+                                        <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color: lightgreen; border-radius: 50%"></div>
+                                    </div>
+                                </li>
+                            {{/each}}
+
+
+                        </ul>
+
+
+                    </div>
+
+                    <div class="r col-sm-6 col-md-6">
+
+                        <h4>Absent members in 300 level</h4>
+                        <ul>
+                            {{# each user_absent3}}
+                                <li class="list-group-item">{{this.firstname}} {{this.secondname}}
+                                    <span style="margin-left: 10px">+{{this.phone_number}}</span>
+                                    <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid red; border-radius: 50%">
+                                        <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color:red; border-radius: 50%"></div>
+                                    </div>
+                                </li>
+                            {{/each}}
+                        </ul>
+
+                    </div>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="col-md-12 col-sm-3">
+                            <div  style=" border-bottom: 1px solid rgba(0,0,0,0.2)" class="row">
+                            <div class="l col-sm-6 col-md-6">
+                                <h4>Present members in 400 level</h4>
+                                <ul>
+                                    {{# each user_present4}}
+                                        <li class="list-group-item">{{this.firstname}} {{this.secondname}}
+
+                                            <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid lightgreen; border-radius: 50%">
+                                                <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color: lightgreen; border-radius: 50%"></div>
+                                            </div>
+                                        </li>
+                                    {{/each}}
+
+
+                                </ul>
+
+
+                            </div>
+
+                            <div class="r col-sm-6 col-md-6">
+
+                                <h4>Absent members in 400 level</h4>
+                                <ul>
+                                    {{# each user_absent4}}
+                                        <li class="list-group-item">{{this.firstname}} {{this.secondname}}
+                                            <span style="margin-left: 10px">+{{this.phone_number}}</span>
+                                            <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid red; border-radius: 50%">
+                                                <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color:red; border-radius: 50%"></div>
+                                            </div>
+                                        </li>
+                                    {{/each}}
+                                </ul>
+
+                            </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12 col-sm-3">
+                                    <div  style=" border-bottom: 1px solid rgba(0,0,0,0.2)" class="row">
+                                    <div class="l col-sm-6 col-md-6">
+                                        <h4>Present members in 500 level</h4>
+                                        <ul>
+                                            {{# each user_present5}}
+                                                <li class="list-group-item">{{this.firstname}} {{this.secondname}}
+
+                                                    <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid lightgreen; border-radius: 50%">
+                                                        <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color: lightgreen; border-radius: 50%"></div>
+                                                    </div>
+                                                </li>
+                                            {{/each}}
+
+
+                                        </ul>
+
+
+                                    </div>
+
+                                    <div class="r col-sm-6 col-md-6">
+
+                                        <h4>Absent members in 500 level</h4>
+                                        <ul>
+                                            {{# each user_absent5}}
+                                                <li class="list-group-item">{{this.firstname}} {{this.secondname}}
+                                                    <span style="margin-left: 10px">+{{this.phone_number}}</span>
+                                                    <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid red; border-radius: 50%">
+                                                        <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color:red; border-radius: 50%"></div>
+                                                    </div>
+                                                </li>
+                                            {{/each}}
+                                        </ul>
+
+                                    </div>
+
+
+                                    </div>
+
+
+</div>
+                                <a style="margin-left: 380px; font-size: 120%; font-weight: bold; font-family: Verdana; width:370px;padding-top: 11px; height:50px;margin-top:20px; " href="/users/message" class="btn btn-primary">Send message to missing members <i class="fas fa-sms"></i></a>
+                            </div>
+    </div>
+
+
+
+<style type="text/css">
+    @media (max-width: 768px) {
+        .d{
+            display: block;
+        }
+        .att{
+            display:none;
+        }
+        .mobile_view{
+            display: block;
+        }
+
+    }
+    h4{
+        font-size: 120%;
+        font-family: Verdana;
+        font-weight: lighter;
+    }
+    img{
+        height:100px;
+        width : 100px;
+    }
+
+    .con{
+
+    }
+    .cont{
+        margin-top: -20px;
+        position: relative;
+    }
+    .box{
+        animation: animate 1.2s linear;
+
+    }
+
+    @keyframes animate  {
+        0%{transform: translateY(300px)}
+        0%{opacity: 0;}
+        50%{opacity: 0.5;}
+    }
+
+
+.r{
+/*border-left:  1px solid rgba(0 ,0, 0, 0.4);*/
+    margin-top: 30px;
+}
+    .l{
+        margin-top: 30px;
+        border-right:  1px solid rgba(0 ,0, 0, 0.4);
+    }
+
+    .att{
+        padding: 10px 10px;
+        width : 1123px;
+
+        position:absolute;
+        /*border: 1px solid rgba(0 ,0, 0, 0.4);*/
+        margin-left: 224px;
+        margin-top: 35px;
+        background-color: white;
+    }
+
+</style>

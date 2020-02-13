@@ -1,0 +1,123 @@
+
+{{>sidebar}}
+{{>store}}
+<div class="thumbnail att">
+<h2 style=" color: #4cae4c"> {{message}}</h2>
+{{# if user}}
+        <div class="row">
+            {{# each user}}
+            {{# each oexecutive}}
+                <div class="col-sm-6 col-md-4" style="" >
+                    <div style="margin-top: 36px;" class="thumbnail">
+                        <img style="width: 300px; height: 200px" src="{{this.profile_image}}" class="img-responsive" alt="...">
+                        <div class="caption">
+                            <div class="description clearfix">
+                                <h3 class="name" style=" font-family: Verdana">{{this.firstname}} {{this.secondname}}</h3><br>
+
+                                <hr style="background-color: rgba(100% , 100%, 100%, 0.6); margin-top:-7px;">
+                                <p style="font-family: Verdana; font-weight: normal; font-size: 123%;" class="level">At Level: {{this.level}}</p><br>
+                                <p  style="font-family: Verdana; font-weight: normal; font-size: 123%;" class="pull-left price ">Past: {{this.executive_role}}</p><br>
+
+                                <!--<p><a style=" font-weight: bold" href="/users/view/{{this._id}}" onclick="success()"  class="btn btn-primary pull-left " role="button"><i class="fas fa-address-book"></i> View Full profile</a> </p><br>-->
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            {{/each}}
+            {{/each}}
+        </div>
+
+
+<a href="/users/clearOE" class="btn btn-primary">Clear record of past executives</a>
+</div>
+
+    {{else}}
+    <div style="margin-left: 350px; margin-top: 100px;">
+        <h2>No past executives </h2>
+    </div>
+{{/if}}
+
+
+<div class="mobile_view">
+    <h2 style=" color: #4cae4c"> {{message}}</h2>
+{{# if user}}
+        <div class="row">
+            {{# each user}}
+                {{# each oexecutive}}
+                    <div class="col-sm-12 col-md-4" style="" >
+                        <div style="" class="thumbnail">
+                            <img src="{{this.profile_image}}" class="img-responsive" alt="...">
+                            <div class="caption">
+                                <div class="description clearfix">
+                                    <h3 class="name" style=" font-family: Verdana">{{this.firstname}} {{this.secondname}}</h3><br>
+
+                                    <hr style="background-color: rgba(100% , 100%, 100%, 0.6); margin-top:-7px;">
+                                    <p style="font-family: Verdana; font-weight: normal; font-size: 123%;" class="level">At Level: {{this.level}} Level</p><br>
+                                    <p  style="font-family: Verdana; font-weight: normal; font-size: 123%;" class="pull-left price ">Past: {{this.executive_role}}</p><br>
+
+                                    <!--<p><a style=" font-weight: bold" href="/users/view/{{this._id}}" onclick="success()"  class="btn btn-primary pull-left " role="button"><i class="fas fa-address-book"></i> View Full profile</a> </p><br>-->
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                {{/each}}
+            {{/each}}
+        </div>
+
+
+        <a href="/users/clearOE" class="btn btn-primary">Clear record of past executives</a>
+    </div>
+
+{{else}}
+    <div style=" margin-top: 10px;">
+        <h2>No past executives </h2>
+    </div>
+{{/if}}
+
+
+</div>
+<style type="text/css">
+    img{
+        height:100px;
+        width : 100px;
+    }
+
+    .con{
+
+    }
+    .cont{
+        margin-top: -20px;
+        position: relative;
+    }
+
+    @media (max-width: 768px) {
+        .d{
+            display: block;
+        }
+        .att{
+            display:none;
+        }
+        .mobile_view{
+            display: block;
+        }
+
+    }
+    .att{
+        padding: 10px 10px;
+        width : 1123px;
+
+        position:absolute;
+        /*border: 1px solid rgba(0 ,0, 0, 0.4);*/
+        margin-left: 224px;
+        margin-top: 35px;
+        background-color: white;
+    }
+</style>

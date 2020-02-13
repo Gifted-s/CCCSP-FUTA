@@ -1,0 +1,294 @@
+
+{{>sidebar}}
+
+<div class="content">
+    <!--<p style="margin-top: 0; padding:0;">Leave field empty if you are not changing the existing data</p>-->
+    <form method="post" action="/user/edit" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-md-12" style="margin-top: 10px">
+                <div class="form-group">
+                    <div class="col-md-6">
+                        <label for="id">Members first name <span  style="padding-left:10px;color:red; font-family: Verdana; font-weight:lighter; font-size: 110%; margin-top: 0px; position: absolute">Adewumi </span> :</label>
+                        <input type="text" id ="id" class="form-control" name="firstname" placeholder="Members First name">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="id">Members second name <span  style="font-family: Verdana; font-weight:lighter; padding-left:10px;color:red;  font-size: 110%;  position: absolute">Sunkanmi</span> :</label>
+                        <input id ="id" type="text" class="form-control" name="secondname" placeholder="Members Second name">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12" style="margin-top: 10px">
+                <div class="form-group">
+                    <div class="col-md-3">
+
+                        <!--<input type="text" id ="id" class="form-control" name="level" placeholder="Member's level">-->
+                        <label for="id"> Level  <span  style="font-family: Verdana; font-weight:lighter; padding-left:10px;color:red;  font-size: 110%; position: absolute">100</span>:
+                            <select style="width: 249px; height: 40px;border-radius: 0; margin-top: 6px;   border: 1px solid rgba(0, 0, 0, 0.5);" name="level" class="form-control">
+                                <option  name="level" class="form-control">100 </option>
+                                <option name="level" class="form-control">200 </option>
+                                <option name="level" class="form-control">300 </option>
+                                <option name="level" class="form-control">400 </option>
+                                <option name="level" class="form-control">500 </option>
+                            </select>
+                        </label>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label for="id"> Unit: <span  style="font-family: Verdana; font-weight:lighter; padding-left:10px;color:red;  font-size: 110%; position: absolute">Choir</span>:
+                            <select style="width: 249px; height: 40px;border-radius: 0; margin-top: 6px;   border: 1px solid rgba(0, 0, 0, 0.5);" name="unit" class="form-control">
+                                <option  name="unit" class="form-control">Drama unit </option>
+                                <option name="unit" class="form-control">Welfare unit </option>
+                                <option name="unit" class="form-control">Choir unit </option>
+                                <option name="unit" class="form-control">Evangelism unit </option>
+                                <option name="unit" class="form-control">Publicity unit</option>
+                                <option name="unit" class="form-control">Acadamic unit</option>
+                            </select>
+                        </label>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label for="id">Phone Number  <span  style="font-family: Verdana; font-weight:lighter; padding-left:10px;color:red;  font-size: 110%;  position: absolute">07031850081</span> :</label>
+                        <input id ="id" type="text" class="form-control" name="phone_number" placeholder="Members Phone number">
+                    </div>
+
+                    <div class="col-md-3">
+                        <label for="id"> Status  <span  style="padding-left:10px;color:red; font-family: Verdana; font-weight:lighter; font-size: 110%;  position: absolute">Under-graduate</span>:
+                            <select style="width: 230px; height: 40px;border-radius: 0; margin-left: 18px; margin-top: 6px;   border: 1px solid rgba(0, 0, 0, 0.5);" name="status" class="form-control">
+                                <option  name="status" class="form-control">Under-graduate </option>
+                                <option name="status" class="form-control">Post-graduate </option>
+                                <option name="status" class="form-control"> Alumnus </option>
+
+                            </select>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class=" form-bottom col-md-11" style="margin-top: 20px">
+                <div class="form-group">
+                    <div class="col-md-6">
+
+                        <div class="form-left">
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    <input type="file" name="profile_image" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 10px">
+                                <!--<div class="col-md-4">-->
+                                <!--<label for="m_id">Month of birth:</label>-->
+                                <!--<input id="m_id" type="number" name="m_b" class="form-control">-->
+                                <!--</div>-->
+                                <div class="col-md-4">
+                                    <label for="id"> Month of birth  <span  style="padding-left:10px;color:red; font-family: Verdana; font-weight:lighter; font-size: 110%; position: absolute">April</span>:
+                                        <select style=" height: 40px;border-radius: 0; margin-top: 6px;   border: 1px solid rgba(0, 0, 0, 0.5);" name="m_b" class="form-control" >
+                                            <option  name="m_b" class="form-control">January </option>
+                                            <option name="m_b" class="form-control">February </option>
+                                            <option name="m_b" class="form-control"> March </option>
+                                            <option name="m_b" class="form-control"> April </option>
+                                            <option name="m_b" class="form-control"> May </option>
+                                            <option name="m_b" class="form-control"> June </option>
+                                            <option name="m_b" class="form-control"> July </option>
+                                            <option name="m_b" class="form-control"> August </option>
+                                            <option name="m_b" class="form-control"> September </option>
+                                            <option name="m_b" class="form-control"> October </option>
+                                            <option name="m_b" class="form-control"> November </option>
+                                            <option name="m_b" class="form-control"> December</option>
+
+
+                                        </select>
+                                    </label>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="d_id">Date of birth  <span  style="padding-left:10px;color:red; font-family: Verdana; font-weight:lighter; font-size: 110%; position: absolute">4</span>:</label>
+                                    <input id="d_id" type="number" name="d_b" class="form-control">
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="id">Year  of birth <span  style="padding-left:10px;color:red; font-family: Verdana; font-weight:lighter; font-size: 110%; position: absolute">2010</span>:</label></label>
+                                    <input id="id" type="text" name="y_b" class="form-control" placeholder="e.g (2019)">
+                                </div>
+                            </div>
+
+
+                            <div  class="row" style="margin-top: 10px" >
+                                <div class="col-md-12">
+                                    <label for="id">Executive role <span  style="padding-left:10px;color:red; font-family: Verdana; font-weight:lighter; font-size: 110%;  position: absolute">4</span>:</label></label>
+                                    <input id="id" type="text" name="executive_role" placeholder="Executive role(leave empty if none)" class="form-control">
+
+                                </div>
+                            </div>
+
+                            <div  class="row" style="margin-top: 10px" >
+                                <div class="col-md-12">
+                                    <label for="id">Department  <span  style="padding-left:10px;color:red; font-family: Verdana; font-weight:lighter; font-size: 110%;  position: absolute">Software Enginnering</span>:</label>
+                                    <input id="id" type="text" name="department" placeholder="Member's department" class="form-control">
+                                </div>
+                            </div>
+                            <div  class="row" style="margin-top: 10px" >
+                                <div class="col-md-12">
+                                    <label for="id">Home Address  <span  style="padding-left:10px;color:red; font-family: Verdana; font-weight:lighter; font-size: 110%;  position: absolute">North gate</span>:</label>
+                                    <input id="id" type="text" name="address" placeholder="Member's address" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-right">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="id">Email address <span  style="padding-left:10px;color:red; font-family: Verdana; font-weight:lighter; font-size: 110%;  position: absolute">Sunkanmiadewumi@gmail.com</span>:</label>:</label>
+                                        <input id="id" type="email" name="email" placeholder="Member's email address" class="form-control">
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="id">Facebook page <span  style="padding-left:10px;color:red; font-family: Verdana; font-weight:lighter; font-size: 110%;  position: absolute">Sunky@facebook.com</span>:</label></label>
+                                        <input id="id" type="text" name="facebook" placeholder="Member's facebook link" class="form-control">
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="id">Twitter <span  style="font-family: Verdana; font-weight:lighter;padding-left:10px;color:red;  font-size: 110%;  position: absolute">Boss</span>:</label></label>
+                                        <input id="id" type="text" name="twitter" placeholder="Member's twitter link" class="form-control">
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="id">Whatsapp No <span  style="padding-left:10px;color:red; font-family: Verdana; font-weight:lighter; font-size: 110%;  position: absolute">07031850081</span>:</label></label>
+                                        <input id="id" type="text" name="whatsapp" placeholder="Member's whatsapp number" class="form-control">
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+
+                                        <input style="height: 30px;" id="id" type="text" name="quote" placeholder="Personal Quote" class="form-control">
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <button  type="submit" class=" submit btn btn-lg btn-primary">Save Changes</button>
+            </div>
+
+
+
+
+        </div>
+    </form>
+    <script>
+
+
+
+    </script>
+</div>
+
+
+
+<style type="text/css">
+
+    form{
+        /*border: 1px solid rgba(0, 0, 0, 0.5);*/
+        height: 100%;
+        width: 100%;
+
+    }
+    form input[type="text"]{
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        height: 40px;
+        border-radius: 0;
+    }
+    form input[type="email"]{
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        height: 40px;
+        border-radius: 0;
+    }
+    form input[type="file"]{
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        height: 40px;
+        border-radius: 0;
+    }
+    form input[type="number"]{
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        height: 40px;
+        border-radius: 0;
+    }
+    .form-left , .form-right{
+        padding: 13px 10px;
+        height: 370px;
+        border: 1px solid rgba(0, 0, 0, 0.5);
+    }
+    .form-bottom{
+
+        height: 430px;
+        padding: 15px  5px;
+        margin-left: 40px;
+        border: 1px solid rgba(0, 0, 0, 0.5);
+    }
+    button.submit{
+        font-weight: bold;
+        font-family: Verdana;
+        margin-left: 350px;
+        width: 320px;
+        margin-top: 5px;
+        height: 35px;
+        padding:0 0 0 0;
+        border-radius:3px;
+    }
+    .con{
+
+    }
+    .cont{
+        margin-top: -20px;
+        position: relative;
+    }
+
+
+    .content{
+        padding: 10px 10px;
+        width : 1136px;
+        height: 635px;
+        position: absolute;
+        border: 1px solid rgba(0 ,0, 0, 0.4);
+        margin-left: 224px;
+        margin-top: 35px;
+
+    }
+</style>

@@ -1,0 +1,904 @@
+
+{{>sidebar}}
+{{>store}}
+<div class="thumbnail att">
+    <form method="post" enctype="multipart/form-data"  action="/users/submit/{{id}}">
+        {{# if hasError}}
+            {{# each message}}
+                <div class="alert alert-danger">
+                    {{this}}
+                </div>
+            {{/each}}
+        {{/if}}
+
+
+        <div class="row">
+            <div class="col-md-12" style="margin-top: 10px">
+                <div class="form-group">
+                    <div class="col-md-6">
+                        <label for="id">Members first name <span  style="padding-left:10px;color:red; font-weight: lighter; font-size: 110%; margin-top: 0px; position: absolute"> {{firstname}}</span> :</label>
+                        <input type="text" id ="id" class="form-control" name="firstname" placeholder="Members First name">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="id">Members second name <span  style="padding-left:10px;color:red; font-weight: lighter; font-size: 110%; margin-top: 0px; position: absolute">{{secondname}}</span> :</label>
+                        <input id ="id" type="text" class="form-control" name="secondname" placeholder="Members Second name">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12" style="margin-top: 10px">
+                <div class="form-group">
+                    <div class="col-md-3">
+
+                        <!--<input type="text" id ="id" class="form-control" name="level" placeholder="Member's level">-->
+                        <label for="id"> Level  <span  style="padding-left:10px;color:red; font-weight: lighter; font-size: 110%; position: absolute">{{level}}</span>:
+                            <select style="width: 249px; height: 40px;border-radius: 0; margin-top: 6px;   border: 1px solid rgba(0, 0, 0, 0.5);" name="level" class="form-control">
+                                <option  name="level" class="form-control">{{level}} </option>
+                                <option  name="level" class="form-control">100 </option>
+                                <option name="level" class="form-control">200 </option>
+                                <option name="level" class="form-control">300 </option>
+                                <option name="level" class="form-control">400 </option>
+                                <option name="level" class="form-control">500 </option>
+                            </select>
+                        </label>
+                    </div>
+
+
+
+                    <div class="col-md-3">
+                        <label for="id"> Unit: <span  style="padding-left:10px;color:red; font-weight:lighter; font-size: 90%; margin-top: 3px; position: absolute">{{unit}}{{#if unit2}} ,{{/if}} {{unit2}}</span>
+                            <span onclick="display()"  style="color: royalblue; font-weight: bold "  class=" pull-right">Add unit</span>
+                            <select  style="width: 249px; height: 40px;border-radius: 0; margin-top: 6px;   border: 1px solid rgba(0, 0, 0, 0.5);" name="unit" class="form-control">
+                                <option  name="unit" class="form-control">{{unit}}  </option>
+                                <option  name="unit" class="form-control">Drama unit </option>
+                                <option name="unit" class="form-control">Welfare unit </option>
+                                <option name="unit" class="form-control">Choir unit</option>
+                                <option name="unit" class="form-control">Evangelism unit </option>
+                                <option name="unit" class="form-control">Publicity unit</option>
+                                <option name="unit" class="form-control">Academic unit</option>
+                            </select>
+                        </label>
+                       <div id="add" style="display: none">
+                           <label  for="id">Select unit:
+                               <span  style="  padding-left:10px;color:red; font-weight:lighter; font-size: 110%; margin-top: 0px; position: absolute">
+                               <!--<span style=" display: inline-block; width: 2px; height: 16px;background-color: red; transform: rotate(-45deg)">-->
+
+                               <!--</span>-->
+                               <!--<span style="display:inline-block; width: 2px; height: 16px;background-color: red; transform: rotate(45deg)">-->
+
+                               <!--</span>-->
+
+                                    <button type="button" onclick="hide()" id="btn"  style="margin-left:140px; margin-bottom: 3px; height: 25px; width: 25px; " class=" btn btn-primary">
+
+                                    <span class="l pull-right" style=" margin-top: -9px; background-color: white; position: absolute; transform: rotate(45deg);width : 2px; height: 18px ; "></span >
+                                    <span class="r pull-right"  style="  margin-top: -9px; background-color: white;  position:absolute;transform: rotate(-45deg);width : 2px; height: 18px ; "></span>
+                                    </button>
+                           </span>
+
+                            <select  style=" width: 249px; height: 40px;border-radius: 0; margin-top: 6px;   border: 1px solid rgba(0, 0, 0, 0.5);" name="unit2" class="form-control">
+                                <option  name="unit2" class="form-control">{{unit2}} </option>
+                                <option  name="unit2" class="form-control">Drama unit </option>
+                                <option name="unit2" class="form-control">Welfare unit </option>
+                                <option name="unit2" class="form-control">Choir unit </option>
+                                <option name="unit2" class="form-control">Evangelism unit </option>
+                                <option name="unit2" class="form-control">Publicity unit</option>
+                                <option name="unit2" class="form-control">Academic unit</option>
+                                <option name="unit2" class="form-control">Ushering unit</option>
+                            </select>
+                        </label>
+                       </div>
+
+
+                    </div>
+
+
+
+                    <div class="col-md-3">
+                        <label for="id">Phone Number  <span  style="padding-left:10px;color:red; font-weight: lighter; font-size: 110%; margin-top: 0px; position: absolute">+{{phone}}</span> :</label>
+                        <input id ="id" type="text" class="form-control" name="phone_number" placeholder="Members Phone number">
+                    </div>
+
+                    <div class="col-md-3">
+                        <label for="id"> Status  <span  style="padding-left:10px;color:red; font-weight: lighter; font-size: 110%; margin-top: 0px; position: absolute">{{status}}</span>:
+                            <select style="width: 230px; height: 40px;border-radius: 0; margin-left: 18px; margin-top: 6px;   border: 1px solid rgba(0, 0, 0, 0.5);" name="status" class="form-control">
+                                <option  name="status" class="form-control">{{status}} </option>
+                                <option  name="status" class="form-control">Under-graduate </option>
+                                <option name="status" class="form-control">Post-graduate </option>
+                                <option name="status" class="form-control"> Alumnus </option>
+
+                            </select>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class=" form-bottom col-md-11" style="margin-top: 20px">
+                <div class="form-group">
+                    <div class="col-md-6">
+
+                        <div style="margin-top: 15px" class="form-left">
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    <input type="file" name="profile_image" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 10px">
+                                <!--<div class="col-md-4">-->
+                                <!--<label for="m_id">Month of birth:</label>-->
+                                <!--<input id="m_id" type="number" name="m_b" class="form-control">-->
+                                <!--</div>-->
+                                <div style="" class="col-md-4">
+                                    <label for="id"> Month of birth  <span  style="padding-left:4px;color:red; font-weight: lighter; font-size: 107%; margin-top: 0px; position: absolute">{{month}}</span>:
+                                        <select style=" height: 40px;border-radius: 0; margin-top: 6px;   border: 1px solid rgba(0, 0, 0, 0.5);"  name="m_b" class="form-control" >
+                                            <option  name="m_b" class="form-control">{{month}} </option>
+                                            <option  name="m_b" class="form-control">January </option>
+                                            <option name="m_b" class="form-control">February </option>
+                                            <option name="m_b" class="form-control"> March </option>
+                                            <option name="m_b" class="form-control"> April </option>
+                                            <option name="m_b" class="form-control"> May </option>
+                                            <option name="m_b" class="form-control"> June </option>
+                                            <option name="m_b" class="form-control"> July </option>
+                                            <option name="m_b" class="form-control"> August </option>
+                                            <option name="m_b" class="form-control"> September </option>
+                                            <option name="m_b" class="form-control"> October </option>
+                                            <option name="m_b" class="form-control"> November </option>
+                                            <option name="m_b" class="form-control"> December</option>
+
+
+                                        </select>
+                                    </label>
+                                </div>
+
+                                <div style="margin-left: 0px;" class="col-md-4">
+                                    <label style="margin-left: 14px" for="d_id" >Date of birth  <span  style="padding-left:10px;color:red; font-weight: lighter; font-size: 110%; margin-top: 0px; position: absolute">{{day}}</span>:</label>
+                                    <input id="d_id" type="text" name="d_b" class="form-control" value="{{day}}" >
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="id">Year  of birth: <span  style="padding-left:10px;color:red; font-weight: lighter; font-size: 110%; margin-top: 0px; position: absolute">{{year}}</span>:</label>
+                                    <input id="id" value="{{year}}" type="text" name="y_b" class="form-control" placeholder="e.g (2019)">
+                                     <input id="id" value="{{executive}}" type="hidden" name="prevrole" class="form-control" placeholder="e.g (2019)">
+                                </div>
+                            </div>
+
+
+                            <div  class="row" style="margin-top: 10px" >
+                                <div class="col-md-12">
+                                    <label style="margin-left: 0px;" for="id"> Executive Role  <span  style="padding-left:10px;color:red; font-weight: bold; font-size: 110%; margin-top: 2px; position: absolute"></span>:
+                                        <select style=" height: 40px;border-radius: 0; margin-top: 6px;   border: 1px solid rgba(0, 0, 0, 0.5);" name="executive_role" class="form-control" >
+                                            <option  name="executive_role" class="form-control">{{executive}} </option>
+                                            <option  name="executive_role" class="form-control">None </option>
+                                            <option  name="executive_role" class="form-control">President </option>
+                                            <option name="executive_role" class="form-control">Vice President </option>
+                                            <option name="executive_role" class="form-control"> General Secretary </option>
+                                            <option name="executive_role" class="form-control">Assistant General Secretary </option>
+                            
+                                            <option name="executive_role" class="form-control">Brothers Coordinator</option>
+                                             <option name="executive_role" class="form-control">Financial Secretary</option>
+                                             <option name="executive_role" class="form-control">Treasurer</option>
+                                            <option name="executive_role" class="form-control"> Evangelism Coordinator </option>
+                                            <option name="executive_role" class="form-control"> Assistant Evangelism Coordinator</option>
+                                            <option name="executive_role" class="form-control"> Choir Coordinator </option>
+                                            <option name="executive_role" class="form-control">Assistant Choir Coordinator</option>
+                                            <option name="executive_role" class="form-control">Welfare Coordinator</option>
+                                            <option name="executive_role" class="form-control">Assistant Welfare Coordinator</option>
+                                            <option name="executive_role" class="form-control">Publicity Coordinator</option>
+                                            <option name="executive_role" class="form-control">Assistant Publicity Coordinator</option>
+                                            <option name="executive_role" class="form-control">Academic Coordinator</option>
+                                            <option name="executive_role" class="form-control">Assistant Academic Coordinator</option>
+                                            <option name="executive_role" class="form-control">Drama Unit Coordinator</option>
+                                            <option name="executive_role" class="form-control">Assistant Drama Unit Coordinator</option>
+                                            <option name="executive_role" class="form-control">Ushering Unit Coordinator</option>
+                                            <option name="executive_role" class="form-control">Assistance Ushering Unit Coordinator</option>
+                                            <option name="executive_role" class="form-control">Sisters Coordinator</option>
+                                            <option name="executive_role" class="form-control">Assistant Sisters Coordinator</option>
+                                            <option name="executive_role" class="form-control">Ex-Officio1</option>
+                                            <option name="executive_role" class="form-control">Ex-Officio2</option>
+
+
+                                        </select>
+                                    </label>
+
+                                    <div style="" class="col-md-4 pull-right" >
+                                        <label  for="id"> School  <span  style="padding-left:10px;color:red; font-weight: bold; font-size: 110%; margin-top: 2px; position: absolute"></span>:
+                                            <select style=" height: 40px;border-radius: 0; margin-top: 6px;   border: 1px solid rgba(0, 0, 0, 0.5);" name="school" class="form-control" >
+                                                <option  name="school" class="form-control">{{school}} </option>
+                                                 <option  name="school" class="form-control">SAAT </option>
+                                        <option  name="school" class="form-control">SEET </option>
+                                        <option  name="school" class="form-control">SEMS </option>
+                                        <option  name="school" class="form-control">SET </option>
+                                        <option  name="school" class="form-control">SHHT</option>
+                                        <option  name="school" class="form-control">SMAT </option>
+                                        <option  name="school" class="form-control">SOC </option>
+                                        <option  name="school" class="form-control">SOS </option>
+
+
+                                            </select>
+                                        </label>
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+
+
+
+                        </div>
+
+                            <div  class="row" style="margin-top: -160px;padding: 2px 10px" >
+                                <div class="col-md-12">
+                                    <label for="id">Department  <span  style="padding-left:10px;color:red; font-weight: lighter; font-size: 110%; margin-top: 0px; position: absolute">{{department}}</span>:</label>
+                                    <input id="id" type="text" name="department" placeholder="Member's department" class="form-control">
+                                </div>
+                            </div>
+                            <div  class="row" style="margin-top: 10px;padding: 2px 10px" >
+                                <div class="col-md-12">
+                                    <label for="id">Home Address  <span  style="padding-left:10px;color:red; font-weight: lighter; font-size: 110%; margin-top: 0px; position: absolute">{{address}}</span>:</label>
+                                    <input id="id" type="text" name="address" placeholder="Member's address" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-right">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="id">Email address:  <span  style="padding-left:10px;color:red; font-weight: lighter; font-size: 110%; margin-top: 0px; position: absolute">{{email}}</span>:</label>
+                                        <input id="id" type="email" name="email" placeholder="Member's email address" class="form-control">
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="id">Facebook page  <span  style="padding-left:10px;color:red; font-weight: lighter; font-size: 110%; margin-top: 0px; position: absolute">{{facebook}}</span>:</label>
+                                        <input id="id" type="text" name="facebook" placeholder="Member's facebook link" class="form-control">
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="id">Twitter  <span  style="padding-left:10px;color:red; font-weight: lighter; font-size: 110%; margin-top: 0px; position: absolute">{{twitter}}</span>:</label>
+                                        <input id="id" type="text" name="twitter" placeholder="Member's twitter link" class="form-control">
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="id">Whatsapp No  <span  style="padding-left:10px;color:red; font-weight: lighter; font-size: 110%; margin-top: 0px; position: absolute">{{whatsapp}}</span>:</label>
+                                        <input id="id" type="text" name="whatsapp" placeholder="Member's whatsapp number" class="form-control">
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+
+                                        <input style="height: 30px; margin-top: 0px" id="id" type="text" name="quote" placeholder="{{quote}}" class="form-control">
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                 <button type="submit"   class=" submit btn btn-lg btn-primary"> Save Changes</button>
+
+            </div>
+
+
+
+</form>
+        </div>
+
+
+<form class="mobile_view" style="margin-top: -10px;" method="post" enctype="multipart/form-data" action="/users/submit/{{id}}">
+    {{# if hasError}}
+        {{# each message}}
+            <div class="alert alert-danger">
+                {{this}}
+            </div>
+        {{/each}}
+    {{/if}}
+
+
+    <div class="row">
+        <div class="col-md-12" style="margin-top: 10px">
+            <div class="form-group">
+                <div class="col-md-6">
+                    <label for="id">Members first name <span  style="padding-left:10px;color:red; font-weight: lighter; font-size: 110%; margin-top: 0px; position: absolute"> {{firstname}}</span> :</label>
+                    <input type="text" id ="id" class="form-control" name="firstname" placeholder="Members First name">
+                </div>
+
+                <div class="col-md-6">
+                    <label for="id">Members second name <span  style="padding-left:10px;color:red; font-weight: lighter; font-size: 110%; margin-top: 0px; position: absolute">{{secondname}}</span> :</label>
+                    <input id ="id" type="text" class="form-control" name="secondname" placeholder="Members Second name">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12" style="margin-top: 10px">
+            <div class="form-group">
+                <div class="col-md-3">
+
+                    <!--<input type="text" id ="id" class="form-control" name="level" placeholder="Member's level">-->
+                    <label for="id"> Level  <span  style="padding-left:10px;color:red; font-weight: lighter; font-size: 110%; position: absolute">{{level}}</span>:
+                        <select style="width: 249px; height: 40px;border-radius: 0; margin-top: 6px;   border: 1px solid rgba(0, 0, 0, 0.5);" name="level" class="form-control">
+                            <option  name="level" class="form-control">{{level}} </option>
+                            <option  name="level" class="form-control">100 </option>
+                            <option name="level" class="form-control">200 </option>
+                            <option name="level" class="form-control">300 </option>
+                            <option name="level" class="form-control">400 </option>
+                            <option name="level" class="form-control">500 </option>
+                        </select>
+                    </label>
+                </div>
+
+
+
+                <div class="col-md-3">
+                    <label for="id"> Unit: <span  style="padding-left:10px;color:red; font-weight:lighter; font-size: 90%; margin-top: 3px; position: absolute">{{unit}}{{#if unit2}} ,{{/if}} {{unit2}}</span>
+                        <span onclick="display()"  style="color: royalblue; font-weight: bold "  class=" pull-right">Add unit</span>
+                        <select  style="width: 249px; height: 40px;border-radius: 0; margin-top: 6px;   border: 1px solid rgba(0, 0, 0, 0.5);" name="unit" class="form-control">
+                            <option  name="unit" class="form-control">{{unit}}  </option>
+                            <option  name="unit" class="form-control">Drama unit </option>
+                            <option name="unit" class="form-control">Welfare unit </option>
+                            <option name="unit" class="form-control">Choir unit</option>
+                            <option name="unit" class="form-control">Evangelism unit </option>
+                            <option name="unit" class="form-control">Publicity unit</option>
+                            <option name="unit" class="form-control">Academic unit</option>
+                            <option name="unit" class="form-control">Ushering unit</option>
+                        </select>
+                    </label>
+                    <div id="add" style="display: none">
+                        <label  for="id">Select unit:
+                            <span  style="  padding-left:10px;color:red; font-weight:lighter; font-size: 110%; margin-top: 0px; position: absolute">
+                               <!--<span style=" display: inline-block; width: 2px; height: 16px;background-color: red; transform: rotate(-45deg)">-->
+
+                                <!--</span>-->
+                                <!--<span style="display:inline-block; width: 2px; height: 16px;background-color: red; transform: rotate(45deg)">-->
+
+                                <!--</span>-->
+
+                                    <button type="button" onclick="hide()" id="btn"  style="margin-left:140px; margin-bottom: 3px; height: 25px; width: 25px; " class=" btn btn-primary">
+
+                                    <span class="l pull-right" style=" margin-top: -9px; background-color: white; position: absolute; transform: rotate(45deg);width : 2px; height: 18px ; "></span >
+                                    <span class="r pull-right"  style="  margin-top: -9px; background-color: white;  position:absolute;transform: rotate(-45deg);width : 2px; height: 18px ; "></span>
+                                    </button>
+                           </span>
+
+                            <select  style=" width: 249px; height: 40px;border-radius: 0; margin-top: 6px;   border: 1px solid rgba(0, 0, 0, 0.5);" name="unit2" class="form-control">
+                                <option  name="unit2" class="form-control">{{unit2}} </option>
+                                <option  name="unit2" class="form-control">Drama unit </option>
+                                <option name="unit2" class="form-control">Welfare unit </option>
+                                <option name="unit2" class="form-control">Choir unit </option>
+                                <option name="unit2" class="form-control">Evangelism unit </option>
+                                <option name="unit2" class="form-control">Publicity unit</option>
+                                <option name="unit2" class="form-control">Academic unit</option>
+                            </select>
+                        </label>
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="col-md-3">
+                    <label for="id">Phone Number  <span  style="padding-left:10px;color:red; font-weight: lighter; font-size: 110%; margin-top: 0px; position: absolute">+{{phone}}</span> :</label>
+                    <input id ="id" type="text" class="form-control" name="phone_number" placeholder="Members Phone number">
+                </div>
+
+                <div class="col-md-3">
+                    <label for="id"> Status  <span  style="color:red; font-weight: lighter; font-size: 110%; margin-top: 0px; position: absolute">{{status}}</span>:
+                        <select style="width: 230px; height: 40px;border-radius: 0;  margin-top: 6px;   border: 1px solid rgba(0, 0, 0, 0.5);" name="status" class="form-control">
+                            <option  name="status" class="form-control">{{status}} </option>
+                            <option  name="status" class="form-control">Under-graduate </option>
+                            <option name="status" class="form-control">Post-graduate </option>
+                            <option name="status" class="form-control"> Alumnus </option>
+
+                        </select>
+                    </label>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class=" col-sm-12" style="margin-top: 20px">
+            <div class="form-group">
+                <div class="col-md-6">
+
+                    <div style="margin-top: 15px" class="">
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <input type="file" name="profile_image" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 10px">
+                            <!--<div class="col-md-4">-->
+                            <!--<label for="m_id">Month of birth:</label>-->
+                            <!--<input id="m_id" type="number" name="m_b" class="form-control">-->
+                            <!--</div>-->
+                            <div style="" class="col-md-4">
+                                <label for="id"> Month of birth  <span  style="padding-left:4px;color:red; font-weight: lighter; font-size: 107%; margin-top: 0px; position: absolute">{{month}}</span>:
+                                    <select style=" height: 40px;border-radius: 0; margin-top: 6px;   border: 1px solid rgba(0, 0, 0, 0.5);"  name="m_b" class="form-control" >
+                                        <option  name="m_b" class="form-control">{{month}} </option>
+                                        <option  name="m_b" class="form-control">January </option>
+                                        <option name="m_b" class="form-control">February </option>
+                                        <option name="m_b" class="form-control"> March </option>
+                                        <option name="m_b" class="form-control"> April </option>
+                                        <option name="m_b" class="form-control"> May </option>
+                                        <option name="m_b" class="form-control"> June </option>
+                                        <option name="m_b" class="form-control"> July </option>
+                                        <option name="m_b" class="form-control"> August </option>
+                                        <option name="m_b" class="form-control"> September </option>
+                                        <option name="m_b" class="form-control"> October </option>
+                                        <option name="m_b" class="form-control"> November </option>
+                                        <option name="m_b" class="form-control"> December</option>
+
+
+                                    </select>
+                                </label>
+                            </div>
+
+                            <div style="margin-left: 0px;" class="col-md-4">
+                                <label style="margin-left: 14px" for="d_id" >Date of birth  <span  style="padding-left:10px;color:red; font-weight: lighter; font-size: 110%; margin-top: 0px; position: absolute">{{day}}</span>:</label>
+                                <input id="d_id" type="text" name="d_b" class="form-control" value="{{day}}" >
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="id">Year  of birth: <span  style="padding-left:10px;color:red; font-weight: lighter; font-size: 110%; margin-top: 0px; position: absolute">{{year}}</span>:</label>
+                                <input id="id" value="{{year}}" type="text" name="y_b" class="form-control" placeholder="e.g (2019)">
+                                <input id="id" value="{{executive}}" type="hidden" name="prevrole" class="form-control" placeholder="e.g (2019)">
+                            </div>
+                        </div>
+
+
+                        <div  class="row" style="margin-top: 10px" >
+                            <div class="col-md-12">
+                                <label style="margin-left: 0px;" for="id"> Executive Role  <span  style="padding-left:10px;color:red; font-weight: bold; font-size: 110%; margin-top: 2px; position: absolute"></span>:
+                                    <select style=" height: 40px;border-radius: 0; margin-top: 6px;   border: 1px solid rgba(0, 0, 0, 0.5);" name="executive_role" class="form-control" >
+                                        <option  name="executive_role" class="form-control">{{executive}}</option>
+                                        <option  name="executive_role" class="form-control">None </option>
+                                        <option  name="executive_role" class="form-control">President </option>
+                                        <option name="executive_role" class="form-control">Vice President </option>
+                                        <option name="executive_role" class="form-control">General Secretary </option>
+                                        <option name="executive_role" class="form-control">Assistant General Secretary </option>
+                                        <option name="executive_role" class="form-control">Brothers Coordinator</option>
+                                        <option name="executive_role" class="form-control">Financial Secretary</option>
+                                        <option name="executive_role" class="form-control">Treasurer</option>
+                                        <option name="executive_role" class="form-control"> Evangelism Coordinator </option>
+                                        <option name="executive_role" class="form-control"> Assistant Evangelism Coordinator</option>
+                                        <option name="executive_role" class="form-control"> Choir Coordinator </option>
+                                        <option name="executive_role" class="form-control">Assistant Choir Coordinator</option>
+                                        <option name="executive_role" class="form-control">Welfare Coordinator</option>
+                                        <option name="executive_role" class="form-control">Assistant Welfare Coordinator</option>
+                                        <option name="executive_role" class="form-control">Publicity Coordinator</option>
+                                        <option name="executive_role" class="form-control">Assistant Publicity Coordinator</option>
+                                        <option name="executive_role" class="form-control">Academic Coordinator</option>
+                                        <option name="executive_role" class="form-control">Assistant Academic Coordinator</option>
+                                        <option name="executive_role" class="form-control">Drama Unit Coordinator</option>
+                                        <option name="executive_role" class="form-control">Assistant Drama Unit Coordinator</option>
+                                        <option name="executive_role" class="form-control">Ushering Unit Coordinator</option>
+                                        <option name="executive_role" class="form-control">Assistance Ushering Unit Coordinator</option>
+                                        <option name="executive_role" class="form-control">Sisters Coordinator</option>
+                                        <option name="executive_role" class="form-control">Assistant Sisters Coordinator</option>
+                                        <option name="executive_role" class="form-control">Ex-Officio1</option>
+                                        <option name="executive_role" class="form-control">Ex-Officio2</option>
+
+
+                                    </select>
+                                </label>
+
+                                <div style="" class="col-md-4 col-sm-12 " >
+                                    <label  for="id"> School  <span  style="padding-left:10px;color:red; font-weight: bold; font-size: 110%; margin-top: 2px; position: absolute"></span>:
+                                        <select style=" height: 40px;border-radius: 0; margin-top: 6px;   border: 1px solid rgba(0, 0, 0, 0.5);" name="school" class="form-control" >
+                                            <option  name="school" class="form-control">{{school}} </option>
+                                           <option  name="school" class="form-control">SAAT </option>
+                                        <option  name="school" class="form-control">SEET </option>
+                                        <option  name="school" class="form-control">SEMS </option>
+                                        <option  name="school" class="form-control">SET </option>
+                                        <option  name="school" class="form-control">SHHT</option>
+                                        <option  name="school" class="form-control">SMAT </option>
+                                        <option  name="school" class="form-control">SOC </option>
+                                        <option  name="school" class="form-control">SOS </option>
+
+
+                                        </select>
+                                    </label>
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+
+
+
+                    </div>
+
+                    <div  class="row" style="padding: 2px 10px" >
+                        <div class="col-md-12">
+                            <label for="id">Department  <span  style="padding-left:10px;color:red; font-weight: lighter; font-size: 110%; margin-top: 0px; position: absolute">{{department}}</span>:</label>
+                            <input id="id" type="text" name="department" placeholder="Member's department" class="form-control">
+                        </div>
+                    </div>
+                    <div  class="row" style="margin-top: 10px;padding: 2px 10px" >
+                        <div class="col-md-12">
+                            <label for="id">Home Address  <span  style="padding-left:10px;color:red; font-weight: lighter; font-size: 90%; margin-top: 0px; position: absolute">{{address}}</span>:</label>
+                            <input id="id" type="text" name="address" placeholder="Member's address" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-right">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="id">Email address:  <span  style="padding-left:10px;color:red; font-weight: lighter; font-size: 110%; margin-top: 0px; position: absolute">{{email}}</span>:</label>
+                                <input id="id" type="email" name="email" placeholder="Member's email address" class="form-control">
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="id">Facebook page  <span  style="padding-left:10px;color:red; font-weight: lighter; font-size: 110%; margin-top: 0px; position: absolute">{{facebook}}</span>:</label>
+                                <input id="id" type="text" name="facebook" placeholder="Member's facebook link" class="form-control">
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="id">Twitter  <span  style="padding-left:10px;color:red; font-weight: lighter; font-size: 110%; margin-top: 0px; position: absolute">{{twitter}}</span>:</label>
+                                <input id="id" type="text" name="twitter" placeholder="Member's twitter link" class="form-control">
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="id">Whatsapp No  <span  style="padding-left:10px;color:red; font-weight: lighter; font-size: 110%; margin-top: 0px; position: absolute">{{whatsapp}}</span>:</label>
+                                <input id="id" type="text" name="whatsapp" placeholder="Member's whatsapp number" class="form-control">
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+
+                                <input style="height: 30px; margin-top: 0px" id="id" type="text" name="quote" placeholder="{{quote}}" class="form-control">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <button type="submit" style="margin:10px 0px 20px 70px;"   class="  btn btn-primary"> Save Changes</button>
+
+    </div>
+
+
+
+</form>
+
+    <script>
+        var d_b= document.getElementById('d_id');
+        var m_b= document.getElementById('m_id');
+
+
+        if(d_b.value > 31){
+            alert('age range false');
+
+        }
+        var box = document.getElementById('add');
+         function display(){
+             box.style.display="block"
+         }
+function hide() {
+    box.style.display="none"
+}
+    </script>
+
+
+
+<style type="text/css">
+
+    form{
+        /*border: 1px solid rgba(0, 0, 0, 0.5);*/
+        height: 100%;
+        width: 100%;
+
+    }
+    form input[type="text"]{
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        height: 40px;
+        border-radius: 0;
+    }
+    form input[type="email"]{
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        height: 40px;
+        border-radius: 0;
+    }
+    form input[type="file"]{
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        height: 40px;
+        border-radius: 0;
+    }
+    form input[type="number"]{
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        height: 40px;
+        border-radius: 0;
+    }
+    .form-left , .form-right{
+        padding: 13px 10px;
+        height: 370px;
+        border: 1px solid rgba(0, 0, 0, 0.5);
+    }
+    .form-bottom{
+
+        height: 430px;
+        padding: 15px  5px;
+        margin-left: 40px;
+        border: 1px solid rgba(0, 0, 0, 0.5);
+    }
+    button.submit{
+        font-weight: bold;
+        font-family: Verdana;
+        margin-left: 350px;
+        width: 320px;
+        margin-top: 5px;
+        height: 35px;
+        padding:0 0 0 0;
+        border-radius:3px;
+    }
+    .con{
+
+    }
+    .cont{
+        margin-top: -20px;
+        position: relative;
+    }
+
+
+    .content{
+        padding: 10px 10px;
+        width : 1136px;
+        height: 635px;
+        position: absolute;
+        border: 1px solid rgba(0 ,0, 0, 0.4);
+        margin-left: 224px;
+        margin-top: 35px;
+
+    }
+    @media (max-width: 768px){
+        /*img{*/
+        /*margin-top: -30px;*/
+        /*}*/
+        .att{
+            display: none;
+
+        }
+        .mobile_view{
+            padding: 0 5px;
+            /*margin-top: 20px;*/
+            display: block;
+
+        }
+        .mobile_view li{
+            background-color: royalblue;
+        }
+        .mobile_view ul{
+            background-color: royalblue;
+        }
+        .mb{
+            display: block;
+        }
+        .col-sm-12{
+            font-weight: bold;
+            margin-top: 5px;
+        }
+    }
+</style>
+<!--<header>-->
+<!--<meta charset="UTF-8">-->
+<!--<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>-->
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--</header>-->
+
+<!--&lt;!&ndash;profile page&ndash;&gt;-->
+
+<!--<div class="cont">-->
+<!--&lt;!&ndash;set header&ndash;&gt;-->
+
+<!--<header>-->
+<!--<meta charset="UTF-8">-->
+<!--<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>-->
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--</header>-->
+
+<!--<nav id="side-nav" class="navbar  navbar-expand-lg navbar-light bg-light">-->
+<!--<button class="  navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--<span class="  navbar-toggler-icon"></span>-->
+<!--</button>-->
+
+<!--<div class="collapse navbar-collapse" id="navbarSupportedContent">-->
+<!--<ul class="navbar-nav mr-auto">-->
+
+
+<!--<li class="nav-item active">-->
+
+<!--</li>-->
+
+
+<!--</ul>-->
+
+
+<!--</div>-->
+<!--</nav>-->
+
+
+
+
+
+
+<!--</div>-->
+<!--&lt;!&ndash;sidebar&ndash;&gt;-->
+<!--<div class="con">-->
+<!--<div class="sidebar">-->
+
+<!--</div>-->
+<!--<div class="content">-->
+<!--<div class="dashboard">-->
+
+
+<!--</div>-->
+<!--</div>-->
+
+<!--</div>-->
+
+
+
+
+
+
+
+<!--<hr>-->
+
+
+<!--<style type="text/css">-->
+
+
+
+
+
+<!--.cont{-->
+<!--margin-top: -10px;-->
+<!--}-->
+
+
+<!--.content{-->
+<!--width : 100%;-->
+<!--height: 100%;-->
+<!--padding-left: 270px;-->
+<!--}-->
+
+
+<!--.sidebar{-->
+<!--margin-top: -30px;-->
+<!--width: 250px ;-->
+<!--height: 120vh;-->
+<!--position: fixed;-->
+<!--background-color: #2e6da4;-->
+<!--color: white;-->
+<!--}nav#side-nav{-->
+<!--display: none;-->
+<!--background-color: transparent;-->
+<!--}-->
+
+
+
+
+<!--footer{-->
+<!--display: none;-->
+<!--}-->
+<!--h5{margin-top: 40px;-->
+<!--position: absolute;-->
+<!--color: #00B7F9;-->
+<!--font-family: sans-serif;-->
+
+<!--}-->
+<!--/*on mobile screen e.g android*/-->
+<!--@media (max-width: 768px){-->
+
+
+
+<!--}-->
+
+<!--body{-->
+<!--background:white;-->
+<!--cursor: pointer;-->
+<!--}-->
+
+
+<!--</style>-->
+
+
+<!--<style type="text/css">-->
+<!--/*on mobile screen*/-->
+<!--@media (max-width: 768px){-->
+
+<!--.content{-->
+<!--padding:  0  10px;-->
+<!--background-color: white;-->
+<!--}-->
+
+
+<!--.sidebar{-->
+<!--display: none;-->
+<!--}-->
+
+
+
+
+
+
+
+
+
+<!--}-->

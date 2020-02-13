@@ -1,0 +1,351 @@
+<header>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</header>
+{{> store}}
+{{>sidebar}}
+
+<div class="content">
+    <div class=" l col-md-4">
+        <p style="font-weight:bold; padding:9px 4px ;width: 80px;margin-left: -15px; color: white; background-color: #2e6da4" > First name</p>
+        <p style="margin-left: 100px; margin-top: -38px; font-family: Verdana; font-size: 110%">{{firstname}}</p>
+    </div>
+
+
+    <div class=" r col-md-4">
+        <p style="font-weight:bold; padding:9px 4px ;width: 100px;margin-left: -15px; color: white; background-color: #2e6da4" > Second name</p>
+        <p style="margin-left: 100px; margin-top: -40px; font-family: Verdana; font-size: 110%">{{secondname}}</p>
+    </div>
+
+    <div class="handler thumbnail" >
+        <img class="img1"  src="{{this.profile_image}}">
+    </div>
+
+    <p style="text-align: center">Personal Quote: <i style="color:rgba(200,0,0,0.6);"> "{{quote}}"</i></p>
+    <a href="/users/edit/{{id}}" style="margin-top: -40px; border-radius: 0;" class=" pull-right btn btn-primary">Edit member's Profile <i class="fas fa-user-edit"></i> </a>
+    <div class="profile">
+
+
+        <div class="m row">
+            <div class="col-md-12">
+                <div class=" f  col-md-4">
+                    <p style="font-weight:bold; padding:9px 8px ;width: 70px;margin-left: -15px; color: white; background-color: #2e6da4" > Level</p>
+                    <p style="margin-left: 100px; margin-top: -40px; font-family: Verdana; font-size: 110%">{{level}}</p>
+
+                </div>
+
+                <div style="width: 614px;"  class="f  col-md-7">
+                    <p style="font-weight:bold; padding:9px 8px ;width: 90px;margin-left: -15px; color: white; background-color: #2e6da4" >Department</p>
+                    <p style="margin-left: 80px; margin-top: -40px; font-family: Verdana; font-size: 110%">{{department}}</p>
+                </div>
+
+                <div style="width:170px;"  class="f  col-md-2">
+                    <p style="font-weight:bold; padding:9px 8px ;width: 70px;margin-left: -15px; color: white; background-color: #2e6da4" >School</p>
+                    <p style="margin-left: 80px; margin-top: -40px; font-family: Verdana; font-size: 110%">{{school}}</p>
+                </div>
+
+
+            </div>
+        </div>
+
+
+        <div class="m row">
+            <div class="col-md-12">
+                <div class=" f  col-md-4">
+                    <p style="font-weight:bold; padding:9px 8px ;width: 90px;margin-left: -15px; color: white; background-color: #2e6da4" >Phone No</p>
+                    <p style="margin-left: 87px; margin-top: -40px; font-family: Verdana; font-size: 110%">+{{phone}}</p>
+
+                </div>
+
+                <div style="width: 790px;"  class="f  col-md-11">
+                    <p style="font-weight:bold; padding:9px 8px ;width: 90px;margin-left: -15px; color: white; background-color: #2e6da4" >Unit/Units</p>
+                    <p style="margin-left: 100px; margin-top: -40px; font-family: Verdana; font-size: 110%">{{unit}} {{unit2}}</p>
+                </div>
+
+
+            </div>
+        </div>
+    <div class="m row">
+      <div class="col-md-12">
+            <div class=" f col-md-3">
+                <p style="font-weight:bold; padding:9px 8px ;width: 50px;margin-left: -15px; color: white; background-color: #2e6da4" >DOB</p>
+                <p style="margin-left: 50px; margin-top: -40px; font-family: Verdana; font-size: 110%">{{month}}-{{day}}-{{year}}</p>
+
+            </div>
+
+            <div class=" f col-md-3">
+                <p style="font-weight:bold; padding:9px 8px ;width: 70px;margin-left: -15px; color: white; background-color: #2e6da4" >Status</p>
+                <p style="margin-left: 70px; margin-top: -40px; font-family: Verdana; font-size: 110%">{{status}}</p>
+            </div>
+
+
+
+            <div style="width: 524px" class="  f col-md-6">
+                <p style="font-weight:bold; padding:9px 8px ;width: 70px;margin-left: -15px; color: white; background-color: #2e6da4" >Address</p>
+                <p style="margin-left: 70px; margin-top: -40px; font-family: Verdana; font-size: 110%">{{address}}</p>
+            </div>
+        </div>
+    </div>
+
+
+
+
+        <div class="m row">
+            <div class="col-md-12">
+                <div class=" f col-md-3">
+                    <p style="font-weight:bold; padding:9px 8px ;width: 120px;margin-left: -15px; color: white; background-color: #2e6da4" >Whatsapp</p>
+                    <p style="margin-left: 110px; margin-top: -39px; font-family: Verdana; font-size: 110%">{{whatsapp}} </p>
+                </div>
+
+                <div class=" f col-md-3">
+                    <p style="font-weight:bold; padding:9px 8px ;width: 85px;margin-left: -15px; color: white; background-color: #2e6da4" >Set Name</p>
+                    <p style="margin-left: 76px; margin-top: -39px; font-family: Verdana; font-size: 110%"> </p>
+                </div>
+                <div style="width: 524px" class="  f col-md-6">
+                    <p style="font-weight:bold; padding:9px 8px ;width: 120px;margin-left: -15px; color: white; background-color: #2e6da4" >Executive role</p>
+                    <p style="margin-left: 130px; margin-top: -40px; font-family: Verdana; font-size: 110%">{{executive}}</p>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <div class="row">
+
+                    <div style="width: 960px; margin-left: 50px" class="  f col-md-11">
+                        <p style="font-weight:bold; padding:9px 8px ;width: 60px;margin-left: -15px; color: white; background-color: #2e6da4" >Media</p>
+                        <p style="margin-left: 50px; margin-top: -40px; font-family: Verdana; font-size: 110%">Twitter: {{twitter}} | Email: {{email}} | Facebook: {{facebook}} </p>
+                    </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+<!--<div style="height: 150px; width: 150px;padding-left: 10px; margin-left: 120px;border: 1px solid rgba(0,0,0,0.5); border-radius:50%; " class="mb">-->
+    <!--<img class="img-responsive" src="/images/cloth1.jpg" style="height: 140px; width: 130px; border-radius: 50%;">-->
+<!--</div>-->
+
+<!--<p style="text-align: center">Personal Quote: <i style="color:rgba(200,0,0,0.6);"> "{{quote}}"</i></p>-->
+<!--<div class="row">-->
+    <!--<div class="col-sm-12">-->
+<!--<div class="col-sm-6" style=" border: 1px solid rgba(0,0,0,0.4)">-->
+    <!--<p style="font-weight:lighter; font-size: 120%; " > First name : <span style="color: black; ">{{firstname}}</span></p>-->
+
+<!--</div>-->
+
+
+<!--<div class="col-sm-6"  style="margin-top: 10px; border: 1px solid rgba(0,0,0,0.4)">-->
+    <!--<p style="font-weight:lighter; font-size: 120%" > Second name :<span style="color: black; ">{{secondname}}</span></p>-->
+
+<!--</div>-->
+<!--</div>-->
+</div>
+<div class="row">
+
+<div class="mobile_view">
+<div class="card" style="width: 100%; margin-top:-70px;padding:20px;">
+  <h1 style="text-align: center;"> {{firstname}} {{secondname}}</h1>
+  <img src="{{this.profile_image}}" style="height:100%" class="card-img-top" alt="...">
+  
+  <div class="card-body">
+    
+    <h4 class="card-text"> First name : {{firstname}}.</h4>
+      <h4>Last name : {{secondname}}</h4>
+  </div>
+  <div>
+ 
+   <h3>Other details</h3>
+  </div>
+  
+  
+ 
+</div>
+    <hr>
+    <div class="tt col-sm-12">
+
+        Last name : {{secondname}}
+    </div>
+    <hr>
+    <div class="tt card-text col-sm-12">
+Quote  : {{quote}}
+    </div>
+    <hr>
+    <div class="tt card-text col-sm-12">
+        Status  : {{this.status}}
+    </div>
+    <hr>
+    <div class="tt card-text col-sm-12">
+        Phone Number  : {{this.phone}}
+    </div>
+    <hr>
+
+    <div class="tt card-text col-sm-12">
+        Level  : {{this.level}}
+    </div>
+    <hr>
+    <div class="tt card-text col-sm-12">
+        Department  : {{this.department}}
+    </div>
+    <hr>
+    <div class="tt card-text col-sm-12">
+        Unit in church : {{this.unit}}
+    </div>
+    <hr>
+    <div class="tt card-text col-sm-12">
+        Executive : {{this.executive}}
+    </div>
+    <hr>
+    <div class="tt card-text col-sm-12">
+        School  : {{this.school}}
+    </div>
+    <hr>
+    <div class="tt card-text col-sm-12">
+        Address  : {{this.address}}
+    </div>
+    <hr>
+    <div class="tt card-text col-sm-12">
+        Date of birth  : {{month}}-{{day}}-{{year}}
+    </div>
+    <hr>
+    <div class="tt card-text col-sm-12">
+       Email : {{this.email}}
+    </div>
+    <hr>
+    <div class="tt card-text col-sm-12">
+        twitter  : {{this.twitter}}
+    </div>
+    <hr>
+    <div class="tt card-text col-sm-12">
+       Facebook  : {{this.facebook}}
+    </div>
+    <hr>
+    <div class="tt card-text col-sm-12">
+        Whatsapp  : {{this.whatsapp}}
+    </div>
+</div>
+    <div style="padding:60px" >
+<a href="/users/edit/{{id}}" style=" border-radius: 0;" class="editt pull-right btn btn-primary">Edit member's Profile <i class="fas fa-user-edit"></i> </a>
+    </div>
+</div>
+</div>
+
+
+
+<style type="text/css">
+    img.img1{
+        margin-top: 0px; width: 200px; height: 200px ; border-radius: 50%;
+        position: absolute;
+    }
+    .mb{
+        display: none;
+    }
+    img{
+
+      width: 100px;
+        height: 100px;
+
+
+    }
+     .r{
+         border: 1px solid rgba(0 ,0, 0, 0.8);
+         height: 40px;
+         margin-left: 340px;
+    }
+     .l{
+         border: 1px solid rgba(0 ,0, 0, 0.8);
+         height: 40px;
+         margin-left: 10px;
+     }
+     .tt{
+         font-size: 17px;
+         padding-left: 30px;
+
+     }
+    .m{
+        margin-left: 7px;
+    }
+    .f{
+        width:260px;
+        margin-top: 27px;
+        margin-left: 6px;
+        height: 40px;
+        border: 1px solid rgba(0 ,0, 0, 0.8);
+    }
+    .profile{
+        width: 100%;
+        height: 360px;
+        border: 1px solid rgba(0 ,0, 0, 0.7);
+        margin-top:10px;
+
+    }
+    .thumbnail{
+        margin-left: 440px;
+        border-radius: 50%;
+        width: 200px;
+        height: 200px;
+border: 1px solid white;
+    }
+
+    .con{
+
+    }
+    .cont{
+        margin-top: -20px;
+        position: relative;
+    }
+
+
+    .content{
+
+        padding: 10px 10px;
+        width : 1139px;
+        height: 635px;
+        position: absolute;
+        border: 1px solid rgba(0 ,0, 0, 0.4);
+        margin-left: 224px;
+        margin-top: 35px;
+
+    }
+    .editt{
+        display: none;
+    }
+    @media (max-width: 768px){
+        .editt{
+            display: block;
+        }
+        /*img{*/
+            /*margin-top: -30px;*/
+        /*}*/
+        .content{
+            display: none;
+              
+        }
+        .mobile_view{
+            padding: 0 5px;
+            margin-top: 60px;
+            display: block;
+
+        }
+        .mobile_view li{
+            background-color: royalblue;
+        }
+        .mobile_view ul{
+            background-color: royalblue;
+        }
+        .mb{
+            display: block;
+        }
+        .col-sm-12{
+            font-weight: bold;
+            margin-top: 5px;
+        }
+    }
+</style>

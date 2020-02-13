@@ -1,0 +1,402 @@
+
+{{>sidebar}}
+{{>store}}
+<div class="thumbnail att">
+    <h3 style="font-family: Verdana">Today's birthday celebrant</h3>
+    <div style=" text-align: center; margin-top: -30px; padding: 0px 20px; margin-left:758px;position: fixed;   width: 345px; height: 580px;" class="bg-primary">
+        <h1 style=" font-size: 300%; font-family: Verdana">
+            Today's Date
+        </h1>
+        <div style=" animation: animate 5s infinite;  text-align:center; font-family: Verdana; font-size: 600%; " id="day">
+
+        </div>
+        <a style="z-index: 1; padding-top: 10px; border: 1px solid white;border-radius: 30px; margin-top: 20px; background-color: royalblue; height: 60px; width: 250px"  href="/users/birthday_message" class="btn btn-primary"><span style="font-size: 180%; font-family: Verdana;">Send message</span></a>
+
+    </div>
+{{# if celebrant}}
+
+
+{{# each celebrant}}
+    <div class="row">
+{{# each this}}
+        <div style="width: 750px;"  class="col-sm-12 col-md-10">
+            <div style="border-radius: 2px;  height:420px; width: 700px;" class="thumbnail">
+                <img style="width: 400px; height: 300px;" src="{{this.profile_image}}" class="img-responsive" alt="...">
+                <div class="caption">
+                    <div class="description clearfix">
+                        <h2  class="name" style="text-align: center; font-family: Verdana">{{this.firstname}}  {{this.secondname}}</h2><br>
+
+                        <hr style="background-color: rgba(100% , 100%, 100%, 0.6);  font-family: Verdana">
+                        <h3 style=" font-family: Verdana " class="level">Level: {{this.level}}</h3><br>
+                        <h3 style="font-family: Verdana; margin-top: -10px; " class="pull-left price ">Department: {{this.department}}</h3><br>
+                        <!--<h3  style="font-family: Verdana;  " class="pull-left price ">Unit: "{{this.unit}}"</h3>-->
+
+                        <h3  style="font-family: Verdana;  " class="pull-left price ">personal Quote: "<span style=" color:red;"><i>{{this.quote}}</i></span>"</h3>
+
+                        <!--<p><a style="font-weight: bold" href="/send/{{this._id}}" onclick="success()"  class="btn btn-primary pull-right " role="button"></a> </p>-->
+                    </div>
+
+
+                </div>
+            </div>
+{{/each}}
+        </div>
+    </div>
+{{/each}}
+{{else}}
+    <div>
+        <h2>No celebrant today</h2>
+    </div>
+{{/if}}
+
+<div><h3 style="font-weight: bold; font-family: Verdana; color: #1b6d85">Celebrants in the alumni section</h3></div>
+    {{# if alumni_b}}
+        {{# each alumni_b}}
+
+            <div class="row">
+
+                {{# each this}}
+                    {{# each user}}
+                        <div class="col-sm-6 col-md-4">
+                            <div style="margin-top: 36px;" class="thumbnail">
+                                <img src="{{this.profile_image}}" style="width:250px; height: 180px;" class="img-responsive" alt="{{firstname}} {{this.secondname}}">
+                                <div class="caption">
+                                    <div class="description clearfix">
+                                        <h3 class="name" style=" font-family: Verdana">{{this.firstname}} {{this.secondname}}</h3><br>
+                                        <hr style="background-color: rgba(100% , 100%, 100%, 0.6); margin-top:-7px;">
+                                        <p style="font-family: Verdana; font-weight: normal; font-size: 123%;" class="level">Alumni</p><br>
+                                        <p style="font-family: Verdana; font-weight: normal; font-size: 123%;" class="level">unit: {{this.unit}} </p><br>
+
+                                        <!--<p><a style=" font-weight: bold ; padding: 10px 40px; background-color: #2e6da4; color:white"  onclick="show()"  class=" pull-left " ><i class="fas fa-address-book"></i> View Full profile</a> </p><br>-->
+                                        <ul  id="ul" style=" display: none; border-radius: 0; margin-top: -38px; width: 330px; float:left; background-color: white;">
+                                            <!--<button onclick="clear()" id="btn"  style="margin-bottom: 3px; width: 30px; margin-left: 299px;" class=" btn btn-primary">-->
+
+                                                <!--<span class="l pull-right" style=" margin-top: -9px; background-color: white; position: absolute; transform: rotate(45deg);width : 2px; height: 18px ; "></span >-->
+                                                <!--<span class="r pull-right"  style="  margin-top: -9px; background-color: white;  position:absolute;transform: rotate(-45deg);width : 2px; height: 18px ; "></span>-->
+                                            <!--</button>-->
+                                            <li style="border-radius: 0; font-size: 120%; font-family: Verdana" class="list-group-item">
+                                                <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid royalblue; ">
+                                                    <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color: royalblue;"></div>
+                                                </div> <span style="color: royalblue; font-weight: normal">Level:</span>  Alumni
+                                            </li>
+
+                                            <li style="font-size: 120%; font-family: Verdana" class="list-group-item">
+                                                <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid royalblue; ">
+                                                    <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color: royalblue;"></div>
+                                                </div> <span style="color: royalblue; font-weight:normal"> Graduated from department of:</span> {{this.department}}
+                                            </li>
+
+                                            <li style="font-size: 120%; font-family: Verdana" class="list-group-item">
+                                                <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid royalblue; ">
+                                                    <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color: royalblue;"></div>
+                                                </div><span style="color: royalblue; font-weight:normal"> personal Quote:</span> "{{this.quote}}"
+                                            </li>
+
+
+                                            <li style="font-size: 120%; font-family: Verdana" class="list-group-item">
+                                                <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid royalblue; ">
+                                                    <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color: royalblue;"></div>
+                                                </div><span style="color: royalblue; font-weight:normal"> Unit:</span> {{this.unit}}
+                                            </li>
+                                            <li style="font-size: 120%; font-family: Verdana" class="list-group-item" >
+                                                <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid royalblue;">
+                                                    <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color:royalblue;"></div>
+                                                </div><span style="color: royalblue; font-weight: normal"> Phone-number:</span> {{this.phone_number}}
+                                            </li>
+                                            <li style="font-size: 120%; font-family: Verdana" class="list-group-item" >
+                                                <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid royalblue;">
+                                                    <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color: royalblue;"></div>
+                                                </div>
+                                                <span style="color: royalblue; font-weight: normal"> Address: </span>{{this.address}}
+                                            </li>
+                                            <li style="font-size: 120%; font-family: Verdana" class="list-group-item" >
+
+                                                <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid royalblue;">
+                                                    <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color: royalblue;"></div>
+                                                </div><span style="color: royalblue; font-weight: normal"> Status:</span> Alumni
+                                            </li>
+                                            <li style="font-size: 120%; font-family: Verdana" class="list-group-item" >
+                                                <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid royalblue;">
+                                                    <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color: royalblue;"></div>
+                                                </div> <span style="color: royalblue; font-weight: normal">  Past:</span> {{this.executive_role}}
+                                            </li>
+                                            <li style="font-size: 120%; font-family: Verdana" class="list-group-item" >
+                                                <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid royalblue;">
+                                                    <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color: royalblue;"></div>
+                                                </div> <span style="color: royalblue; font-weight: normal">  Whatsapp no:</span> {{this.whatsapp}}
+                                            </li>
+                                            <li style="font-size: 120%; font-family: Verdana" class="list-group-item" >
+                                                <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid royalblue;">
+                                                    <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color:royalblue;"></div>
+                                                </div><span style="color: royalblue; font-weight: normal">Facebook page:</span> {{this.facebook}}
+                                            </li>
+                                            <li style="font-size: 120%; font-family: Verdana" class="list-group-item" >
+                                                <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid royalblue;">
+                                                    <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color: royalblue;"></div>
+                                                </div><span style="color: royalblue; font-weight: normal">  twitter link:</span> {{this.twitter}}
+                                            </li>
+
+                                        </ul>
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    {{/each}}
+                {{/each}}
+            </div>
+        {{/each}}
+    {{else}}
+        <div>
+            <h2>No birthday celebrant from the alumni side</h2>
+        </div>
+    {{/if}}
+
+
+
+
+
+    <!--<p style="font-family: Verdana; font-weight: bold;">Send birthday message message:</p>-->
+    <!--<textarea placeholder="please enter the  message you want to send"  id="id" style=" font-size: 120%; font-family: Verdana; width: 350px; height: 200px" name="message" class="swal2-textarea">-->
+        <!--</textarea>-->
+
+    <a style="z-index: 1; padding-top: 10px; border: 1px solid white;border-radius: 10px; margin-top: 20px; background-color: royalblue; height: 60px; width: 500px"  href="/users/birthday_message" class="btn btn-primary"><span style="font-size: 180%; font-family: Verdana;">Send message to birthday celebrants</span></a>
+</div>
+<div class="mobile_view">
+    <h3 style="font-family: Verdana">Today's birthday celebrant</h3>
+        <!--<h4 style=" font-size: 100%; font-family: Verdana">-->
+            <!--Today's Date-->
+        <!--</h4>-->
+        <div style="color: royalblue;margin-top: 10px; animation: animate 5s infinite;  text-align:center; font-family: Verdana; font-size: 110%; " id="day_">
+
+        </div>
+
+    <script type="text/javascript">
+        var day = document.getElementById('day_');
+        var d = new Date();
+        var month = d.toDateString();
+        day.innerHTML =` ${month}`;
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{# if celebrant}}
+
+
+    {{# each celebrant}}
+        <div class="row">
+            {{# each this}}
+            <div style=""  class="col-sm-12 col-md-10">
+                <div style="border-radius: 2px;  " class="thumbnail">
+                    <img style="width: 300px; height: 200px;" src="{{this.profile_image}}" class="img-responsive" alt="...">
+                    <div class="caption">
+                        <div class="description clearfix">
+                            <h2  class="name" style="text-align: center; font-family: Verdana">{{this.firstname}}  {{this.secondname}}</h2><br>
+
+                            <hr style="background-color: rgba(100% , 100%, 100%, 0.6);  font-family: Verdana">
+                            <h3 style=" font-family: Verdana " class="level">Level: {{this.level}}</h3><br>
+                            <h3 style="font-family: Verdana; margin-top: -10px; " class="pull-left price ">Department: {{this.department}}</h3><br>
+                            <!--<h3  style="font-family: Verdana;  " class="pull-left price ">Unit: "{{this.unit}}"</h3>-->
+
+                            <h3  style="font-family: Verdana;  " class="pull-left price ">personal Quote: "<span style=" color:red;"><i>{{this.quote}}</i></span>"</h3>
+
+                            <!--<p><a style="font-weight: bold" href="/send/{{this._id}}" onclick="success()"  class="btn btn-primary pull-right " role="button"></a> </p>-->
+                        </div>
+
+
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+        </div>
+    {{/each}}
+{{else}}
+    <div>
+        <h2>No celebrant today</h2>
+    </div>
+{{/if}}
+
+<div><h3 style="font-weight: bold; font-family: Verdana; color: #1b6d85">Celebrants in the alumni section</h3></div>
+{{# if alumni_b}}
+    {{# each alumni_b}}
+
+        <div class="row">
+
+            {{# each this}}
+                {{# each user}}
+                    <div class="col-sm-6 col-md-4">
+                        <div style="margin-top: 36px;" class="thumbnail">
+                            <img src="/images/cloth1.jpg" class="img-responsive" alt="{{firstname}} {{this.secondname}}">
+                            <div class="caption">
+                                <div class="description clearfix">
+                                    <h3 class="name" style=" font-family: Verdana">{{this.firstname}} {{this.secondname}}</h3><br>
+                                    <hr style="background-color: rgba(100% , 100%, 100%, 0.6); margin-top:-7px;">
+                                    <p style="font-family: Verdana; font-weight: normal; font-size: 123%;" class="level">Alumni</p><br>
+                                    <p style="font-family: Verdana; font-weight: normal; font-size: 123%;" class="level">unit: {{this.unit}} </p><br>
+
+                                    <!--<p><a style=" font-weight: bold ; padding: 10px 40px; background-color: #2e6da4; color:white"  onclick="show()"  class=" pull-left " ><i class="fas fa-address-book"></i> View Full profile</a> </p><br>-->
+                                    <ul  id="ul" style=" display: none; border-radius: 0; margin-top: -38px; width: 330px; float:left; background-color: white;">
+                                        <!--<button onclick="clear()" id="btn"  style="margin-bottom: 3px; width: 30px; margin-left: 299px;" class=" btn btn-primary">-->
+
+                                        <!--<span class="l pull-right" style=" margin-top: -9px; background-color: white; position: absolute; transform: rotate(45deg);width : 2px; height: 18px ; "></span >-->
+                                        <!--<span class="r pull-right"  style="  margin-top: -9px; background-color: white;  position:absolute;transform: rotate(-45deg);width : 2px; height: 18px ; "></span>-->
+                                        <!--</button>-->
+                                        <li style="border-radius: 0; font-size: 120%; font-family: Verdana" class="list-group-item">
+                                            <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid royalblue; ">
+                                                <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color: royalblue;"></div>
+                                            </div> <span style="color: royalblue; font-weight: normal">Level:</span>  Alumni
+                                        </li>
+
+                                        <li style="font-size: 120%; font-family: Verdana" class="list-group-item">
+                                            <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid royalblue; ">
+                                                <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color: royalblue;"></div>
+                                            </div> <span style="color: royalblue; font-weight:normal"> Graduated from department of:</span> {{this.department}}
+                                        </li>
+
+                                        <li style="font-size: 120%; font-family: Verdana" class="list-group-item">
+                                            <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid royalblue; ">
+                                                <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color: royalblue;"></div>
+                                            </div><span style="color: royalblue; font-weight:normal"> personal Quote:</span> "{{this.quote}}"
+                                        </li>
+
+
+                                        <li style="font-size: 120%; font-family: Verdana" class="list-group-item">
+                                            <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid royalblue; ">
+                                                <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color: royalblue;"></div>
+                                            </div><span style="color: royalblue; font-weight:normal"> Unit:</span> {{this.unit}}
+                                        </li>
+                                        <li style="font-size: 120%; font-family: Verdana" class="list-group-item" >
+                                            <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid royalblue;">
+                                                <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color:royalblue;"></div>
+                                            </div><span style="color: royalblue; font-weight: normal"> Phone-number:</span> {{this.phone_number}}
+                                        </li>
+                                        <li style="font-size: 120%; font-family: Verdana" class="list-group-item" >
+                                            <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid royalblue;">
+                                                <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color: royalblue;"></div>
+                                            </div>
+                                            <span style="color: royalblue; font-weight: normal"> Address: </span>{{this.address}}
+                                        </li>
+                                        <li style="font-size: 120%; font-family: Verdana" class="list-group-item" >
+
+                                            <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid royalblue;">
+                                                <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color: royalblue;"></div>
+                                            </div><span style="color: royalblue; font-weight: normal"> Status:</span> Alumni
+                                        </li>
+                                        <li style="font-size: 120%; font-family: Verdana" class="list-group-item" >
+                                            <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid royalblue;">
+                                                <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color: royalblue;"></div>
+                                            </div> <span style="color: royalblue; font-weight: normal">  Past:</span> {{this.executive_role}}
+                                        </li>
+                                        <li style="font-size: 120%; font-family: Verdana" class="list-group-item" >
+                                            <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid royalblue;">
+                                                <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color: royalblue;"></div>
+                                            </div> <span style="color: royalblue; font-weight: normal">  Whatsapp no:</span> {{this.whatsapp}}
+                                        </li>
+                                        <li style="font-size: 120%; font-family: Verdana" class="list-group-item" >
+                                            <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid royalblue;">
+                                                <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color:royalblue;"></div>
+                                            </div><span style="color: royalblue; font-weight: normal">Facebook page:</span> {{this.facebook}}
+                                        </li>
+                                        <li style="font-size: 120%; font-family: Verdana" class="list-group-item" >
+                                            <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid royalblue;">
+                                                <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color: royalblue;"></div>
+                                            </div><span style="color: royalblue; font-weight: normal">  twitter link:</span> {{this.twitter}}
+                                        </li>
+
+                                    </ul>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+            {{/each}}
+        </div>
+    {{/each}}
+{{else}}
+    <div>
+        <h2>No birthday celebrant from the alumni side</h2>
+    </div>
+{{/if}}
+<a style="z-index: 1; padding-top: 10px; border: 1px solid white;border-radius: 30px; margin-top: 20px; background-color: royalblue; height: 60px; width: 250px"  href="/users/birthday_message" class="btn btn-primary"><span style="font-size: 180%; font-family: Verdana;">Send message</span></a>
+
+</div>
+    <!--<label style="margin-top: -120px;"  for="id">Send message to missing members:</label>-->
+<script type="text/javascript">
+    var day = document.getElementById('day');
+    var d = new Date();
+    var month = d.toDateString();
+    day.innerHTML =` ${month}`;
+
+</script>
+
+
+<style type="text/css">
+    @media (max-width: 768px) {
+        .mobile_view{
+            display: block;
+        }
+        .att{
+            display: none;
+        }
+
+
+    }
+    img{
+        height:100px;
+        width : 100px;
+    }
+    @keyframes animate {
+        0%{transform :rotateY(0deg) }
+        10%{transform :rotateY(0deg) }
+        20%{transform :rotateY(0deg) }
+        30%{transform :rotateY(0deg) }
+        40%{transform :rotateY(0deg) }
+        50%{transform :rotateY(0deg) }
+        60%{transform :rotateY(0deg) }
+        70%{transform :rotateY(0deg) }
+        80%{transform :rotateY(0deg) }
+        90%{transform :rotateY(-40deg) }
+        100%{transform :rotateY(0deg) }
+    }
+
+    .con{
+
+    }
+    .cont{
+        margin-top: -20px;
+        position: relative;
+    }
+
+
+    .att{
+
+        padding: 4px 10px;
+        width : 1123px;
+
+
+        /*border: 1px solid rgba(0 ,0, 0, 0.4);*/
+        margin-left: 224px;
+        margin-top: 35px;
+        background-color: white;
+    }
+
+</style>

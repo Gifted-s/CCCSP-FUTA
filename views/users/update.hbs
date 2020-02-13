@@ -1,0 +1,249 @@
+
+{{>sidebar}}
+{{>store}}
+<div class="thumbnail att">
+<div  class="row">
+    <div class="col-md-12">
+        <div id="warning" class=" p-4 mt-4 bg-danger update">
+            By clicking on the update button you will update the levels of the members and the members at 500 level or 400 Level(For those in school of health and health technology) will be moved to the alumni section.
+            Make sure you enter the graduating set name.
+        </div>
+        <h2 style=" text-align: center; color: red;">{{message}}</h2>
+        <h2 style="text-align: center; color: green;">{{message1}}</h2>
+        <h2 style="text-align: center; color: red;">{{message2}}</h2>
+        <h2 style="text-align: center; color: red;">{{messag}}</h2>
+        <h2 style="text-align: center; color: red;">{{msg1}}</h2>
+        <h2 id="success" style="text-align: center; color: green;">{{Successmessage}}</h2>
+        <form method="post" action="/users/update">
+
+        <div class="row">
+
+            <div class="  set_name  col-md-10">
+
+                <div class="form-group">
+                <label style="font-size: 120%; font-family: Verdana;"  for="id">Graduating set name:</label>
+                    <i style="margin-left: 5px;" class="fas fa-user-graduate"></i><span  style="padding-left:10px;color:red; font-weight: bold; font-size: 110%; margin-top: 2px; position: absolute">*</span> <input type="text" id="id" name="set_name" class="form-control" placeholder="Graduating set name ">
+
+                    <div style="margin-top: 20px;"  class="form-group">
+                        <label style="font-size: 120%; font-family: Verdana;"  for="id">Graduation Year</label><span  style="padding-left:10px;color:red; font-weight: bold; font-size: 110%; margin-top: 2px; position: absolute">*</span>:
+                        <input type="text" id="id" name="graduation_year" class="form-control" placeholder="Graduation year">
+            </div>
+                    <div style="margin-top: 20px;"  class="form-group">
+                        <label style="font-size: 120%; font-family: Verdana;"  for="id">Enter password to update database</label><span  style="padding-left:10px;color:red; font-weight: bold; font-size: 110%; margin-top: 2px; position: absolute">*</span>:
+                        <input type="password" id="id" name="password" class="form-control" placeholder="Enter password">
+                    </div>
+
+        </div>
+            <div class="row" style="margin-left: 100px; margin-top: 130px">
+                <div class="col-md-6">
+                    <button id="bn" style="margin-top: -80px; margin-left:20px; font-family: Verdana; font-size: 140%; font-weight: bold; height: 70px; width: 660px" type="submit"  class="btn btn-primary">Update database(secured) <i class="fas fa-database"></i></button>
+                </div>
+
+            </div>
+            <a href="#" onclick="dis()" style="margin-top: 2px; margin-left:250px;font-family: Verdana; font-size: 130%; font-weight: bold; padding-top: 22px; height:70px;width: 400px" class="btn btn-primary">Clear up(secured)</a>
+
+
+        </div>
+
+
+        </div>
+        </form>
+    </div>
+</div>
+    <div id="clear" style="display: none; margin-left: 350px; margin-top: 210px;" class="form-group">
+        <form   method="post" action="/users/clear">
+            <label>Enter password to clear up database</label>
+            <input type="password" style="height: 25px; width: 129px; " class="form-control"  name="pass" placeholder="Enter password">
+            <button style="padding-top:3px;margin-top: -47px;margin-left: 140px; border-radius: 0;" class="btn btn-primary">Submit</button>
+        </form>
+
+    </div>
+    <footer style="margin-top: 480px; text-align: center; padding-top: 38px ; margin-left: -10px">
+        <p style=" font-size: 130%; font-family: Verdana; font-weight: bold">&copy; copyright 2019 Peculiar-tech</p>
+    </footer>
+</div>
+
+<div class="mobile_view">
+    <div  class="row">
+        <div class="col-md-12">
+            <div id="warning" style="width: 100%; padding-bottom: 70px;" class=" bg-danger update">
+                By clicking on the update button you will update the levels of the members and the members at 500 level or 400 Level(For those in school of health and health technology) will be moved to the alumni section.
+                Make sure you enter the graduating set name.
+            </div>
+
+            <h3 style="margin-left: 40px; text-align: center; color: red;">{{message}}</h3>
+            <h3 style="margin-left: 40px; text-align: center; color: green;">{{message1}}</h3>
+            <h3 style="margin-left: 40px; text-align: center; color: red;">{{message2}}</h3>
+            <h3 style="margin-left: 40px; text-align: center; color: red;">{{messag}}</h3>
+            <h3 style="margin-left: 40px; text-align: center; color: red;">{{msg1}}</h3>
+            <h3 id="success" style=" color: green;">{{Successmessage}}</h3>
+
+            <form method="post" action="/users/update">
+
+                <div class="row">
+                    <div class="  set_name  col-md-10">
+
+                        <div class="form-group">
+                            <label style="font-size: 120%; font-family: Verdana;"  for="id">Graduating set name:</label>
+                            <i style="margin-left: 5px;" class="fas fa-user-graduate"></i><span  style="padding-left:10px;color:red; font-weight: bold; font-size: 110%; margin-top: 2px; position: absolute">*</span> <input type="text" id="id" name="set_name" class="form-control" placeholder="Graduating set name ">
+
+                            <div style="margin-top: 20px;"  class="form-group">
+                                <label style="font-size: 120%; font-family: Verdana;"  for="id">Graduation Year</label><span  style="padding-left:10px;color:red; font-weight: bold; font-size: 110%; margin-top: 2px; position: absolute">*</span>:
+                                <input type="text" id="id" name="graduation_year" class="form-control" placeholder="Graduation year">
+                            </div>
+                            <div style="margin-top: 20px;"  class="form-group">
+                                <label style="font-size: 120%; font-family: Verdana;"  for="id">Enter password to update database</label><span  style="padding-left:10px;color:red; font-weight: bold; font-size: 110%; margin-top: 2px; position: absolute">*</span>:
+                                <input type="password" id="id" name="password" class="form-control" placeholder="Enter password">
+                            </div>
+
+                        </div>
+                        <div id="clear" style="display: none; margin-left: 350px; margin-top: 210px;" class="form-group">
+                            <form   method="post" action="/users/clear">
+                                <label>Enter password to clear up database</label>
+                                <input type="password" style="height: 25px; width: 129px; " class="form-control"  name="pass" placeholder="Enter password">
+                                <button style="padding-top:3px;margin-top: -47px;margin-left: 140px; border-radius: 0;" class="btn btn-primary">Submit</button>
+                            </form>
+
+                        </div>
+                        <div class="row" style=" ">
+                            <div class="col-md-6">
+                                <button id="bn" style=" font-family: Verdana;   height: 40px; width:90%" type="submit"  class="btn btn-primary">Update database(secured) <i class="fas fa-database"></i></button>
+                            </div>
+
+                        </div>
+                        <!--<a href="#" onclick="dis()" style="margin-top: 2px; font-family: Verdana;  font-weight: bold;  height:40px;width: 90%" class="btn btn-primary">Clear up database(secured)</a>-->
+
+
+                    </div>
+
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer style="margin-top: 480px; text-align: center; padding-top: 38px ; margin-left: -10px">
+        <p style=" font-size: 130%; font-family: Verdana; font-weight: bold">&copy; copyright 2019 Peculiar-tech</p>
+    </footer>
+</div>
+
+</div>
+<script type="text/javascript">
+    var form = document.getElementById('clear');
+    var success = document.getElementById('success');
+    var warning = document.getElementById('warning');
+    function dis() {
+        form.style.display="block"
+    }
+if(success.innerHTML==='Successfully Updated database please do not try again'){
+warning.style.display="none";
+}
+</script>
+
+
+
+
+<style type="text/css">
+    @media (max-width: 768px){
+        form{
+            margin-left: -50px;
+        }
+        /*img{*/
+        /*margin-top: -30px;*/
+        /*}*/
+        .att{
+            display: none;
+
+        }
+
+        .mobile_view{
+            padding: 0 5px;
+            margin-top: 20px;
+            display: block;
+
+        }
+
+        .mobile_view li{
+            background-color: royalblue;
+        }
+        .mobile_view ul{
+            background-color: royalblue;
+        }
+        .mb{
+            display: block;
+        }
+        .col-sm-12{
+            font-weight: bold;
+            margin-top: 5px;
+        }
+    }
+   input[type="text"]{
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        height: 40px;
+        border-radius: 0;
+    }
+   input[type="password"]{
+       border: 1px solid rgba(0, 0, 0, 0.5);
+       height: 40px;
+       border-radius: 0;
+   }
+    .set_name{
+margin-top: 30px;
+        height: 40px;
+        border-radius: 0;
+        margin-left: 57px;
+
+    }
+    .update{
+background-color: rgba(230,0,0,1);
+        text-align: center;
+        width: 1100px;
+        height: 100px;
+        padding: 13px 20px;
+        border-radius: 13px;
+        color: white;
+        font-size: 120%;
+        font-family: sans-serif;
+        animation: animate 0.7s linear;
+transition: all 0.4s;
+    }
+    @keyframes animate {
+        0%{transform: translateX(-20px)}
+        10%{transform: translateX(20px)}
+        20%{transform: translateX(-20px)}
+        30%{transform: translateX(20px)}
+        40%{transform: translateX(-20px)}
+        50%{transform: translateX(20px)}
+        60%{transform: translateX(-20px)}
+        70%{transform: translateX(20px)}
+        80%{transform: translateX(-20px)}
+        90%{transform: translateX(20px)}
+        100%{transform: translateX(0px)}
+
+    }
+
+
+    .con{
+
+    }
+    .cont{
+        margin-top: -20px;
+        position: relative;
+    }
+
+
+   .att{
+
+       padding: 4px 10px;
+       width : 1123px;
+height: 700px;
+       position:absolute;
+       /*border: 1px solid rgba(0 ,0, 0, 0.4);*/
+       margin-left: 224px;
+       margin-top: 35px;
+       background-color: white;
+   }
+
+</style>
+
+

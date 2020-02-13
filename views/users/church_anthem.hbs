@@ -1,0 +1,169 @@
+
+{{>sidebar}}
+
+{{>store}}
+
+
+<div class="content">
+
+    <div class="box " style="width: 900px">
+
+
+        <form action="/users/message" method="post">
+
+    <div class="form-group">
+
+
+        <div class="col-md-6 col-md-offset-4">
+<h3 style="text-align: center">CHURCH ANTHEM BY THE PECULIAR VOICES</h3>
+
+          <div></div>
+<audio style="margin-top: 170px; width: 400px; height: 120px;" src="/audio/church athmn 42000.mp3"  controls autoplay></audio>
+        </div>
+
+    </div>
+
+<script src="/socket.io/socket.io.js"></script>
+</form>
+
+
+
+    </div>
+
+</div>
+
+<div class="mobile_view">
+
+    <div class="box " style="width: 100%">
+
+
+
+                <div class="col-md-6 col-md-offset-4">
+                    <h1 style="text-align: center">CHURCH ANTHEM BY THE PECULIAR VOICES</h1>
+
+
+                    <audio style="margin-top: 50px; width: 320px; height: 120px;" src="/audio/church athmn 42000.mp3"  controls autoplay></audio>
+                </div>
+
+
+
+
+    </div>
+
+
+</div>
+
+<script type="text/javascript">
+
+    var message = document.getElementById(peessage');
+    var number = document.getElementById('number');
+    var btn = document.getElementById('id');
+    var response= document.getElementById('response');
+
+    btn.addEventListener('click', send , false);
+
+    function  send() {
+        var number = number.value.replace(/\D/g , '');
+        var message = message.value;
+
+        fetch('users/message' , {
+           method: 'post',
+           headers:{
+               'Content-type': 'application/json',
+
+           } ,
+
+            body : JSON.stringify({number:number , message : message})
+
+        })
+     .then(function (res) {
+        console.log(res)
+    })
+
+    .catch(function (err) {
+        console.log(err)
+    })
+
+    }
+
+
+</script>
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+    @media (max-width: 768px) {
+        .d{
+            display: block;
+        }
+        .content{
+            display:none;
+        }
+        .mobile_view{
+            display: block;
+        }
+
+    }
+    form{
+        margin-top: 70px;
+    }
+    textarea{
+
+    }
+    label{
+        font-family: Verdana;
+        font-weight: lighter;
+        font-size: 130%;
+    }
+    p{
+        font-family: Verdana;
+        font-size: 110%;
+        font-weight: bold;
+    }
+    .box{
+        animation: animate 1.2s linear;
+
+    }
+
+    @keyframes animate  {
+        0%{transform: translateX(189px)}
+        0%{opacity: 0;}
+        50%{opacity: 0.5;}
+    }
+    /*h2{*/
+    /*padding: 30px 10px;*/
+    /*}*/
+    button {
+        margin-top: 3px;
+    }
+    a{color: white;
+
+    }
+
+
+    .con{
+
+    }
+    .cont{
+        margin-top: -20px;
+        position: relative;
+    }
+
+
+    .content{
+        padding: 10px 10px;
+        width : 1123px;
+        height: 635px;
+        position:absolute;
+        border: 1px solid rgba(0 ,0, 0, 0.4);
+        margin-left: 224px;
+        margin-top: 35px;
+        background-color: white;
+    }
+</style>

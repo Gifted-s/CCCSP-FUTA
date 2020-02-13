@@ -1,0 +1,140 @@
+{{>sidebar}}
+
+{{> store}}
+<div class="thumbnail att">
+    <!--<form id="form" style="margin-top: -20px;"  action="/users/day_of_week" method="post">-->
+<h2 style="text-align: center; color: red;">{{message}}</h2>
+
+
+
+
+    <h3 style="text-align: center; font-family: Verdana">Kindly mark present if member is present</h3>
+    <p style="text-align: center">Note: Attendance can only be taken on service days</p>
+
+
+    {{# each user}}
+
+        <div class="row">
+            {{# each this}}
+                <div class="col-sm-12 col-md-4">
+                    <div class="thumbnail">
+                        <img style="width:300px; height: 200px;" src="{{this.profile_image}}" class="img-responsive" alt="...">
+                        <div class="caption">
+                            <div class="description clearfix">
+                                <h3 class="name" style=" font-family: Verdana">{{this.firstname}} {{this.secondname}}</h3>
+
+                                <hr style="background-color: rgba(100% , 100%, 100%, 0.6); margin-top:-7px;">
+                                <p style="font-weight: bold; font-size: 120%;" class="level">Level: {{this.level}} Level</p>
+                                <p  style="font-weight: bold; font-size: 120%;" class="pull-left price ">Department: {{this.department}}</p>
+                                <p  style="font-weight: bold; font-size: 120%;" class="pull-left price ">Unit: "{{this.unit}}"</p>
+                                <input name="level" type="hidden" value="{{this.level}}">
+                                <p><a style=" font-weight: bold" href="/users/present/{{this._id}}" onclick="success()"  class="btn btn-primary pull-left " role="button">Mark Present</a>
+
+                                </p>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+            {{/each}}
+        </div>
+    {{/each}}
+        <!--<div class="col-md-12" style="margin: 10px 0">-->
+            <!--<label for="id" style="margin-left: 20px; font-family: Verdana;"> Please select the day of the week  <span  style="padding-left:10px;color:red; font-weight: bold; font-size: 110%; margin-top: 2px; position: absolute">*</span>:-->
+                <!--<select id="day" style=" color: white;font-size: 130%;  background-color: royalblue; width: 1000px; height: 40px;border-radius: 0;  margin-top: 6px;   border: 1px solid rgba(0, 0, 0, 0.5);" name="day" class="form-control">-->
+                    <!--<option  name="day" class="form-control"> </option>-->
+                    <!--<option  name="day" class="form-control">Sunday </option>-->
+                    <!--<option name="day" class="form-control"> Wednesday </option>-->
+                    <!--<option name="day" class="form-control"> Friday </option>-->
+
+                <!--</select>-->
+            <!--</label>-->
+        <!--</div>-->
+        <a style="font-weight: bold; padding-top: 10px; font-size:110%;height: 60px; width:300px; margin-top: 40px; margin-left: 280px;"  href="/users/attendance_result" class=" btn btn-primary"> Check result </a>
+       <!--<button onclick="validate()" style="height: 50px; font-size: 150%; font-weight: bold;" class="btn btn-primary form-control"  type="submit">Submit and check result</button>-->
+
+    <!--</form>-->
+</div>
+<div class="mobile_view">
+
+{{# each user}}
+
+    <div class="row up">
+        {{# each this}}
+            <div class="col-sm-12 col-md-4">
+                <div style="margin-top: 36px;" class=" thumbnail">
+                    <img style="width:300px; height: 200px;"  src="{{this.profile_image}}" >
+                    <div class="caption">
+                        <div class="description clearfix">
+                            <h3 class="name" style=" font-family: Verdana">{{this.firstname}} {{this.secondname}}</h3><br>
+
+                            <hr style="background-color: rgba(100% , 100%, 100%, 0.6); margin-top:-7px;">
+                            <p style="font-family: Verdana; font-weight: normal; font-size: 123%;" class="level">Level: {{this.level}} Level</p><br>
+                            <p  style="font-family: Verdana; font-weight: normal; font-size: 123%;" class="pull-left price ">Department: {{this.department}}</p><br>
+                            <p  style="font-family: Verdana;position: relative; font-weight: lighter; font-size: 123%;" class="pull-left price ">personal Quote:<span style="position: relative">"{{this.quote}}"</span> </p><br>
+                            <span><span>
+                                <p><a style=" font-weight: bold" href="/users/present/{{this._id}}" onclick="success()"  class="btn btn-primary pull-left " role="button">Mark Present</a>
+
+                                </span></span> </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+        {{/each}}
+    </div>
+{{/each}}
+<a style="font-weight: bold; height: 60px; width:300px; margin-top: 40px; "  href="/users/attendance_result" class=" btn btn-primary"> Check result </a>
+</div>
+<script type="text/javascript">
+
+</script>
+
+<style type="text/css">
+    @media (max-width: 768px) {
+        .mobile_view{
+            display: block;
+        }
+        .att{
+            display: none;
+        }
+        .up{
+            display: block;
+        }
+
+    }
+    img{
+        height:100px;
+        width : 100px;
+    }
+
+    .con{
+
+    }
+    .cont{
+        margin-top: -20px;
+        position: relative;
+    }
+
+
+    .att{
+        padding: 10px 10px;
+        width : 1123px;
+
+        position:absolute;
+        /*border: 1px solid rgba(0 ,0, 0, 0.4);*/
+        margin-left: 224px;
+        margin-top: 35px;
+        background-color: white;
+    }
+</style>
+
+
+
+
+

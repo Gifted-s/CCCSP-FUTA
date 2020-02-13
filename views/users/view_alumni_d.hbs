@@ -1,0 +1,190 @@
+
+{{>sidebar}}
+
+<div class="content">
+    <div class=" l col-md-4">
+        <p style="font-weight:bold; padding:9px 4px ;width: 80px;margin-left: -15px; color: white; background-color: #2e6da4" > First name</p>
+        <p style="margin-left: 100px; margin-top: -38px; font-family: Verdana; font-size: 110%">{{firstname}}</p>
+    </div>
+
+
+    <div class=" r col-md-4">
+        <p style="font-weight:bold; padding:9px 4px ;width: 100px;margin-left: -15px; color: white; background-color: #2e6da4" > Second name</p>
+        <p style="margin-left: 100px; margin-top: -40px; font-family: Verdana; font-size: 110%">{{secondname}}</p>
+    </div>
+
+    <div class="thumbnail">
+        <img style="height: 200px; width: 200px;" src="{{images}}">
+    </div>
+
+    <p style="text-align: center">Personal Quote: <i style="color:rgba(200,0,0,0.6);"> "{{quote}}"</i></p>
+    <a href="/users/edit/{{id}}" style="margin-top: -40px; border-radius: 0;" class=" pull-right btn btn-primary">Edit member's Profile</a>
+    <div class="profile">
+
+
+        <div class="m row">
+            <div class="col-md-12">
+                <div class=" f  col-md-4">
+                    <p style="font-weight:bold; padding:9px 8px ;width: 70px;margin-left: -15px; color: white; background-color: #2e6da4" > Level</p>
+                    <p style="margin-left: 100px; margin-top: -40px; font-family: Verdana; font-size: 110%">{{level}}</p>
+
+                </div>
+
+                <div style="width: 790px;"  class="f  col-md-11">
+                    <p style="font-weight:bold; padding:9px 8px ;width: 90px;margin-left: -15px; color: white; background-color: #2e6da4" >Department</p>
+                    <p style="margin-left: 100px; margin-top: -40px; font-family: Verdana; font-size: 110%">{{department}}</p>
+                </div>
+
+
+            </div>
+        </div>
+
+
+        <div class="m row">
+            <div class="col-md-12">
+                <div class=" f  col-md-4">
+                    <p style="font-weight:bold; padding:9px 8px ;width: 90px;margin-left: -15px; color: white; background-color: #2e6da4" >Phone No</p>
+                    <p style="margin-left: 100px; margin-top: -40px; font-family: Verdana; font-size: 110%">{{phone}}</p>
+
+                </div>
+
+                <div style="width: 790px;"  class="f  col-md-11">
+                    <p style="font-weight:bold; padding:9px 8px ;width: 90px;margin-left: -15px; color: white; background-color: #2e6da4" >Unit/Units</p>
+                    <p style="margin-left: 100px; margin-top: -40px; font-family: Verdana; font-size: 110%">{{unit}}</p>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="m row">
+            <div class="col-md-12">
+                <div class=" f col-md-3">
+                    <p style="font-weight:bold; padding:9px 8px ;width: 50px;margin-left: -15px; color: white; background-color: #2e6da4" >DOB</p>
+                    <p style="margin-left: 50px; margin-top: -40px; font-family: Verdana; font-size: 110%">{{month}}-{{day}}-{{year}}</p>
+
+                </div>
+
+                <div class=" f col-md-3">
+                    <p style="font-weight:bold; padding:9px 8px ;width: 70px;margin-left: -15px; color: white; background-color: #2e6da4" >Status</p>
+                    <p style="margin-left: 70px; margin-top: -40px; font-family: Verdana; font-size: 110%">{{status}}</p>
+                </div>
+
+
+
+                <div style="width: 524px" class="  f col-md-6">
+                    <p style="font-weight:bold; padding:9px 8px ;width: 70px;margin-left: -15px; color: white; background-color: #2e6da4" >Address</p>
+                    <p style="margin-left: 70px; margin-top: -40px; font-family: Verdana; font-size: 110%">{{address}}</p>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="m row">
+            <div class="col-md-12">
+                <div class=" f col-md-3">
+                    <p style="font-weight:bold; padding:9px 8px ;width: 120px;margin-left: -15px; color: white; background-color: #2e6da4" >Executive Role</p>
+                    <p style="margin-left: 130px; margin-top: -39px; font-family: Verdana; font-size: 110%">{{executive}} </p>
+                </div>
+
+                <div class=" f col-md-3">
+                    <p style="font-weight:bold; padding:9px 8px ;width: 85px;margin-left: -15px; color: white; background-color: #2e6da4" >Set Name</p>
+                    <p style="margin-left: 76px; margin-top: -39px; font-family: Verdana; font-size: 110%">Estemado </p>
+                </div>
+                <div style="width: 524px" class="  f col-md-6">
+                    <p style="font-weight:bold; padding:9px 8px ;width: 120px;margin-left: -15px; color: white; background-color: #2e6da4" >Whatsapp No</p>
+                    <p style="margin-left: 130px; margin-top: -40px; font-family: Verdana; font-size: 110%">{{whatsapp}}</p>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <div class="row">
+
+            <div style="width: 940px; margin-left: 50px" class="  f col-md-11">
+                <p style="font-weight:bold; padding:9px 8px ;width: 60px;margin-left: -15px; color: white; background-color: #2e6da4" >Media</p>
+                <p style="margin-left: 50px; margin-top: -40px; font-family: Verdana; font-size: 110%">Twitter: {{twitter}} Email: {{email}} Facebook: {{facebook}} </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+    img{
+
+        width: 100px;
+        height: 100px;
+
+
+    }
+    .r{
+        border: 1px solid rgba(0 ,0, 0, 0.8);
+        height: 40px;
+        margin-left: 340px;
+    }
+    .l{
+        border: 1px solid rgba(0 ,0, 0, 0.8);
+        height: 40px;
+        margin-left: 10px;
+    }
+    .m{
+        margin-left: 7px;
+    }
+    .f{
+        width:260px;
+        margin-top: 27px;
+        margin-left: 6px;
+        height: 40px;
+        border: 1px solid rgba(0 ,0, 0, 0.8);
+    }
+    .profile{
+        width: 100%;
+        height: 360px;
+        border: 1px solid rgba(0 ,0, 0, 0.7);
+        margin-top:10px;
+
+    }
+    .thumbnail{
+        margin-left: 440px;
+        padding-top: 24px;
+        border-radius: 50%;
+        width: 200px;
+        height: 200px;
+    }
+
+    .con{
+
+    }
+    .cont{
+        margin-top: -20px;
+        position: relative;
+    }
+
+
+    .content{
+
+        padding: 10px 10px;
+        width : 1139px;
+        height: 635px;
+        position: absolute;
+        border: 1px solid rgba(0 ,0, 0, 0.4);
+        margin-left: 224px;
+        margin-top: 35px;
+
+    }
+</style>

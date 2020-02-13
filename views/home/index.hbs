@@ -1,0 +1,133 @@
+
+    <header>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </header>
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-5 col-sm-4  col-md-offset-3 col-sm-offset-3">
+                <form method="post" action="/signin" class="form-control-static">
+<div style="align-self: center">
+    <img src="/images/logo.png" style="margin-left:150px;padding-bottom: 20px; height: 70px; width:90px;">
+</div>
+                    <div class="form-group">
+
+                        <!--<h2  style="margin-top: -10px; margin-left:100px;font-weight: bold; font-size:240%; font-family: Verdana"><span style="color: royalblue">CCCSP</span>  FUTA</h2>-->
+                        <h2 style="margin-top: -12px" class="modal-header" >CCCSP FUTA</h2>
+                        {{# if hasError}}
+                            {{# each message}}
+                                <div class="alert alert-danger">
+                                    {{this}}
+                                </div>
+                            {{/each}}
+                        {{/if}}
+                        <h3  style="text-align: center; color: rgba(0,0,0,0.8); font-weight: normal; padding-bottom: 10px">Admin's Login</h3>
+
+
+                        <label  for="email"><i class="fas fa-user" style="position: absolute; margin-top:40px;margin-left: 7px; color: rgba(0,0,0,0.4); "></i> Username :</label>
+                        <input style="padding-left: 30px;" type="text" name ="username" class="form-control" id="email" placeholder="please enter your username">
+                    </div>
+                    <div class="form-group">
+                        <label for="email"><i style="position: absolute; margin-top:40px;margin-left: 7px; color: rgba(0,0,0,0.4); " class="fas fa-key"></i> Password :</label>
+                        <input type="password" style="font-size: 100%; padding-left: 30px;" name ="password" class="form-control" id="email" placeholder="please enter your password">
+                    </div>
+                    <div class="form-group">
+
+                        <input type="submit" class="form-control btn btn-primary" value="Submit">
+                    </div>
+                    <div class="form-group">
+
+                        <a href="/user/forgot">
+                         <span style="color: rgba(0,0,0,0.7); ">Forgot your password ?</span> Get it here
+                        </a>
+
+
+                    </div>
+
+                </form>
+                <div style="align-self: center; text-align: center ; width:100%; margin-top: 30px" class="form-group">
+                    <p class="c" style="color: white">&copy; copyright 2020 Peculiar-tech</p>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <style type="text/css">
+        body{
+            background-color: #2e6da4;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+        /*form{*/
+            /*margin-top: 120px;*/
+            /*background-color: #efefef;*/
+            /*padding: 30px 20px;*/
+            /*width: 90%;*/
+            /*margin-left: 130px;*/
+
+        /*}*/
+
+        form{
+            margin-top: 120px;
+            /*background-color: #efefef;*/
+            background-color: white;
+            padding: 30px 20px;
+            width: 100%;
+
+
+        }
+        form input[type="text"] , input[type="password"] {
+            height: 40px;
+            margin-bottom: 16px;
+            border-left: 2px solid green;
+            border-radius: 0px;
+            border-top: 1px solid rgba(0,0,0,0.4);
+            border-right: 1px solid rgba(0,0,0,0.4);
+            border-bottom: 1px solid rgba(0,0,0,0.4);
+
+        }
+        .btn{
+
+            height: 40px;
+            margin-top: 30px;
+            font-size: 120%;
+            font-weight: normal;
+width: 100%;
+        }
+        label{
+            font-size: 100%;
+
+            font-family: Verdana;
+        }
+        @media (max-width: 768px) {
+            img{
+                margin-left: -90px;
+                display: none;
+            }
+            form{
+
+                width: 93%;
+margin-left: 5px;
+                margin-top: 80px;
+            }
+            form h2 span{
+                color: royalblue;
+                display: inline;
+                margin-left: -90px;
+                margin-bottom: 30px;
+            }
+            .btn{
+                margin-left: 0px;
+                width: 264px;
+            }
+            p.c{
+                width: 100%;
+            }
+        }
+    </style>

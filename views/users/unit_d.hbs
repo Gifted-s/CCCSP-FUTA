@@ -1,0 +1,174 @@
+{{>sidebar}}
+{{> store}}
+
+
+<div class="mobile_view">
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+
+          <h4 >Members of {{unit}}</h4>
+            <ul>
+                {{# each user}}
+                    <li class="list-group-item">{{this.firstname}} {{this.secondname}}
+                        <!--<div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid lightgreen; border-radius: 50%">-->
+                        <!--&lt;!&ndash;<div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color: lightgreen; border-radius: 50%"></div>&ndash;&gt;-->
+                        <!--</div>-->
+                        <p>Level: {{this.level}}</p>
+                        {{# if this.executive_role}}
+                            <p>Executive role: {{this.executive_role}} </p>
+                        {{/if}}
+                        <p><a href="/users/view/{{this._id}}" onclick="success()"  class="btn btn-primary " role="button">View Full profile</a> </p>
+                    </li>
+
+                {{/each}}
+
+            </ul>
+
+
+        </div>
+    </div>
+
+</div>
+<div class="thumbnail att">
+    <h3 style="; margin-top:-5px;font-family: Verdana">Members of the {{unit}}</h3>
+
+    <div class="box">
+        <div class="row">
+            <div class="col-md-12 col-sm-3">
+                <div class="l col-sm-6 col-md-6">
+                    
+                    <ul>
+{{# each user}}
+                        <li class="list-group-item">{{this.firstname}} {{this.secondname}}
+                            <!--<div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid lightgreen; border-radius: 50%">-->
+                                <!--&lt;!&ndash;<div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color: lightgreen; border-radius: 50%"></div>&ndash;&gt;-->
+                            <!--</div>-->
+                            <p>Level: {{this.level}}</p>
+                            {{# if this.executive_role}}
+                            <p>Executive role: {{this.executive_role}} </p>
+                                {{else}} <p>Executive role: None </p>
+                            {{/if}}
+                            <p><a href="/users/view/{{this._id}}" onclick="success()"  class="btn btn-primary " role="button">View Full profile</a> </p>
+                        </li>
+
+{{/each}}
+
+                    </ul>
+
+
+                </div>
+
+                <div style="position: fixed; margin-left: 535px" class="r col-sm-6 col-md-6">
+
+                    <h4>Photos</h4>
+
+                    <!--<label for="id">Send message to missing members:</label>-->
+                    <!--<textarea  id="id" style=" font-size: 120%; font-family: Verdana; width: 350px; height: 200px" name="message" class="swal2-textarea">-->
+
+                    <div id="img">
+                        <img id="imgm" class="im" src="/images/pic5.jpg">
+                    </div>
+        <!--</textarea>-->
+                    <!--<a style="margin-top: 50px;margin-left: -353px " href="/users/absentees_message" class="btn btn-primary">Send message</a>-->
+                </div>
+
+            </div>
+        </div>
+    </div>
+        <script type="text/javascript">
+
+            var img = document.getElementById('img');
+            var images = ['/images/pic2.jpg','/images/pic3.jpg','/images/pic4.jpg','/images/pic5.jpg','/images/pic6.jpg','/images/pic7.jpg', '/images/pic8.jpg','/images/pic9.jpg','/images/pic10.jpg','/images/pic11.jpg','/images/pic12.jpg','/images/pic13.jpg','/images/pic14.jpg','/images/pic15.jpg'];
+            var x = 0;
+
+            function slide() {
+                if (x < images.length) {
+                    x++;
+                } else {
+                    x = 1;
+                }
+                img.innerHTML = "<img src= " + images[x - 1] + ">";
+
+            }
+            setInterval(slide, 7700);
+        </script>
+
+        <style type="text/css">
+         .mobb{
+             display: none;
+         }
+            @media (max-width: 768px) {
+                 .mobb{
+                  display:block;
+                 }
+                .d{
+                    display: block;
+                }
+                .att{
+                    display:none;
+                }
+                .mobile_view{
+                    display: block;
+                }
+
+            }
+           #img img.im{
+
+                height: 520px;
+                width: 540px;
+
+
+            }
+            #img{
+
+                height: 520px;
+                width: 540px;
+                animation: anim 5.3s infinite;
+
+            }
+            @keyframes anim {
+                0%{transform: translateY(300px)}
+                0%{opacity: 0;}
+                50%{opacity:1;}
+            }
+
+            .con{
+
+            }
+            .cont{
+                margin-top: -20px;
+                position: relative;
+            }
+            .box{
+                animation: animate 1.3s linear;
+
+            }
+
+            @keyframes animate  {
+                0%{transform: translateY(300px)}
+                0%{opacity: 0;}
+                50%{opacity:1;}
+            }
+
+
+            .r{
+                border-left:  1px solid rgba(0 ,0, 0, 0.4);
+
+            }
+            .l{
+                /*border-right:  1px solid rgba(0 ,0, 0, 0.4);*/
+            }
+
+            .att{
+                padding: 10px 10px;
+                width : 1123px;
+
+                position:absolute;
+                /*border: 1px solid rgba(0 ,0, 0, 0.4);*/
+                margin-left: 224px;
+                margin-top: 35px;
+                background-color: white;
+            }
+
+        </style>
+</div>

@@ -1,0 +1,38 @@
+{
+  "name": "peculiar-app",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./bin/www"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.606.0",
+    "connect-flash": "*",
+    "connect-mongo": "*",
+    "cookie-parser": "~1.4.3",
+    "csurf": "^1.9.0",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "express-busboy": "^7.0.1",
+    "express-handlebars": "^3.0.0",
+    "express-messages": "*",
+    "express-session": "*",
+    "express-validator": "^5.3.0",
+    "fetch": "^1.1.0",
+    "hbs": "~4.0.1",
+    "http-errors": "~1.6.2",
+    "mongodb": "*",
+    "mongoose": "^5.3.7",
+    "morgan": "~1.9.0",
+    "multer": "^1.4.1",
+    "multer-s3": "^2.9.0",
+    "nexmo": "^2.4.1",
+    "nodemailer": "^5.0.0",
+    "passport": "*",
+    "passport-http": "*",
+    "passport-local": "*",
+    "request": "^2.88.0",
+    "socket.io": "^2.2.0",
+    "sweetalert2": "^7.33.1"
+  }
+}

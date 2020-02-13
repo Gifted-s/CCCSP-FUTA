@@ -1,0 +1,167 @@
+<header>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</header>
+{{>sidebar}}
+{{> store}}
+
+
+
+<div class="content">
+
+     <div class="box " style="width: 900px">
+
+<h2 style="color: #4cae4c">{{message}}</h2>
+<h3 style="color: #4cae4c">{{message2}}</h3>
+        <ul class="level" style=" list-style: none;padding: 0; margin: 0; background-color: white">
+            <li>
+
+                <a  href="/users/100">     <button style="font-family: Verdana; font-size: 130%; font-weight: bold; height: 70px; width: 400px"   class="btn btn-primary">100 LEVEL</button></a>
+
+
+            </li>
+
+            <li  class="pull-right">
+
+                <a  href="/users/200"><button style="margin-top: -92px; font-family: Verdana; font-size: 130%; font-weight: bold; height: 70px; width: 400px"   class="btn btn-primary">200 LEVEL</button></a>
+
+
+            </li>
+
+
+            <li>
+
+                <a  href="/users/300">     <button style="font-family: Verdana; font-size: 130%; font-weight: bold; height: 70px; width: 400px"   class="btn btn-primary">300 LEVEL</button></a>
+
+
+            </li>
+
+            <li  class="pull-right">
+
+                <a  href="/users/400"> <button style="margin-top: -92px; font-family: Verdana; font-size: 130%; font-weight: bold; height: 70px; width: 400px"  class="btn btn-primary">400 LEVEL</button></a>
+
+
+            </li>
+
+            <li>
+
+                <a  href="/users/500">     <button style="font-family: Verdana; font-size: 130%; font-weight: bold; height: 70px; width: 400px" class="btn btn-primary">500 LEVEL</button></a>
+
+
+            </li>
+
+        </ul>
+
+
+    </div>
+
+
+    <footer style="margin-top: 400px; text-align: center; padding-top: 38px ; margin-left: -10px">
+        <p style=" font-size: 130%; font-family: Verdana; font-weight: bold">&copy; copyright 2020 Peculiar-tech</p>
+    </footer>
+</div>
+
+<div class="row d">
+    <div class="col-sm-12">
+        <h2 style="color: #4cae4c">{{message}}</h2>
+        <div style="padding: 20px;">
+<h4 style="color: #4cae4c">{{message2}}</h4>
+        </div>
+        
+        <a class="btn btn-primary" style="font-size: 120%; padding-top: 10px; margin-top: 43px; margin-left: 40px; width:300px;  color:white; height: 50px" href="/users/100">
+            100 LEVEL
+        </a>
+    </div>
+
+
+    <div class="col-sm-12">
+        <a class="btn btn-primary" style="font-size: 120%; padding-top: 10px; margin-top: 30px; margin-left: 40px; width:300px;  color:white; height: 50px" href="/users/200">
+            200 LEVEL
+        </a>
+    </div>
+
+
+    <div class="col-sm-12">
+        <a class="btn btn-primary" style="font-size: 120%; padding-top: 10px; margin-top: 30px; margin-left: 40px; width:300px;  color:white; height: 50px" href="/users/300">
+            300 LEVEL
+        </a>
+    </div>
+
+    <div class="col-sm-12">
+        <a class="btn btn-primary" style="font-size: 120%; padding-top: 10px; margin-top: 30px; margin-left: 40px; width:300px;  color:white; height: 50px" href="/users/400">
+            400 LEVEL
+        </a>
+    </div>
+
+    <div class="col-sm-12">
+        <a class="btn btn-primary" style="font-size: 120%; padding-top: 10px; margin-top: 30px; margin-left: 40px; width:300px;  color:white; height: 50px" href="/users/500">
+            500 LEVEL
+        </a>
+    </div>
+</div>
+
+
+
+
+
+
+
+<style type="text/css">
+    .box{
+
+        animation: animate 1.2s linear;
+
+    }
+
+    @keyframes animate  {
+        0%{transform: translateX(189px)}
+        0%{opacity: 0;}
+        50%{opacity: 0.5;}
+    }
+    /*h2{*/
+    /*padding: 30px 10px;*/
+    /*}*/
+    button {
+        margin-top: 3px;
+    }
+    a{color: white;
+
+    }
+
+
+    .con{
+
+    }
+    .cont{
+        margin-top: -20px;
+        position: relative;
+    }
+
+.d{
+    display:none ;
+}
+    .content{
+        padding: 10px 10px;
+        width : 1123px;
+        height: 635px;
+        position:absolute;
+        border: 1px solid rgba(0 ,0, 0, 0.4);
+        margin-left: 224px;
+        margin-top: 23px;
+        background-color: white;
+    }
+
+    @media (max-width: 768px) {
+        .d{
+            display: block;
+        }
+        .content{
+            display:none;
+        }
+        .mobile_view{
+            display: block;
+        }
+
+    }
+</style>

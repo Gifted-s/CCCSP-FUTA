@@ -1,0 +1,40 @@
+.thumbnail{
+    border: 1px solid rgba(0 ,0,0,0.5);
+    border-radius: 0;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+img.img1{
+    margin-top: 0px; width: 200px; height: 200px ; border-radius: 50%;
+    position: absolute;
+}
+.handler{
+    margin-left: 440px;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    border: 1px solid white;
+}
+.att{
+    padding: 10px 10px;
+    width : 1123px;
+
+    position:absolute;
+    /*border: 1px solid rgba(0 ,0, 0, 0.4);*/
+    margin-left: 224px;
+    margin-top: 35px;
+    background-color: white;
+}
+footer {
+
+    position: relative;
+margin-top: 20px;
+    width: 101.8%;
+margin-bottom: -10px;
+
+    height: 120px;
+    background-color: #2e6da4;
+    color: white;
+}

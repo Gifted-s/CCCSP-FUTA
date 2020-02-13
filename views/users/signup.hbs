@@ -1,0 +1,810 @@
+<header>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</header>
+{{>sidebar}}
+
+<!--<div  class="mobile_view">-->
+    <!--<div class=" na">-->
+        <!--<img src="/images/logo.png" style="margin-left: 20px; width: 50px; height: 40px;float: left; z-index:1">-->
+        <!--<span style="font-family: Verdana; color: white; font-weight: bold; font-size: 100%; position: absolute; padding: 3px 10px;">{{success}}</span>-->
+        <!--<ul>-->
+            <!--<li style="display: inline; margin-left: 30px;" ><i class="fas fa-home"></i><a href="/land_page"> Home</a> </li>-->
+            <!--<li style="display: inline; margin-left: 10px;" id="notification" onclick="show()"><i class="fas fa-bell"></i> Notifications</li>-->
+            <!--<li style="display: inline; margin-left: 10px;"><a href="/users/logout"> Logout</a></li>-->
+
+        <!--</ul>-->
+
+        <!--<form style=" display: inline" action="/users/search" method="post">-->
+            <!--<input class="mobile" style="margin-left: 30px; width: 130px; height: 30px" name="name" type="text"   placeholder="Search member's name"><span>  <button  type="submit"><i class="fas fa-search"></i> Search </button></span>-->
+
+        <!--</form>-->
+
+
+
+        <!--&lt;!&ndash;<div class="note" id="note" style="margin-left: -50px;" >&ndash;&gt;-->
+        <!--&lt;!&ndash;<button onclick="clear()" id="button"  style=" border-radius: 0; padding-top: 10px; margin-bottom: 3px;position: relative; width: 40px;height: 40px; margin-left: 330px;" class="  btn-primary">&ndash;&gt;-->
+
+        <!--&lt;!&ndash;<span class="w pull-right" style=" margin-top: -15px; background-color: white; position: absolute; transform: rotate(45deg);width : 2px; height: 18px ; "></span >&ndash;&gt;-->
+        <!--&lt;!&ndash;<span class="p pull-right"  style="  margin-top: -15px; background-color: white;  position:absolute;transform: rotate(-45deg);width : 2px; height: 18px ; "></span>&ndash;&gt;-->
+        <!--&lt;!&ndash;</button>&ndash;&gt;-->
+        <!--&lt;!&ndash;<h2 style="text-align: center"><i class="fas fa-birthday-cake"></i> </h2>&ndash;&gt;-->
+        <!--&lt;!&ndash;<h3 style="font-family: Verdana; font-size:150%;text-align: center"> Today's birthday celebrants</h3>&ndash;&gt;-->
+        <!--&lt;!&ndash;<div style="padding-bottom: 30px;" class="">&ndash;&gt;-->
+            <!--&lt;!&ndash;{{# each note}}&ndash;&gt;-->
+            <!--&lt;!&ndash;<ul class="lists">{{# each this}}&ndash;&gt;-->
+            <!--&lt;!&ndash;<li class="list list-group-item">&ndash;&gt;-->
+            <!--&lt;!&ndash;<p> Name :{{this.firstname}} {{this.secondname}}</p>&ndash;&gt;-->
+            <!--&lt;!&ndash;<p>Level: {{this.level}}</p>&ndash;&gt;-->
+            <!--&lt;!&ndash;<p>Unit: {{this.unit}}</p>&ndash;&gt;-->
+            <!--&lt;!&ndash;<p> {{this.unit2}}</p>&ndash;&gt;-->
+            <!--&lt;!&ndash;<a style="z-index: 1; margin-bottom: 10px; width: 120px;font-family: Verdana; background-color: #2e6da4;  font-size: 115%;padding: 7px 40px;  height: 35px;border-radius: 0; margin-top: -10px; font-weight: bold" href="/users/view/{{this._id}}"   class=" pull-left " ><i style="float: left; margin-left: -30px" class="fas fa-address-book"></i>Profile </a><br>&ndash;&gt;-->
+
+            <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                <!--&lt;!&ndash;{{/each}}&ndash;&gt;-->
+        <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+            <!--&lt;!&ndash;{{/each}}&ndash;&gt;-->
+        <!--&lt;!&ndash;<a href="/users/birthday_message" style="z-index: 99999;"><button style="z-index: 99999; margin-left: 27px; font-family: Verdana;font-size: 120%; width: 300px; height: 50px;margin-top: 20px; background-color: #2e6da4">Send message to celebrants</button></a>&ndash;&gt;-->
+
+
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--<script type="text/javascript">-->
+
+            <!--// var note = document.getElementById('note');-->
+            <!--// var notification = document.getElementById('notification');-->
+            <!--// var btn = document.getElementById('button');-->
+            <!--// note.style.display="none";-->
+            <!--// btn.addEventListener('click' , clear);-->
+            <!--// function clear() {-->
+            <!--//     note.style.display="none";-->
+            <!--// }-->
+            <!--//-->
+            <!--// notification.addEventListener('click' , show);-->
+            <!--// function show() {-->
+            <!--//     note.style.display="block";-->
+            <!--// }-->
+
+        <!--</script>-->
+
+
+
+
+
+
+
+        <!--<style type="text/css">-->
+            <!--/*.note{*/-->
+            <!--/*!*height: 600px;*!*/-->
+            <!--/*width: 400px;*/-->
+            <!--/*background: rgba(0,0,0,0.8);*/-->
+            <!--/*color: white;*/-->
+            <!--/*padding: 0 20px;*/-->
+            <!--/*margin-left: 224px;*/-->
+            <!--/*margin-top: 30px;*/-->
+            <!--/*z-index: 1;*/-->
+
+            <!--/*border: 1px solid black;*/-->
+            <!--/*position: absolute;*/-->
+            <!--/*animation: anima 0.5s linear;*/-->
+            <!--/*}*/-->
+            <!--@keyframes anima {-->
+                <!--0%{opacity: 0}-->
+            <!--}-->
+            <!--/*.note ul.lists{*/-->
+            <!--/*padding: 0 0 0 0;*/-->
+            <!--/*margin: 0;*/-->
+            <!--/*border-radius: 0;*/-->
+            <!--/*border-bottom: 1px solid white;*/-->
+            <!--/*font-family: 'Roboto', sans-serif;*/-->
+
+            <!--/*}*/-->
+            <!--/*.note ul.lists li.list-group-item{*/-->
+            <!--/*border-radius: 0;*/-->
+            <!--/*background-color:rgba(0,0,0,0.7) ;*/-->
+            <!--/*margin-top: 4px;*/-->
+            <!--/*border-bottom: none;*/-->
+
+            <!--/*border-right: 1px solid white;*/-->
+
+            <!--/*}*/-->
+
+
+
+            <!--/*on mobile screen e.g android*/-->
+            <!--@media (max-width: 768px){-->
+
+
+
+            <!--}-->
+
+            <!--body{-->
+                <!--background:white;-->
+                <!--cursor: pointer;-->
+            <!--}-->
+
+
+        <!--</style>-->
+
+
+        <!--<style type="text/css">-->
+            <!--/*on mobile screen*/-->
+            <!--@media (max-width: 768px){-->
+
+                <!--.content{-->
+                    <!--padding:  0  10px;-->
+                    <!--background-color: white;-->
+                <!--}-->
+                <!--.nav{-->
+                    <!--display: none;-->
+                <!--}-->
+
+                <!--.sidebar{-->
+                    <!--display: none;-->
+
+                <!--}-->
+
+
+
+
+
+
+
+
+
+
+            <!--}-->
+        <!--</style>-->
+
+
+
+    <!--</div>-->
+    <!--<style type="text/css">-->
+        <!--.na{-->
+            <!--margin-top: -60px;-->
+            <!--position: relative;-->
+            <!--background-color: royalblue;-->
+
+            <!--width: 110%;-->
+            <!--margin-left: -19px;-->
+            <!--font-size: 120%;-->
+
+        <!--}-->
+        <!--.na li{-->
+            <!--font-size: 90%;-->
+            <!--color: white;-->
+            <!--font-weight: bold;-->
+            <!--list-style: none;-->
+        <!--}-->
+        <!--input[type="text"].mobile{-->
+            <!--outline: none;-->
+            <!--border-radius: 3px;-->
+            <!--border: 1px solid white;-->
+            <!--margin-bottom: 3px;-->
+        <!--}-->
+
+    <!--</style>-->
+    <!--<div id="sidebar" >-->
+        <!--<div class="list-group ">-->
+
+            <!--<ul class="list-group">-->
+
+                <!--<li style="list-style:none;margin-top:-24px;margin-left: 20px" class="c list-group-item-heading"><h2 style="color: white; font-size:140%; font-weight: bolder">Actions</h2></li>-->
+                <!--<li style="color: white;font-size:114%; font-family: sans-serif" class="c list-group-item"><i class="fas fa-music"></i> Church Anthem</li>-->
+                <!--<li class="c list-group-item bg-transparant"><a href="/users/Register_member"><i class="fas fa-user-plus"></i> Add Members</a></li>-->
+                <!--<li class="c list-group-item bg-transparant"><a href="/users/signup"><i class="fas fa-user-plus"></i> Add Member as Admin</a></li>-->
+                <!--<li style="" class=" c list-group-item bg-transparant"><a href="/users/levels"><i class="fas fa-users"></i> View members at each level-->
+                <!--</a>-->
+
+                <!--</li>-->
+                <!--<li class=" c list-group-item bg-transparant"><a href="/users/update"><i class="fas fa-database"></i> Update database</a> </li>-->
+                <!--<li class="c list-group-item"><a href="/users/select"><i class="fas fa-check"></i> Take attendance</a>  </li>-->
+                <!--<li class=" c list-group-item"><a href="/users/birthday"><i class="fas fa-birthday-cake"></i> View Birthday Celebrant</a> </li>-->
+                <!--<li class="c list-group-item"><a href="/users/executive"><i class="fas fa-people-carry"></i> Church executives</a></li>-->
+                <!--<li class="c list-group-item"><a href="/users/alumni"><i class="fas fa-user-graduate"></i> Alumni Section</a></li>-->
+
+                <!--<li class="c list-group-item"><a href="/users/unit"> <i class="fal fa-users-class"></i> Units</a></li>-->
+
+            <!--</ul>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--<div class="toggle" onclick="toggle()">-->
+        <!--<span></span>-->
+        <!--<span></span>-->
+        <!--<span></span>-->
+    <!--</div>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div  class="thumbnail att">
+
+    <header>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </header>
+    <div  class="container">
+        <div class="row">
+<div class="head">
+            <h2  style=" font-weight: bold; font-size:240%; font-family: Verdana">Add a new  admin</h2>
+            <p style=" font-weight: bold; font-family: Verdana">Note that this person will have all the access you have to the software</p>
+</div>
+
+            <div style="margin-top: 100px; position: absolute" class="col-md-6 col-sm-4  col-md-offset-2 col-sm-offset-4">
+                <form class="form" method="post" action="/users/signup">
+                    {{# if hasError}}
+                        {{# each message}}
+                        <div class="alert alert-danger">
+
+                                <p>{{this}}</p>
+
+                        </div>
+                        {{/each}}
+                    {{/if}}
+                    <div class="form-group">
+                        <!--<h2  style="margin-top: -10px; margin-left:100px;font-weight: bold; font-size:240%; font-family: Verdana"><span style="color: royalblue">CCCSP</span>  FUTA</h2>-->
+
+                        <h3 style="font-weight: bold; padding-bottom: 10px">Enter admin details</h3>
+
+
+                        <label  for="email"><i class="fas fa-user"></i> Username :</label>
+                        <input type="text" name ="username" class="form-control" id="email" placeholder="please enter your username">
+                    </div>
+                    <div class="form-group">
+                        <label for="email"><i class="fas fa-key"></i> Password :</label>
+                        <input type="password" name ="password" class="form-control" id="pass" placeholder="please enter your password">
+                    </div>
+                    <p style="margin-top: -8px; font-size: 90%; " id="res" >Password must be greater than 4 characters</p>
+                    <div id="box1" class="pull-right" style="margin-right: 10px; margin-top: -30px; width: 14px; height: 14px; border: 1px solid rgba(0,0,0,0.6); border-radius: 50%">
+                    <div id="box2" class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color: rgba(0,0,0,0.6); border-radius: 50%"></div>
+                </div>
+
+                    <div class="form-group">
+                        <label for="email"> Confirm password :</label>
+                        <input type="password" name ="password2" class="form-control" id="email" placeholder="please enter your password">
+                    </div>
+                    <div class="form-group">
+
+                        <input style="width: 400px; height: 60px;" type="submit" class=" btn btn-primary" value="Submit">
+                    </div>
+                    <div class="form-group">
+
+                        <a href="/user/forgot">Forgot password?</a>
+
+
+                    </div>
+
+                </form>
+                <div style="margin-left:270px; margin-top: 30px" class="form-group">
+                    <p class="c" style="color: white">&copy; copyright 2020 Peculiar-tech</p>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<div  class="mobile_view">
+    <div class=" na">
+        <img src="/images/logo.png" style="margin-left: 20px; width: 50px; height: 40px;float: left; z-index:1">
+        <span style="font-family: Verdana; color: white; font-weight: bold; font-size: 100%; position: absolute; padding: 3px 10px;">{{success}}</span>
+        <ul>
+            <li style="display: inline; margin-left: 30px;" ><i class="fas fa-home"></i><a href="/land_page"> Home</a> </li>
+            <li style="display: inline; margin-left: 10px;" id="notification" onclick="show()"><i class="fas fa-bell"></i> Notifications</li>
+            <li style="display: inline; margin-left: 10px;" onclick="window.open('/CCCSPHISTORY.pdf')"> History</li>
+            <li style="display: inline; margin-left: 30px;"><a href="/users/logout"> Logout</a></li>
+
+        </ul>
+
+        <form style=" display: inline" action="/users/search" method="post">
+            <input class="mobile" style="margin-left: 30px; width: 130px; height: 30px" name="name" type="text"   placeholder="Search member's name"><span>  <button  type="submit"><i class="fas fa-search"></i> Search </button></span>
+
+        </form>
+
+
+
+        <!--<div class="note" id="note" style="margin-left: -50px;" >-->
+        <!--<button onclick="clear()" id="button"  style=" border-radius: 0; padding-top: 10px; margin-bottom: 3px;position: relative; width: 40px;height: 40px; margin-left: 330px;" class="  btn-primary">-->
+
+        <!--<span class="w pull-right" style=" margin-top: -15px; background-color: white; position: absolute; transform: rotate(45deg);width : 2px; height: 18px ; "></span >-->
+        <!--<span class="p pull-right"  style="  margin-top: -15px; background-color: white;  position:absolute;transform: rotate(-45deg);width : 2px; height: 18px ; "></span>-->
+        <!--</button>-->
+        <!--<h2 style="text-align: center"><i class="fas fa-birthday-cake"></i> </h2>-->
+        <!--<h3 style="font-family: Verdana; font-size:150%;text-align: center"> Today's birthday celebrants</h3>-->
+        <!--<div style="padding-bottom: 30px;" class="">-->
+            <!--{{# each note}}-->
+            <!--<ul class="lists">{{# each this}}-->
+            <!--<li class="list list-group-item">-->
+            <!--<p> Name :{{this.firstname}} {{this.secondname}}</p>-->
+            <!--<p>Level: {{this.level}}</p>-->
+            <!--<p>Unit: {{this.unit}}</p>-->
+            <!--<p> {{this.unit2}}</p>-->
+            <!--<a style="z-index: 1; margin-bottom: 10px; width: 120px;font-family: Verdana; background-color: #2e6da4;  font-size: 115%;padding: 7px 40px;  height: 35px;border-radius: 0; margin-top: -10px; font-weight: bold" href="/users/view/{{this._id}}"   class=" pull-left " ><i style="float: left; margin-left: -30px" class="fas fa-address-book"></i>Profile </a><br>-->
+
+            <!--</li>-->
+                <!--{{/each}}-->
+        <!--</ul>-->
+            <!--{{/each}}-->
+        <!--<a href="/users/birthday_message" style="z-index: 99999;"><button style="z-index: 99999; margin-left: 27px; font-family: Verdana;font-size: 120%; width: 300px; height: 50px;margin-top: 20px; background-color: #2e6da4">Send message to celebrants</button></a>-->
+
+
+        <!--</div>-->
+        <!--</div>-->
+        <script type="text/javascript">
+
+            // var note = document.getElementById('note');
+            // var notification = document.getElementById('notification');
+            // var btn = document.getElementById('button');
+            // note.style.display="none";
+            // btn.addEventListener('click' , clear);
+            // function clear() {
+            //     note.style.display="none";
+            // }
+            //
+            // notification.addEventListener('click' , show);
+            // function show() {
+            //     note.style.display="block";
+            // }
+
+        </script>
+
+
+
+
+
+
+
+        <style type="text/css">
+            /*.note{*/
+            /*!*height: 600px;*!*/
+            /*width: 400px;*/
+            /*background: rgba(0,0,0,0.8);*/
+            /*color: white;*/
+            /*padding: 0 20px;*/
+            /*margin-left: 224px;*/
+            /*margin-top: 30px;*/
+            /*z-index: 1;*/
+
+            /*border: 1px solid black;*/
+            /*position: absolute;*/
+            /*animation: anima 0.5s linear;*/
+            /*}*/
+            @keyframes anima {
+                0%{opacity: 0}
+            }
+            /*.note ul.lists{*/
+            /*padding: 0 0 0 0;*/
+            /*margin: 0;*/
+            /*border-radius: 0;*/
+            /*border-bottom: 1px solid white;*/
+            /*font-family: 'Roboto', sans-serif;*/
+
+            /*}*/
+            /*.note ul.lists li.list-group-item{*/
+            /*border-radius: 0;*/
+            /*background-color:rgba(0,0,0,0.7) ;*/
+            /*margin-top: 4px;*/
+            /*border-bottom: none;*/
+
+            /*border-right: 1px solid white;*/
+
+            /*}*/
+
+
+
+            /*on mobile screen e.g android*/
+            @media (max-width: 768px){
+
+
+
+            }
+
+            body{
+                background:white;
+                cursor: pointer;
+            }
+
+
+        </style>
+
+
+        <style type="text/css">
+            /*on mobile screen*/
+            @media (max-width: 768px){
+
+                .content{
+                    padding:  0  10px;
+                    background-color: white;
+                }
+                .nav{
+                    display: none;
+                }
+
+                .sidebar{
+                    display: none;
+
+                }
+
+
+
+
+
+
+
+
+
+
+            }
+        </style>
+
+
+
+    </div>
+    <style type="text/css">
+        .na{
+            margin-top: -60px;
+            position: relative;
+            background-color: royalblue;
+
+            width: 110%;
+            margin-left: -19px;
+            font-size: 120%;
+
+        }
+        .na li{
+            font-size: 90%;
+            color: white;
+            font-weight: bold;
+            list-style: none;
+        }
+        input[type="text"].mobile{
+            outline: none;
+            border-radius: 3px;
+            border: 1px solid white;
+            margin-bottom: 3px;
+        }
+
+    </style>
+    <div id="sidebar" >
+        <div class="list-group ">
+
+            <ul class="list-group">
+
+                <li style="list-style:none;margin-top:-24px;margin-left: 20px" class="c list-group-item-heading"><h2 style="color: white; font-size:140%; font-weight: bolder">Actions</h2></li>
+               <li style="color: white;font-size:114%; font-family: sans-serif" class="c list-group-item"><a href="/users/church_anthem"><i class="fas fa-music"></i> Church Anthem</a></li>
+                <li class="c list-group-item bg-transparant"><a href="/users/Register_member"><i class="fas fa-user-plus"></i> Add Members</a></li>
+                <li class="c list-group-item bg-transparant"><a href="/users/signup"><i class="fas fa-user-plus"></i> Add Member as Admin</a></li>
+                <li style="" class=" c list-group-item bg-transparant"><a href="/users/levels"><i class="fas fa-users"></i> View members at each level
+                </a>
+
+                </li>
+                <li class=" c list-group-item bg-transparant"><a href="/users/update"><i class="fas fa-database"></i> Update database</a> </li>
+                <li class="c list-group-item"><a href="/users/select"><i class="fas fa-check"></i> Take attendance</a>  </li>
+                <li class=" c list-group-item"><a href="/users/birthday"><i class="fas fa-birthday-cake"></i> View Birthday Celebrant</a> </li>
+                <li class="c list-group-item"><a href="/users/executive"><i class="fas fa-people-carry"></i> Church executives</a></li>
+                <li class="c list-group-item"><a href="/users/alumni"><i class="fas fa-user-graduate"></i> Alumni Section</a></li>
+
+                <li class="c list-group-item"><a href="/users/unit"> <i class="fal fa-users-class"></i> Units</a></li>
+
+            </ul>
+        </div>
+    </div>
+
+    <div  class="toggle" onclick="toggle()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+  <form style="margin-top: 50px;" method="post" action ='/users/signup' >
+        <div class=" form-group">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-5 col-sm-4  col-md-offset-3 col-sm-offset-3">
+                        {{# if hasError}}
+                            {{# each message}}
+                                <div class="alert alert-danger">
+                                   <p>{{this}}</p>
+                                </div>
+                            {{/each}}
+
+                            {{/if}}
+
+                            <!--<div style="align-self: center">-->
+                                <!--<img src="/images/logo.png" style="margin-left:150px;padding-bottom: 20px; height: 70px; width:90px;">-->
+                            <!--</div>-->
+                            <div class="form-group">
+
+                                <!--<h2  style="margin-top: -10px; margin-left:100px;font-weight: bold; font-size:240%; font-family: Verdana"><span style="color: royalblue">CCCSP</span>  FUTA</h2>-->
+
+
+
+
+
+                                <label  for="email"><i class="fas fa-user" style="position: absolute; margin-top:40px;margin-left: 7px; color: rgba(0,0,0,0.4); "></i> Username :</label>
+                                <input  style="height: 40px;border-radius: 0; border: 1px solid rgba(0,0,0,0.5); padding-left: 30px;" type="text" name ="username" class="form-control" id="email" placeholder="please enter your username">
+                            </div>
+                            <div class="form-group">
+                                <label for="email"><i style="position: absolute; margin-top:40px;margin-left: 7px; color: rgba(0,0,0,0.4); " class="fas fa-key"></i> Password :</label>
+                                <input type="password" style="font-size: 100%; padding-left: 30px;" name ="password" class="form-control" id="email" placeholder="please enter your password">
+                            </div>
+
+                        <div class="form-group">
+                            <label for="id"><i style="position: absolute; margin-top:40px;margin-left: 7px; color: rgba(0,0,0,0.4); " class="fas fa-key"></i>Confirm  password :</label>
+                            <input type="password" style="font-size: 100%; padding-left: 30px;" name ="password2" class="form-control" id="id" placeholder="please confirm your password">
+                        </div>
+                        <div class="form-group">
+
+                            <input style="color: white; background-color: royalblue" type="submit" id="submit" class="form-control " value="Submit">
+                        </div>
+                            <div class="form-group">
+
+
+
+                            </div>
+
+
+        </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script type="text/javascript">
+        const sidebar = document.getElementById('sidebar');
+        function  toggle() {
+            sidebar.classList.toggle('active');
+        }
+    </script>
+<script type="text/javascript">
+
+var pass= document.getElementById('pass');
+var box1= document.getElementById('box1');
+var box2= document.getElementById('box2');
+var res= document.getElementById('res');
+pass.addEventListener('keypress' , op)
+function op() {
+    if (pass.value.length>3){
+        box1.style.backgroundColor="lightgreen";
+        box2.style.backgroundColor="lightgreen";
+
+        res.style.color="lightgreen";
+    }
+    else if(pass.value.length===0){
+        box1.style.backgroundColor="black";
+        box2.style.backgroundColor="black";
+        box1.style.opacity="0.6";
+        box2.style.opacity="0.6";
+        res.style.color="black";
+    }
+    else {
+        box1.style.backgroundColor="red";
+        box2.style.backgroundColor="red";
+        box1.style.opacity="0.6";
+        box2.style.opacity="0.6";
+        res.style.color="red";
+    }
+}
+
+
+</script>
+    <style type="text/css">
+        .mobile_view{
+            display: none;
+        }
+        body{
+
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+        /*form{*/
+        /*margin-top: 120px;*/
+        /*background-color: #efefef;*/
+        /*padding: 30px 20px;*/
+        /*width: 90%;*/
+        /*margin-left: 130px;*/
+
+        /*}*/
+
+        form.form{
+            margin-top: 20px;
+            /*background-color: #efefef;*/
+            background-color: white;
+            padding: 30px 20px;
+            width: 140%;
+            margin-left:-20px;
+
+        }
+        form.form input[type="text"] , input[type="password"] {
+            height: 40px;
+            margin-bottom: 16px;
+            border-left: 2px solid green;
+            border-radius: 0px;
+            border-top: 1px solid rgba(0,0,0,0.5);
+            border-right: 1px solid rgba(0,0,0,0.5);
+            border-bottom: 1px solid rgba(0,0,0,0.5);
+
+        }
+        .btn{
+            width: 200px;
+            height: 40px;
+            margin-top: 30px;
+            font-size: 120%;
+            font-weight: bold;
+            margin-left: 140px;
+        }
+        label{
+            font-size: 120%;
+            font-family: Verdana;
+        }
+        @media (max-width: 768px) {
+            .mobile_view{
+                display: block;
+            }
+            .att{
+                display: none;
+            }
+            form.form{
+                position: relative;
+                width: 92%;
+                margin-left: 0%;
+                margin-top: 80px;
+            }
+            form.form h2 span{
+                color: royalblue;
+                display: inline;
+                margin-left: -90px;
+                margin-bottom: 30px;
+            }
+            .btn{
+                margin-left: 0px;
+                width: 264px;
+            }
+            p.c{
+                margin-left: -220px;
+            }
+        }
+    </style>
+
+
+
+<style type="text/css">
+    .sidebar{
+
+    }
+.head{
+    margin-top: -8px;
+    width: 98.1%;
+    padding: 5px 20px;
+    background-color: #2e6da4;
+    align-content: center;
+    text-align: center;
+    margin-left: -9px;
+    color: white;
+}
+    .con{
+
+    }
+    .cont{
+        margin-top: -20px;
+        position: relative;
+    }
+
+
+    .content{
+        padding: 10px 10px;
+        width : 1139px;
+        height: 635px;
+        position: absolute;
+        border: 1px solid rgba(0 ,0, 0, 0.4);
+        margin-left: 224px;
+        margin-top: 35px;
+
+    }
+
+
+
+
+    @media (max-width: 768px) {
+        ul {
+            background-color: royalblue;
+        }
+
+        li.c {
+            background-color: royalblue;
+            font-size: 113%;
+            font-family: SansSerif;
+
+        }
+
+
+
+        #sidebar {
+            width: 66%;
+            height: 100vh;
+            background-color: royalblue;
+            position: fixed;
+            margin-top: -10px;
+            z-index: 1;
+            left: -67%;
+            transition: all 0.8s linear;
+        }
+
+        #sidebar.active {
+            left: 0;
+        }
+
+        .toggle {
+           position:absolute;
+        right:20px;
+         z-index: 2;
+
+        }
+
+        .toggle span {
+            width: 33px;
+            height: 4px;
+            background-color: royalblue;
+            margin-top: 5px;
+            
+            display: block;
+
+        }
+
+        .mobile_view {
+            display: block;
+        }
+    }
+
+</style>
+
+
+
+
+
+
+
+
+
+
+
+

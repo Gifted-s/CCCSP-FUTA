@@ -1,0 +1,434 @@
+
+<header>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</header>
+
+<!--profile page-->
+
+<div class="cont">
+    <!--set header-->
+
+    <header>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </header>
+
+    <nav id="side-nav" class="navbar  navbar-expand-lg navbar-light bg-light">
+        <button class="  navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="  navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+
+
+                <li class="nav-item active">
+
+                </li>
+
+
+            </ul>
+
+
+        </div>
+    </nav>
+
+
+
+
+
+
+</div>
+
+    <div class="nav">
+        <img src="/images/logo.png" id="img12" class="img" style="position: fixed; margin-left: 20px; width: 50px; height: 40px;float: left; z-index:1">
+        <span style="font-family: Verdana; color: white; font-weight: bold; font-size: 100%; position: absolute; padding: 3px 10px;">{{success}}</span>
+        <ul>
+            <li style="margin-left: 90px"><i class="fas fa-home"></i><a href="/land_page"> Home</a> </li>
+            <li id="notification" onclick="disp()"><i class="fas fa-bell"></i> Notifications</li>
+
+            <li>
+<form style=" display: inline" action="/users/search" method="post">
+    <input  name="name" type="text"   placeholder="Search member's name"><span>  <button  type="submit"><i class="fas fa-search"></i> Search </button></span>
+
+</form>
+
+            </li>
+            <li style="display: inline; margin-left: 10px;" onclick="window.open('/CCCSPHISTORY.pdf')"> History of church</li>
+            <!--<li style=""><i class="far fa-question-circle"></i> Help</li>-->
+                 {{!-- <li style="display: inline; margin-left: 10px;" onclick="window.open('/CCCSPHISTORY.pdf')"> History</li> --}}
+              {{!-- <li style="display: inline; margin-left: 30px;"><a href="/admin"> Admin Login</a></li> --}}
+            <li style="display: inline; margin-left: 30px;"><a href="/users/logout"> Logout</a></li>
+
+        </ul>
+    </div>
+<ul>
+
+</ul>
+
+
+
+<!--sidebar-->
+<div class="con">
+    <div style="margin-top: -10px" class="sidebar">
+        <!--<div style="z-index: 1;float: none;  color: white;" >-->
+            <!--{{# if isSuccessful}}-->
+                <!--{{# each success}}-->
+                    <!--<p style="">{{this}}kljsdd</p>-->
+
+                <!--{{/each}}-->
+            <!--{{/if}}-->
+        <!--</div>-->
+<div class="list-group ">
+
+<ul class="list-group">
+
+    <li style="list-style:none;margin-top:-24px;margin-left: 20px" class="c list-group-item-heading"><h2 style=" font-size:140%; font-weight: bolder">Actions</h2></li>
+    <li class="c list-group-item"><a href="/users/church_anthem"> <i class="fas fa-music"></i>  Church Anthem</a></li>
+    <li class="c list-group-item bg-transparant"><a href="/users/Register_member"><i class="fas fa-user-plus"></i> Register Self</a></li>
+    <li class="c list-group-item bg-transparant"><a href="/users/signup"><i class="fas fa-user-plus"></i> Add Member as Admin</a></li>
+    <li style="" class=" c list-group-item bg-transparant"><a href="/users/levels"><i class="fas fa-users"></i> View members at each level
+    </a>
+
+    </li>
+    <li class=" c list-group-item bg-transparant"><a href="/users/update"><i class="fas fa-database"></i> Update database</a> </li>
+    <li class="c list-group-item"><a href="/users/select"><i class="fas fa-check"></i> Take attendance</a>  </li>
+    <li class=" c list-group-item"><a href="/users/birthday"><i class="fas fa-birthday-cake"></i> View Birthday Celebrant</a> </li>
+    <li class="c list-group-item"><a href="/users/executive"><i class="fas fa-people-carry"></i> Church executives</a></li>
+    <li class="c list-group-item"><a href="/users/alumni"><i class="fas fa-user-graduate"></i> Alumni Section</a></li>
+
+    <li class="c list-group-item"><a href="/users/unit"> <i class="fal fa-users-class"></i> Units</a></li>
+    <li class="c list-group-item"><a href="/admin"> <i class="fal fa-users-class"></i> Admin Login</a></li>
+
+</ul>
+</div>
+    </div>
+
+
+
+</div>
+<div class="row">
+    <div class="col-md-4 col-sm-4  col-md-offset-2">
+
+<div class="note" id="note" >
+    <button onclick="clear()" id="button"  style=" border-radius: 0; padding-top: 10px; margin-bottom: 3px;position: relative; width: 40px;height: 40px; margin-left: 300px;" class="  btn-primary">
+
+        <span class="w pull-right" style=" margin-top: -15px; background-color: white; position: absolute; transform: rotate(45deg);width : 2px; height: 18px ; "></span >
+        <span class="p pull-right"  style="  margin-top: -15px; background-color: white;  position:absolute;transform: rotate(-45deg);width : 2px; height: 18px ; "></span>
+    </button>
+    <h2 style="text-align: center"><i class="fas fa-birthday-cake"></i> </h2>
+<h3 style="font-family: Verdana; font-size:150%;text-align: center"> Today's birthday celebrants</h3>
+<div style="padding-bottom: 30px;" class="">
+   {{# each note}}
+    <ul class="lists">{{# each this}}
+        <li class="list list-group-item">
+           <p> Name :{{this.firstname}} {{this.secondname}}</p>
+            <p>Level: {{this.level}}</p>
+            <p>Unit: {{this.unit}}</p>
+            <p> {{this.unit2}}</p>
+            <a style="z-index: 1; margin-bottom: 10px; width: 120px;font-family: Verdana; background-color: #2e6da4;  font-size: 115%;padding: 7px 40px;  height: 35px;border-radius: 0; margin-top: -10px; font-weight: bold" href="/users/view/{{this._id}}"   class=" pull-left " ><i style="float: left; margin-left: -30px" class="fas fa-address-book"></i>Profile </a><br>
+
+        </li>
+    {{/each}}
+    </ul>
+{{/each}}
+<a href="/users/birthday_message" style="position: relative; z-index: 99999;"><button style="z-index: 99999; margin-left: 27px; font-family: Verdana;font-size: 120%; width: 300px; height: 50px;margin-top: 20px; background-color: #2e6da4">Send message to celebrants</button></a>
+
+</div>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+
+    var note = document.getElementById('note');
+    var notification = document.getElementById('notification');
+    var btn = document.getElementById('button');
+    note.style.display="none";
+   btn.addEventListener('click' , clear);
+   function clear() {
+       note.style.display="none";
+   }
+
+    notification.addEventListener('click' , show);
+    function show() {
+        note.style.display="block";
+    }
+
+</script>
+
+
+
+
+
+
+
+<style type="text/css">
+    .note{
+        /*height: 600px;*/
+        /*width: 400px;*/
+        background: rgba(0,0,0,0.8);
+        color: white;
+        padding: 0 20px;
+        /*margin-left: 224px;*/
+        margin-top: 30px;
+        z-index: 1;
+
+        border: 1px solid black;
+        position: absolute;
+        animation: anima 0.5s linear;
+    }
+    @keyframes anima {
+    0%{opacity: 0}
+    }
+.note ul.lists{
+    padding: 0 0 0 0;
+    margin: 0;
+    border-radius: 0;
+    border-bottom: 1px solid white;
+    font-family: 'Roboto', sans-serif;
+
+}
+    .note ul.lists li.list-group-item{
+        border-radius: 0;
+        background-color:rgba(0,0,0,0.7) ;
+        margin-top: 4px;
+border-bottom: none;
+
+        border-right: 1px solid white;
+
+    }
+    /*footer {*/
+        /*margin-left: 225px;*/
+        /*position: absolute;*/
+        /*margin-top: 730px;*/
+       /*width: 83.1%;*/
+        /*z-index: 1;*/
+        /*height: 120px;*/
+        /*background-color: #2e6da4;*/
+        /*color: white;*/
+    /*}*/
+    .search{
+        width: 300px;
+        height: 500px;
+        background-color: white;
+        border:1px solid black;
+        position: absolute;
+        margin-top: 30px;
+        margin-left: 580px;
+        z-index: 1;
+
+    }
+    a{
+        color: white;
+        font-family: 'Roboto', sans-serif;
+        text-decoration: none;
+    }
+    a:hover{
+        text-decoration: none;
+        color: white;
+        opacity: 0.7;
+        border: none;
+    }
+.nav{
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    margin-top: -20px;
+    z-index: 1;
+    background-color: #2e6da4;
+    /*!*background-color: rgba(50,0,100,10);*!*/
+    /*background: linear-gradient(rgba(249,107,142,1),*/
+    /*rgba(218,103,230,1),*/
+    /*rgba(130,125,254,1)*/
+    /*);*/
+
+    padding: 10px 0;
+}
+.nav ul{
+    padding: 0;
+margin-top: -1px;
+    display: inline;
+    margin-left: 160px;
+}
+.nav ul li{
+    color: white;
+    list-style: none;
+display: inline;
+    font-weight: bold;
+    margin-left: 30px;
+    font-size: 100%;
+    /*font-family: Verdana;*/
+    font-family: sans-serif;
+}
+.nav ul li input[type="text"]{
+    border: none;
+    height: 30px;
+    width: 300px;
+    color: black;
+    outline: none;
+    z-index: 1;
+    -webkit-appearance: none;
+    border-radius: 3px;
+    padding-left: 10px;
+}
+.con{
+
+}
+.cont{
+    margin-top: -20px;
+    position: relative;
+}
+
+button{
+    border: 1px solid white;
+
+    /*outline: none;*/
+    /*-webkit-appearance: none;*/
+    width: 130px;
+    background-color: rgba(0, 0 , 0 , 0.4);
+    color: white;
+
+    height: 30px;
+    border-radius: 1px;
+}
+li.ccc{
+    z-index: 3;
+}
+li.c{
+    background-color: #2e6da4;
+    /*background: linear-gradient(rgba(249,107,142,1),*/
+    /*rgba(218,103,230,1),*/
+    /*rgba(130,125,254,1)*/
+    /*);*/
+padding: 10px 10px;
+    font-size: 114%;
+
+    /*font-family: Verdana;*/
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+
+
+}
+
+ul{
+
+    padding:0 2px 0 0 ;
+    margin-top: 40px;
+    background-color: #2e6da4;
+    /*background: linear-gradient(rgba(249,107,142,1),*/
+    /*rgba(218,103,230,1),*/
+    /*rgba(130,125,254,1)*/
+    /*);*/
+}
+
+
+
+    .sidebar{
+        border:1px solid white;
+
+        width: 220px ;
+        height: 120vh;
+        position: fixed;
+        background-color: #2e6da4;
+
+        color: white;
+    }
+    nav#side-nav{
+         display: none;
+         background-color: transparent;
+     }
+
+
+
+
+
+    h5{margin-top: 40px;
+        position: absolute;
+        color: #00B7F9;
+        font-family: sans-serif;
+
+    }
+    /*on mobile screen e.g android*/
+    @media (max-width: 768px){
+
+/*.note{*/
+   /*width: 100%;*/
+
+/*}*/
+        /*.note button#button{*/
+            /*position: absolute;*/
+            /*margin-left: -70px;*/
+            /*z-index: 1;*/
+
+        /*}*/
+
+        /*.note  button#button{*/
+            /*margin-left: -40px;*/
+        /*}*/
+        /*.note h3{*/
+            /*margin-left: -90px;*/
+        /*}*/
+
+    }
+
+    body{
+        background:white;
+        cursor: pointer;
+    }
+   
+
+</style>
+
+
+<style type="text/css">
+    /*on mobile screen*/
+    @media (max-width: 768px){
+
+        .sidebar{
+            display: none;
+            height: 200px;
+        }
+        .nav{
+            display: none;
+
+        }
+        .note ul.lists{
+            /*padding: 0 40px 0 0;*/
+            width: 330px;
+
+            margin: 0;
+            border-radius: 0;
+            border-bottom: 1px solid white;
+            font-family: 'Roboto', sans-serif;
+
+        }
+        input[type="text"].search{
+          outline: none;
+            -webkit-appearance: none;
+        }
+
+        .content{
+            padding:  0  10px;
+            background-color: white;
+        }
+        
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+</style>
+
+
+

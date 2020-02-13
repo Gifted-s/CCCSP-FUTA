@@ -1,0 +1,143 @@
+
+{{>sidebar}}
+{{>store}}
+<div class="thumbnail att">
+    <h3 style="font-family: Verdana">The Church Executives</h3>
+<div class="box">
+    {{# each executive}}
+<div class="row">
+
+
+{{# each this}}
+
+        <div class="col-sm-6 col-md-4">
+            <div id="thumbmail" class="thumbnail">
+                <img  style="width: 320px; height: 200px;" src="{{this.profile_image}}" class="img-responsive" alt="...">
+                <div class="caption">
+                    <div class="description clearfix">
+                        <h3 class="name" style=" font-family: Verdana">{{this.firstname}} {{this.secondname}}</h3>
+
+                        <hr style="background-color: rgba(100% , 100%, 100%, 0.6); margin-top:-7px;">
+                        <p style="font-weight: bold; font-size: 120%;" class="level">Level:  {{this.level}}</p>
+                        <p id="role"  style="font-weight: bold; font-size: 120%;" class="pull-left price "> {{this.executive_role}}</p>
+
+
+                        <p><a style="font-weight: bold" href="/users/view/{{this._id}}" onclick="success()"  class="btn btn-primary pull-right " role="button">View full profile</a> </p>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+{{/each}}
+    </div>
+        {{/each}}
+
+
+
+
+
+
+
+
+</div>
+
+
+<a style="font-size: 150%; margin-left: 360px;" href="/users/oexecutives" class="btn btn-primary">View past executives <span >>></span></a>
+
+
+</div>
+
+
+<div class="mobile_view">
+    {{# each executive}}
+        <div class="row">
+
+
+            {{# each this}}
+
+                <div class="col-sm-12 col-md-4">
+                    <div id="thumbnail" class="thumbnail">
+                        <img style="width: 320px; height: 200px;" src="{{this.profile_image}}" class="img-responsive" alt="...">
+                        <div class="caption">
+                            <div class="description clearfix">
+                                <h3 class="name" style=" font-family: Verdana">{{this.firstname}} {{this.secondname}}</h3>
+
+                                <hr style="background-color: rgba(100% , 100%, 100%, 0.6); margin-top:-7px;">
+                                <p style="font-weight: bold; font-size: 120%;" class="level">Level:  {{this.level}}</p>
+                                <p id="role"  style="font-weight: bold; font-size: 120%;" class="pull-left price "> {{this.executive_role}}</p>
+
+
+                                <p><a style="font-weight: bold" href="/users/view/{{this._id}}" onclick="success()"  class="btn btn-primary pull-right " role="button">View full profile</a> </p>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            {{/each}}
+        </div>
+    {{/each}}
+
+
+    <a style=" margin-left:0px;" href="/users/oexecutives" class="btn btn-primary">View past executives <span >>></span></a>
+</div>
+<script type="text/javascript">
+    var role = document.getElementById('role');
+    var thumb = document.getElementById('thumbmail');
+
+
+</script>
+<style type="text/css">
+
+    @media (max-width: 768px) {
+        .d{
+            display: block;
+        }
+        .att{
+            display:none;
+        }
+        .mobile_view{
+            display: block;
+            padding: 0 10px;
+        }
+
+    }
+
+    img{
+        height:100px;
+        width : 100px;
+    }
+
+    .con{
+
+    }
+    .cont{
+        margin-top: -20px;
+        position: relative;
+    }
+
+
+    .att{
+        padding: 10px 10px;
+        width : 1123px;
+
+        position:absolute;
+        /*border: 1px solid rgba(0 ,0, 0, 0.4);*/
+        margin-left: 224px;
+        margin-top: 35px;
+        background-color: white;
+    }
+    .box{
+        animation: animate 1.2s linear;
+
+    }
+
+    @keyframes animate  {
+
+        0%{opacity: 0;}
+        50%{opacity: 0.5;}
+    }
+</style>

@@ -3312,10 +3312,11 @@ var p;
 var Firstname;
 var secondname;
 var level;
+var validate;
 busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
     
    if(!filename){
-      return res.send('please upload an image file')
+      return res.send('<h3 style="color:red; padding:8px; background-color:pink">Please enter all the required details</h3>')
    }
   var saveTo =  `./public/images/${filename}`
   p= saveTo
@@ -3378,7 +3379,7 @@ User.findOne({'firstname': firstname}, function (err, user) {
  var getname = sttr.charAt(0);
  const newname = getname.toLocaleUpperCase();
  Firstname = sttr.replace(getname, newname);
-    if(!p){
+    if(!p || !Firstname || !secondname || !phone_number || !department || !address ){
         return 
     }
  const index= p.indexOf('c')

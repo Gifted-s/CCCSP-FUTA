@@ -3972,7 +3972,7 @@ busboy.on('finish', function() {
                     userchunk.push(user.slice(i, i + chunk));
                 }
 
-                return res.render('users/levels' , {note :userchunk, message2: `${Firstname} ${secondname} is now added to the  ${level} level brethren, select level to view profile `});
+                return res.render('users/levels' , {note :userchunk, message2: `Congratulations, ${secondname} has been added to the  ${level} level brethren, select level to view profile `});
             });
     
   

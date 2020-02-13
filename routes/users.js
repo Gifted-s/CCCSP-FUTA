@@ -3379,7 +3379,7 @@ User.findOne({'firstname': firstname}, function (err, user) {
  var getname = sttr.charAt(0);
  const newname = getname.toLocaleUpperCase();
  Firstname = sttr.replace(getname, newname);
-    if(!p || !Firstname || !secondname || !phone_number || !department || !address ){
+    if(!p || !firstname || !secondname || !phone_number || !department || !address ){
         return 
     }
  const index= p.indexOf('c')

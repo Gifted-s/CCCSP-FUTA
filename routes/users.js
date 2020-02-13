@@ -3379,7 +3379,7 @@ User.findOne({'firstname': firstname}, function (err, user) {
  var getname = sttr.charAt(0);
  const newname = getname.toLocaleUpperCase();
  Firstname = sttr.replace(getname, newname);
-    if(!p && !firstname || !Secondname || !phone_number || !day || !department || !address ){
+    if(p && !firstname || !Secondname || !phone_number || !day || !department || !address ){
         return res.send('<h3 style="color:red; padding:8px; background-color:pink">Please enter all the required details</h3>')
     }
  const index= p.indexOf('c')

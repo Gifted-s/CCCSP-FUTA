@@ -10,18 +10,18 @@ var Schema =  mongoose.Schema;
 var UserSchema = new Schema({
     firstname :{
         type: String,
-        required: true
+        required: false
 
     },
     secondname :{
         type: String,
-        required: true
+        required: false
 
     },
 
     level:{
         type:Number,
-        required:true,
+        required:false,
     },
     unit:{
       type:String,
@@ -35,7 +35,7 @@ var UserSchema = new Schema({
     },
     phone_number:{
         type:String,
-        required:true,
+        required:false,
     },
 status:{
       type:String,
@@ -57,11 +57,11 @@ status:{
 },
     m_b:{
         type:Number,
-        required:true
+        required:false
     },
     d_b:{
        type:Number,
-       required:true
+       required:false
     },
     y_b:{
       type: String,

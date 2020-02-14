@@ -123,8 +123,7 @@ module.exports = app;
 
 setInterval(()=>{
   console.log('alive!!!')
-request('https://cccspfuta.herokuapp.com/keepAlive');
+request('https://celefuta.herokuapp.com/keepAlive');
 }, 
-// 7200000
 60000
 )

@@ -544,7 +544,7 @@ router.get('/view/:id', function(req, res, next) {
 
 });
 //Calling the edit page
-router.get('/edit/:id',isLoggedin, function(req, res, next) {
+router.get('/edit/:id', function(req, res, next) {
     var id = req.params.id;
     //Finding the user in the database
     User.findById(id , function (err , user) {

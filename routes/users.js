@@ -3379,7 +3379,9 @@ User.findOne({'firstname': firstname}, function (err, user) {
  var getname = sttr.charAt(0);
  const newname = getname.toLocaleUpperCase();
  Firstname = sttr.replace(getname, newname);
-   
+   if(!p){
+       return
+   }
  const index= p.indexOf('c')
       const c= p.slice(index+1, p.length+1);
     

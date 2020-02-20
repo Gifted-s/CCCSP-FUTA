@@ -2778,7 +2778,31 @@ router.post('/Register_member',(req,res,next)=>{
     var role = req.body.executive_role
     var address = req.body.address
     var P_A = 'absent';
-    
+    if(!firstname || !download_url || !Secondname || !phone_number || !level || !school || !month || !day || !department){
+        return res.send(`
+        <div style="color:red; background-color:pink">
+        <h1>
+        Please ensure that all fields such as 
+        </h1>
+        <hr/>
+        <ul>
+        <li>First name</li>
+        <li>Second name</li>
+        <li>Profile Image</li>
+        <li>Phone Number</li>
+        <li>Level</li>
+        <li>School</li>
+        <li>Month Of Birth</li>
+        <li>Date Of birth</li>
+        <li>Department</li>
+        
+        </ul>
+
+         Are entered
+         <hr/>
+        </div>
+        `)
+    }
     
     var str = new String(phone_number);
     var index = str.indexOf('0');

@@ -172,7 +172,7 @@ router.get('/100', function(req, res, next) {
            for (var i = 0; i < user.length; i += chunk) {
                userchunk.push(user.slice(i, i + chunk));
            }
-           console.log(user);
+         
            //rendering the next page
            res.render('users/view_members', {   user : clothchunk, note : userchunk });
        });
@@ -203,7 +203,7 @@ router.get('/200', function(req, res, next) {
             for (var i = 0; i < user.length; i += chunk) {
                 userchunk.push(user.slice(i, i + chunk));
             }
-            console.log(user);
+        
             //rendring the next page
             res.render('users/view_members', {   user : clothchunk, note : userchunk });
         });
@@ -512,10 +512,11 @@ router.get('/view/:id', function(req, res, next) {
                 userchunk.push(users.slice(i, i + chunk));
             }
 //rendering the page to view user detail
+
             res.render('users/view_members_d' , {
                 firstname : user.firstname,
                 secondname : user.secondname,
-                level : user.level,
+                level : user.status==="Alumnus" ? "Alumnus": user.level,
                 unit :user.unit,
                 unit2 :user.unit2,
                 school: user.school,
@@ -525,8 +526,8 @@ router.get('/view/:id', function(req, res, next) {
                 month : m,
                 day : user.d_b,
                 year : user.y_b,
-                executive : user.executive_role,
-                department : user.department,
+                executive : user.status==="Alumnus" ? user.alumnus_excos: user.executive_role,
+                department :  user.status==="Alumnus" ? user.alumnus_department:user.department,
                 address : user.address,
                 email : user.email,
                 facebook: user.facebook,
@@ -718,32 +719,15 @@ function updateDetails(req, res, next){
 
     // }
     // get the text passed by the user and storing it in variable
-    var busboy = new Busboy({ headers: req.headers });
+   
 
     var p;
     var Firstname;
     var secondname;
     var level;
     let img=true;
-    busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
-        
-       if(!filename){
-       img=false;
-       return
-       }
-      var saveTo =  `./public/images/${filename}`
-      p= saveTo
-      file.pipe(fs.createWriteStream(saveTo));
-    });
-    inspect = require('util').inspect;
     let b;
-    req.body={};
-    let counter=0;
-    busboy.on('field', function(fieldname, val, fieldnameTruncated, valTruncated) {
-        req.body[fieldname]=val;
-        counter++;
-        if(counter===20){
-            
+
 var firstname = req.body.firstname;
 var unit2= req.body.unit2;
 var prevrole= req.body.prevrole;
@@ -1291,11 +1275,12 @@ User.findById(id , function(err , user){
              quote: (quote ?quote :user.quote),
              phone_number: (phone !=='234' ?phone:user.phone_number),
              department : (department  ?department :user.department ),
+             units : (req.body.a_units  ?req.body.a_units :user.units),
              P_A : (P_A  ?P_A :user.P_A ),
              executive_role : (role  ? role :'' ),
              executive: (role  ? 'YES' :'NO' ),
             //  profile_image :(req.file ? newString : user.profile_image),
-            profile_image :img ? p.slice(p.indexOf('c')+1,p.length+1):user.profile_image,
+            profile_image :req.body.download_url ? req.body.download_url :user.profile_image,
              address : (address  ?address :user.address ),
              school : (school  ?school :user.school )
 
@@ -1325,22 +1310,7 @@ User.findById(id , function(err , user){
 
  }
     
-  });
-
-busboy.on('finish', function() {
-            var d = new Date();
-            var day = d.getDate();
-            var month = d.getMonth();
-
-  
  
-});
-
-//but this guy here  is also return statement so i am setting the header twice(error)
- req.pipe(busboy);
-// return next()
-}
-
 
 
 
@@ -1409,560 +1379,6 @@ busboy.on('finish', function() {
 
 //calling the post request after the user submit editting
 router.post('/submit/:id' ,updateDetails)
-    // function (req, res , next){
-//         var newString="";
-//         //if a file was uploaded
-//         if(req.file){
-//             var string = new String(req.file.path);
-//             string = string.split('\\');
-//             string = string.slice(1 , string.length);
-//              newString= ('/' + string.join('/'));
-
-//         }
-//         // get the text passed by the user and storing it in variable
-//     var firstname = req.body.firstname;
-//     var unit2= req.body.unit2;
-//     var secondname = req.body.secondname;
-//     var level = req.body.level;
-//     var unit = req.body.unit;
-//     var status = req.body.status;
-//     var month = req.body.m_b;
-//     var day = req.body.d_b;
-//     var year = req.body.y_b;
-//     var email= req.body.email;
-//     var school = req.body.school;
-//     var whatsapp = req.body.whatsapp;
-//     var facebook = req.body.facebook;
-//     var twitter = req.body.twitter;
-//     var quote = req.body.quote;
-//     var phone = `234${req.body.phone_number}`;
-//     var department = req.body.department;
-//     var role = req.body.executive_role;
-//     var address = req.body.address;
-//     var P_A = req.body.P_A;
-//     var id = req.params.id;
-// //getting the user from the database
-//     User.findById(id , function(err , user){
-
-
-
-
-//         var m=0;
-//         if(err){
-//             return req.flash('error' , 'error in connection')
-//         }
-//         if(month==="January"){
-//             m=0;
-//         }
-//         if(month==="February"){
-//             m=1;
-//         }
-//         if(month==="March"){
-//             m=2;
-//         }
-//         if(month==="April"){
-//             m=3;
-//         }
-//         if(month==="May"){
-//             m=4;
-//         }
-//         if(month==="June"){
-//             m=5;
-//         }
-//         if(month==="July"){
-//             m=6;
-//         }
-//         if(month==="August"){
-//             m=7;
-//         }
-//         if(month==="September"){
-//             m=8;
-//         }
-//         if(month==="October"){
-//             m=9;
-//         }
-//         if(month==="November"){
-//             m=10;
-//         }
-//         if(month==="December"){
-//             m=11;
-//         }
-//         //if the role entered is president
-//         if(role==="President") {
-//             //find the former president
-//             User.find({
-//                 'executive_role':
-//                     'President'
-//             }, function (err, result) {
-//                 var oe = new OE();
-//                 //move former present to old executives section
-//                 oe.oexecutive = result;
-//                 oe.save();
-
-
-//                 result.forEach(function (res) {
-//                     //change the executive role of former president to empty
-//                     User.update(res, {$set: {'executive_role': [] , executive: 'NO'}}, function (err, user) {
-//                         return user;
-//                     });
-//                 });
-//             });
-//         }
-
-
-
-//         if(role==='Vice President') {
-//             User.find({
-//                 'executive_role':
-//                     'Vice President'
-//             }, function (err, result) {
-//                 var oe = new OE();
-//                 oe.oexecutive = result;
-//                 oe.save();
-
-
-//                 result.forEach(function (res) {
-//                     User.update(res, {$set: {'executive_role': [] ,executive: 'NO'}}, function (err, user) {
-//                         return user;
-//                     });
-//                 });
-//             });
-//         }
-//         if(role==='General Secretary') {
-
-//             User.find({
-//                 'executive_role':
-
-//                     'General Secretary'
-//             }, function (err, result) {
-//                 var oe = new OE();
-//                 oe.oexecutive = result;
-//                 oe.save();
-
-
-//                 result.forEach(function (res) {
-//                     User.update(res, {$set: {'executive_role': [] ,executive: 'NO'}}, function (err, user) {
-//                         return user;
-//                     });
-//                 });
-//             });
-//         }
-//         if(role==='Assistant General Secretary') {
-
-//             User.find({
-//                 'executive_role':
-
-//                     'Assistant General Secretary'
-//             }, function (err, result) {
-//                 var oe = new OE();
-//                 oe.oexecutive = result;
-//                 oe.save();
-
-
-//                 result.forEach(function (res) {
-//                     User.update(res, {$set: {'executive_role': [] ,executive: 'NO'}}, function (err, user) {
-//                         return user;
-//                     });
-//                 });
-//             });
-//         }
-//         if(role=== 'Brothers Coordinator') {
-//             User.find({
-//                 'executive_role':
-
-//                     'Brothers Coordinator'
-//             }, function (err, result) {
-//                 var oe = new OE();
-//                 oe.oexecutive = result;
-//                 oe.save();
-
-
-//                 result.forEach(function (res) {
-//                     User.update(res, {$set: {'executive_role': [] ,executive: 'NO'}}, function (err, user) {
-//                         return user;
-//                     });
-//                 });
-//             });
-//         }
-//         if(role==='Evangelism Coordinator') {
-//             User.find({
-//                 'executive_role':
-
-//                     'Evangelism Coordinator'
-//             }, function (err, result) {
-//                 var oe = new OE();
-//                 oe.oexecutive = result;
-//                 oe.save();
-
-
-//                 result.forEach(function (res) {
-//                     User.update(res, {$set: {'executive_role': [] ,executive: 'NO'}}, function (err, user) {
-//                         return user;
-//                     });
-//                 });
-//             });
-//         }
-//         if(role==='Assistant Evangelism Coordinator'){
-//             User.find({'executive_role' :
-
-//                     'Assistant Evangelism Coordinator'},function (err , result) {
-//                 var oe = new OE();
-//                 oe.oexecutive = result;
-//                 oe.save();
-
-
-//                 result.forEach( function(res) {
-//                     User.update(res, {$set: {'executive_role': [] ,executive: 'NO'}} , function (err , user) {
-//                         return user;
-//                     });
-//                 });
-//             });}
-
-//         if(role==='Choir Coordinator'){
-//             User.find({'executive_role' :
-
-//                     'Choir Coordinator'
-
-//             },function (err , result) {
-//                 var oe = new OE();
-//                 oe.oexecutive = result;
-//                 oe.save();
-
-
-//                 result.forEach( function(res) {
-//                     User.update(res, {$set: {'executive_role': [] ,executive: 'NO'}} , function (err , user) {
-//                         return user;
-//                     });
-//                 });
-//             });}
-//         if(role===  'Assistant Choir Coordinator'){
-//             User.find({'executive_role' :
-
-//                     'Assistant Choir Coordinator'},function (err , result) {
-//                 var oe = new OE();
-//                 oe.oexecutive = result;
-//                 oe.save();
-
-
-//                 result.forEach( function(res) {
-//                     User.update(res, {$set: {'executive_role': [] ,executive: 'NO'}} , function (err , user) {
-//                         return user;
-//                     });
-//                 });
-//             });
-//         }
-
-//         if(role===  'Welfare Coordinator'){
-//             User.find({'executive_role' :
-
-//                     'Welfare Coordinator'},function (err , result) {
-//                 var oe = new OE();
-//                 oe.oexecutive = result;
-//                 oe.save();
-
-
-//                 result.forEach( function(res) {
-//                     User.update(res, {$set: {'executive_role': [] ,executive: 'NO'}} , function (err , user) {
-//                         return user;
-//                     });
-//                 });
-//             });}
-
-//         if(role=== 'Assistant Welfare Coordinator') {
-//             User.find({
-//                 'executive_role':
-
-//                     'Assistant Welfare Coordinator'
-//             }, function (err, result) {
-//                 var oe = new OE();
-//                 oe.oexecutive = result;
-//                 oe.save();
-
-
-//                 result.forEach(function (res) {
-//                     User.update(res, {$set: {'executive_role': [] ,executive: 'NO'}}, function (err, user) {
-//                         return user;
-//                     });
-//                 });
-//             });
-//         }
-//         if(role==='Assistant Welfare Coordinator'){
-//             User.find({'executive_role' :
-
-//                     'Assistant Welfare Coordinator'},function (err , result) {
-//                 var oe = new OE();
-//                 oe.oexecutive = result;
-//                 oe.save();
-
-
-//                 result.forEach( function(res) {
-//                     User.update(res, {$set: {'executive_role': [] ,executive: 'NO'}} , function (err , user) {
-//                         return user;
-//                     });
-//                 });
-//             });}
-//         if(role==='Publicity Coordinator'){
-//             User.find({'executive_role' :
-
-//                     'Publicity Coordinator'},function (err , result) {
-//                 var oe = new OE();
-//                 oe.oexecutive = result;
-//                 oe.save();
-
-
-//                 result.forEach( function(res) {
-//                     User.update(res, {$set: {'executive_role': [] ,executive: 'NO'}} , function (err , user) {
-//                         return user;
-//                     });
-//                 });
-//             });}
-
-//         if (role==='Assistant Publicity Coordinator'){
-//             User.find({'executive_role' :
-
-//                     'Assistant Publicity Coordinator'},function (err , result) {
-//                 var oe = new OE();
-//                 oe.oexecutive = result;
-//                 oe.save();
-
-
-//                 result.forEach( function(res) {
-//                     User.update(res, {$set: {'executive_role': [] ,executive: 'NO'}} , function (err , user) {
-//                         return user;
-//                     });
-//                 });
-//             });}
-//         if (role==='Academic Coordinator') {
-//             User.find({
-//                 'executive_role':
-
-//                     'Academic Coordinator'
-//             }, function (err, result) {
-//                 var oe = new OE();
-//                 oe.oexecutive = result;
-//                 oe.save();
-
-
-//                 result.forEach(function (res) {
-//                     User.update(res, {$set: {'executive_role': [] ,executive: 'NO'}}, function (err, user) {
-//                         return user;
-//                     });
-//                 });
-//             });
-//         }
-//         if (role=== 'Assistant Academic Coordinator') {
-//             User.find({'executive_role' :
-
-//                     'Assistant Academic Coordinator'},function (err , result) {
-//                 var oe = new OE();
-//                 oe.oexecutive = result;
-//                 oe.save();
-
-
-//                 result.forEach( function(res) {
-//                     User.update(res, {$set: {'executive_role': [] ,executive: 'NO'}} , function (err , user) {
-//                         return user;
-//                     });
-//                 });
-//             });}
-//         if (role==='Drama Unit Coordinator') {
-//             User.find({
-//                 'executive_role':
-
-//                     'Drama Unit Coordinator'
-//             }, function (err, result) {
-//                 var oe = new OE();
-//                 oe.oexecutive = result;
-//                 oe.save();
-
-
-//                 result.forEach(function (res) {
-//                     User.update(res, {$set: {'executive_role': [] ,executive: 'NO'}}, function (err, user) {
-//                         return user;
-//                     });
-//                 });
-//             });
-//         }
-//         if (role=== 'Assistant Drama Unit Coordinator') {
-//             User.find({
-//                 'executive_role':
-
-//                     'Assistant Drama Unit Coordinator'
-//             }, function (err, result) {
-//                 var oe = new OE();
-//                 oe.oexecutive = result;
-//                 oe.save();
-
-
-//                 result.forEach(function (res) {
-//                     User.update(res, {$set: {'executive_role': [] ,executive: 'NO'}}, function (err, user) {
-//                         return user;
-//                     });
-//                 });
-//             });
-//         }
-//         if (role==='Ushering Unit Coordinator'){
-//             User.find({'executive_role' :
-
-//                     'Ushering Unit Coordinator'},function (err , result) {
-//                 var oe = new OE();
-//                 oe.oexecutive = result;
-//                 oe.save();
-
-
-//                 result.forEach( function(res) {
-//                     User.update(res, {$set: {'executive_role': [] ,executive: 'NO'}} , function (err , user) {
-//                         return user;
-//                     });
-//                 });
-//             });}
-//         if(role=== 'Assistance Ushering Unit Coordinator') {
-//             User.find({
-//                 'executive_role':
-
-//                     'Assistance Ushering Unit Coordinator'
-//             }, function (err, result) {
-//                 var oe = new OE();
-//                 oe.oexecutive = result;
-//                 oe.save();
-
-
-//                 result.forEach(function (res) {
-//                     User.update(res, {$set: {'executive_role': [] ,executive: 'NO'}}, function (err, user) {
-//                         return user;
-//                     });
-//                 });
-//             });
-//         }
-//         if (role==='Sisters Coordinator') {
-//             User.find({
-//                 'executive_role':
-
-//                     'Sisters Coordinator'
-//             }, function (err, result) {
-//                 var oe = new OE();
-//                 oe.oexecutive = result;
-//                 oe.save();
-
-
-//                 result.forEach(function (res) {
-//                     User.update(res, {$set: {'executive_role': [] ,executive: 'NO'}}, function (err, user) {
-//                         return user;
-//                     });
-//                 });
-//             });
-//         }
-//         if (role==='Assistant Sisters Coordinator') {
-//             User.find({
-//                 'executive_role':
-
-//                     'Assistant Sisters Coordinator'
-//             }, function (err, result) {
-//                 var oe = new OE();
-//                 oe.oexecutive = result;
-//                 oe.save();
-
-
-//                 result.forEach(function (res) {
-//                     User.update(res, {$set: {'executive_role': [] ,executive: 'NO'}}, function (err, user) {
-//                         return user;
-//                     });
-//                 });
-//             });
-//         }
-//         if (role==='Ex-Officio1') {
-//             User.find({
-//                 'executive_role':
-
-//                     'Ex-Officio1'
-//             }, function (err, result) {
-//                 var oe = new OE();
-//                 oe.oexecutive = result;
-//                 oe.save();
-
-
-//                 result.forEach(function (res) {
-//                     User.update(res, {$set: {'executive_role': [] ,executive: 'NO'}}, function (err, user) {
-//                         return user;
-//                     });
-//                 });
-//             });
-//         }
-//         if (role==='Ex-Officio2') {
-//             User.find({
-//                 'executive_role':
-
-//                     'Ex-Officio2'
-//             }, function (err, result) {
-//                 var oe = new OE();
-//                 oe.oexecutive = result;
-//                 oe.save();
-
-
-//                 result.forEach(function (res) {
-//                     User.update(res, {$set: {'executive_role': [] ,executive: 'NO'}}, function (err, user) {
-//                         return user;
-//                     });
-//                 });
-//             });
-//         }
-
-
-
-
-
-
-
-// //update the user details
-//      User.update(user , {$set: {
-//              firstname : (firstname ? firstname : user.firstname),
-//              secondname : (secondname ? secondname :user.secondname),
-//              level : (level ? level :user.level),
-//              unit : (unit ? unit :user.unit),
-//              status : (status ? status :user.status),
-//              m_b : (m ? m :user.m_b),
-//              unit2: (unit2 ? unit2 :user.unit2 ),
-//              d_b: (day ? day :user.d_b),
-
-//              y_b : (year ? year :user.y_b),
-//              email : (email ? email :user.email),
-//              whatsapp : ( whatsapp  ?  whatsapp  :user.whatsapp ),
-//              facebook: (facebook  ? facebook  :user.facebook ),
-//              twitter: (twitter ? twitter  :user.twitter),
-//              quote: (quote ?quote :user.quote),
-//              phone_number: (phone ?phone:user.phone_number),
-//              department : (department  ?department :user.department ),
-//              P_A : (P_A  ?P_A :user.P_A ),
-//              executive_role : (role  ? role :'' ),
-//              executive: (role  ? 'YES' :'NO' ),
-//              profile_image :(req.file ? newString : user.profile_image),
-//              address : (address  ?address :user.address ),
-//              school : (school  ?school :user.school )
-
-//          }} , function (err , user) {
-//          if(err){
-//              return res.redirect('/')
-//          }
-//          return user
-//      } );
-//         //search the birthday celebrant
-//         var d = new Date();
-//         var _day = d.getDate();
-//         var _month = d.getMonth();
-//         User.find({"m_b": _month, "d_b": _day}, function (err, user) {
-//             var userchunk = [];
-//             var chunk = 1;
-//             for (var i = 0; i < user.length; i += chunk) {
-//                 userchunk.push(user.slice(i, i + chunk));
-//             }
-//             //rendering the page displaying the levels of members
-//             res.render('users/levels' , {message: `Profile updated` , note : userchunk});
-//         });
-
-
-//     });
-
-// });
 
 
 
@@ -2793,8 +2209,14 @@ router.get('/alumni', function(req, res, next) {
             for (var i = 0; i < user.length; i += chunk) {
                 userchunks.push(user.slice(i, i + chunk));
             }
-
-            res.render('users/alumni' , {list:alumnis , note : userchunks});
+         User.find({status:'Alumnus'}).then(alumnus=>{
+             console.log("from alumnuis",alumnus)
+            res.render('users/alumni' , {list:alumnis , note : userchunks, alumnis: alumnus});
+         })
+         .catch(error=>{
+             console.log(error)
+         })
+            
         });
 
 
@@ -3305,687 +2727,666 @@ router.post('/signup' ,isLoggedin,passport.authenticate('locals.signup', {
 
 
 function uploadme(req, res, next){
-  
-    var busboy = new Busboy({ headers: req.headers });
-
-var p;
-var Firstname;
-var secondname;
-var level;
-var validate;
-busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
-    
-   if(!filename){
-      return res.send('<h3 style="color:red; padding:8px; background-color:pink">Please enter all the required details</h3>')
-   }
-  var saveTo =  `./public/images/${filename}`
-  p= saveTo
-  file.pipe(fs.createWriteStream(saveTo));
-});
-inspect = require('util').inspect;
-let b;
-req.body={};
-let counter=0;
-busboy.on('field', function(fieldname, val, fieldnameTruncated, valTruncated) {
-    req.body[fieldname]=val;
-    counter++;
-    if(counter===18){
-Secondname=req.body.secondname;
-var firstname =req.body.firstname;
-var phone_number = req.body.phone_number
-secondname = req.body.secondname;
-level = parseInt(req.body.level,10)
-var unit = req.body.unit;
-var status = req.body.status;
-var month = req.body.m_b
-var day = parseInt(req.body.d_b,10)
-var year = req.body.y_b
-var email = req.body.email
-var whatsapp = parseInt(req.body.whatsapp,10)
-var facebook = req.body.facebook
-var twitter = req.body.twitter
-var set_name = '';
-var school = req.body.school
-var quote = req.body.quote
-var department = req.body.department
-var role = req.body.executive_role
-var address = req.body.address
-var P_A = 'absent';
-
-
-var str = new String(phone_number);
-var index = str.indexOf('0');
-var country_number = str.replace(index, '234');
-var newUser = new User();
-
-
-
-
-
-User.findOne({'firstname': firstname}, function (err, user) {
-
- if (err) {
-     // return done(err)
-     return res.redirect('/');
- }
- // if (user) {
- //     // return done(null, false, {message: 'Member already exist'})
- //     return res.render('users/Register_member' , {message: message})
- // }
-
-
-
- var sttr = new String(firstname);
- var getname = sttr.charAt(0);
- const newname = getname.toLocaleUpperCase();
- Firstname = sttr.replace(getname, newname);
-   if(!p){
-       return
-   }
- const index= p.indexOf('c')
-      const c= p.slice(index+1, p.length+1);
-    
- newUser.profile_image=c
- newUser.firstname = Firstname;
- newUser.secondname = secondname;
- newUser.level = level;
- newUser.unit = unit;
-
- newUser.phone_number = country_number;
- newUser.status = status;
- if (month === "January") {
-     newUser.m_b = 0;
- }
- if (month === "February") {
-     newUser.m_b = 1;
- }
- if (month === "March") {
-     newUser.m_b = 2;
- }
- if (month === "April") {
-     newUser.m_b = 3;
- }
- if (month === "May") {
-     newUser.m_b = 4;
- }
- if (month === "June") {
-     newUser.m_b = 5;
- }
- if (month === "July") {
-     newUser.m_b = 6;
- }
- if (month === "August") {
-     newUser.m_b = 7;
- }
- if (month === "September") {
-     newUser.m_b = 8;
- }
- if (month === "October") {
-     newUser.m_b = 9;
- }
- if (month === "November") {
-     newUser.m_b = 10;
- }
- if (month === "December") {
-     newUser.m_b = 11;
- }
- newUser.d_b = day;
- newUser.y_b = year;
-
- newUser.email = email;
- newUser.whatsapp = whatsapp;
- newUser.twitter = twitter;
- newUser.quote = quote;
- newUser.department = department;
- if (role === "President") {
-     User.find({
-         'executive_role':
-             'President'
-     }, function (err, result) {
-         var oe = new OE();
-         oe.oexecutive = result;
-         oe.save();
-
-
-         result.forEach(function (res) {
-             User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
-                 return user;
-             });
-         });
-     });
- }
-
-
- if (role === 'Vice President') {
-     User.find({
-         'executive_role':
-             'Vice President'
-     }, function (err, result) {
-         var oe = new OE();
-         oe.oexecutive = result;
-         oe.save();
-
-
-         result.forEach(function (res) {
-             User.update(res, {$set: {'executive_role': []  , 'executive':'NO'}}, function (err, user) {
-                 return user;
-             });
-         });
-     });
- }
- if (role === 'General Secretary') {
-
-     User.find({
-         'executive_role':
-
-             'General Secretary'
-     }, function (err, result) {
-         var oe = new OE();
-         oe.oexecutive = result;
-         oe.save();
-
-
-         result.forEach(function (res) {
-             User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
-                 return user;
-             });
-         });
-     });
- }
- if (role === 'Assistant General Secretary') {
-
-     User.find({
-         'executive_role':
-             'Assistant General Secretary'
-     }, function (err, result) {
-         var oe = new OE();
-         oe.oexecutive = result;
-         oe.save();
-
-
-         result.forEach(function (res) {
-             User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
-                 return user;
-             });
-         });
-     });
- }
-
- if (role === 'Financial Secretary') {
-
-    User.find({
-        'executive_role':
-
-            'Financial Secretary'
-    }, function (err, result) {
-        var oe = new OE();
-        oe.oexecutive = result;
-        oe.save();
-
-
-        result.forEach(function (res) {
-            User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
-                return user;
-            });
-        });
-    });
-}
-
-if (role === 'Treasurer') {
-
-    User.find({
-        'executive_role':
-
-            'Treasurer'
-    }, function (err, result) {
-        var oe = new OE();
-        oe.oexecutive = result;
-        oe.save();
-
-
-        result.forEach(function (res) {
-            User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
-                return user;
-            });
-        });
-    });
-}
- if (role === 'Brothers Coordinator') {
-     User.find({
-         'executive_role':
-
-             'Brothers Coordinator'
-     }, function (err, result) {
-         var oe = new OE();
-         oe.oexecutive = result;
-         oe.save();
-
-
-         result.forEach(function (res) {
-             User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
-                 return user;
-             });
-         });
-     });
- }
- if (role === 'Evangelism Coordinator') {
-     User.find({
-         'executive_role':
-
-             'Evangelism Coordinator'
-     }, function (err, result) {
-         var oe = new OE();
-         oe.oexecutive = result;
-         oe.save();
-         result.forEach(function (res) {
-             User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
-                 return user;
-             });
-         });
-     });
- }
- if (role === 'Assistant Evangelism Coordinator') {
-     User.find({
-         'executive_role':
-
-             'Assistant Evangelism Coordinator'
-     }, function (err, result) {
-         var oe = new OE();
-         oe.oexecutive = result;
-         oe.save();
-
-
-         result.forEach(function (res) {
-             User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
-                 return user;
-             });
-         });
-     });
- }
-
- if (role === 'Choir Coordinator') {
-     User.find({
-         'executive_role':
-
-             'Choir Coordinator'
-
-     }, function (err, result) {
-         var oe = new OE();
-         oe.oexecutive = result;
-         oe.save();
-
-
-         result.forEach(function (res) {
-             User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
-                 return user;
-             });
-         });
-     });
- }
- if (role === 'Assistant Choir Coordinator') {
-     User.find({
-         'executive_role':
-
-             'Assistant Choir Coordinator'
-     }, function (err, result) {
-         var oe = new OE();
-         oe.oexecutive = result;
-         oe.save();
-
-
-         result.forEach(function (res) {
-             User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
-                 return user;
-             });
-         });
-     });
- }
-
- if (role === 'Welfare Coordinator') {
-     User.find({
-         'executive_role':
-
-             'Welfare Coordinator'
-     }, function (err, result) {
-         var oe = new OE();
-         oe.oexecutive = result;
-         oe.save();
-
-
-         result.forEach(function (res) {
-             User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
-                 return user;
-             });
-         });
-     });
- }
-
- if (role === 'Assistant Welfare Coordinator') {
-     User.find({
-         'executive_role':
-
-             'Assistant Welfare Coordinator'
-     }, function (err, result) {
-         var oe = new OE();
-         oe.oexecutive = result;
-         oe.save();
-
-
-         result.forEach(function (res) {
-             User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
-                 return user;
-             });
-         });
-     });
- }
- if (role === 'Assistant Welfare Coordinator') {
-     User.find({
-         'executive_role':
-
-             'Assistant Welfare Coordinator'
-     }, function (err, result) {
-         var oe = new OE();
-         oe.oexecutive = result;
-         oe.save();
-
-
-         result.forEach(function (res) {
-             User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
-                 return user;
-             });
-         });
-     });
- }
- if (role === 'Publicity Coordinator') {
-     User.find({
-         'executive_role':
-
-             'Publicity Coordinator'
-     }, function (err, result) {
-         var oe = new OE();
-         oe.oexecutive = result;
-         oe.save();
-
-
-         result.forEach(function (res) {
-             User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
-                 return user;
-             });
-         });
-     });
- }
-
- if (role === 'Assistant Publicity Coordinator') {
-     User.find({
-         'executive_role':
-
-             'Assistant Publicity Coordinator'
-     }, function (err, result) {
-         var oe = new OE();
-         oe.oexecutive = result;
-         oe.save();
-
-
-         result.forEach(function (res) {
-             User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
-                 return user;
-             });
-         });
-     });
- }
- if (role === 'Academic Coordinator') {
-     User.find({
-         'executive_role':
-
-             'Academic Coordinator'
-     }, function (err, result) {
-         var oe = new OE();
-         oe.oexecutive = result;
-         oe.save();
-
-
-         result.forEach(function (res) {
-             User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
-                 return user;
-             });
-         });
-     });
- }
- if (role === 'Assistant Academic Coordinator') {
-     User.find({
-         'executive_role':
-
-             'Assistant Academic Coordinator'
-     }, function (err, result) {
-         var oe = new OE();
-         oe.oexecutive = result;
-         oe.save();
-
-
-         result.forEach(function (res) {
-             User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
-                 return user;
-             });
-         });
-     });
- }
- if (role === 'Drama Unit Coordinator') {
-     User.find({
-         'executive_role':
-
-             'Drama Unit Coordinator'
-     }, function (err, result) {
-         var oe = new OE();
-         oe.oexecutive = result;
-         oe.save();
-
-
-         result.forEach(function (res) {
-             User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
-                 return user;
-             });
-         });
-     });
- }
- if (role === 'Assistant Drama Unit Coordinator') {
-     User.find({
-         'executive_role':
-
-             'Assistant Drama Unit Coordinator'
-     }, function (err, result) {
-         var oe = new OE();
-         oe.oexecutive = result;
-         oe.save();
-
-
-         result.forEach(function (res) {
-             User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
-                 return user;
-             });
-         });
-     });
- }
- if (role === 'Ushering Unit Coordinator') {
-     User.find({
-         'executive_role':
-
-             'Ushering Unit Coordinator'
-     }, function (err, result) {
-         var oe = new OE();
-         oe.oexecutive = result;
-         oe.save();
-
-
-         result.forEach(function (res) {
-             User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
-                 return user;
-             });
-         });
-     });
- }
- if (role === 'Assistance Ushering Unit Coordinator') {
-     User.find({
-         'executive_role':
-
-             'Assistance Ushering Unit Coordinator'
-     }, function (err, result) {
-         var oe = new OE();
-         oe.oexecutive = result;
-         oe.save();
-
-
-         result.forEach(function (res) {
-             User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
-                 return user;
-             });
-         });
-     });
- }
- if (role === 'Sisters Coordinator') {
-     User.find({
-         'executive_role':
-
-             'Sisters Coordinator'
-     }, function (err, result) {
-         var oe = new OE();
-         oe.oexecutive = result;
-         oe.save();
-
-
-         result.forEach(function (res) {
-             User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
-                 return user;
-             });
-         });
-     });
- }
- if (role === 'Assistant Sisters Coordinator') {
-     User.find({
-         'executive_role':
-
-             'Assistant Sisters Coordinator'
-     }, function (err, result) {
-         var oe = new OE();
-         oe.oexecutive = result;
-         oe.save();
-
-
-         result.forEach(function (res) {
-             User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
-                 return user;
-             });
-         });
-     });
- }
- if (role === 'Ex-Officio1') {
-     User.find({
-         'executive_role':
-
-             'Ex-Officio1'
-     }, function (err, result) {
-         var oe = new OE();
-         oe.oexecutive = result;
-         oe.save();
-
-
-         result.forEach(function (res) {
-             User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
-                 return user;
-             });
-         });
-     });
- }
- if (role === 'Ex-Officio2') {
-     User.find({
-         'executive_role':
-
-             'Ex-Officio2'
-     }, function (err, result) {
-         var oe = new OE();
-         oe.oexecutive = result;
-         oe.save();
-
-
-         result.forEach(function (res) {
-             User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
-                 return user;
-             });
-         });
-     });
- }
-
-
- if (role === "None") {
-     newUser.executive_role = '';
-     newUser.executive='NO'
-
- }
- else {
-     newUser.executive_role = role;
-     newUser.executive='YES'
- }
-
- newUser.school = school;
-
- newUser.set_name = set_name;
- newUser.facebook = facebook;
- newUser.address = address;
- newUser.P_A = P_A;
- newUser.wed= "absent";
- newUser.fri= "absent";
- newUser.sun= "absent";
-
-
- console.log(newUser)
-
-
- newUser.save(function (err, user) {
-  
-
-    
-     if (err) {
-         console.log(err)
-         return res.redirect('/');
-     }
-   console.log('successfully saved')     
-     
-     
-
-
-
- });
-
-});
-    }
-  });
  
-
-busboy.on('finish', function() {
-            var d = new Date();
-            var day = d.getDate();
-            var month = d.getMonth();
-
-            User.find({"m_b": month, "d_b": day}, function (err, user) {
-                var userchunk = [];
-                var chunk = 1;
-                for (var i = 0; i < user.length; i += chunk) {
-                    userchunk.push(user.slice(i, i + chunk));
-                }
-
-                return res.render('users/levels' , {note :userchunk, message2: `Congratulations, ${secondname} has been added to the  ${level} level brethren, select level to view profile `});
-            });
-    
-  
- 
-});
 
 //but this guy here  is also return statement so i am setting the header twice(error)
- req.pipe(busboy);
-// return next()
+
 }
 
 
-router.post('/Register_member', uploadme)
+router.post('/Register_member',(req,res,next)=>{
+    
+    var p;
+    var Firstname;
+    var secondname;
+    var level;
+    let alumnus=false;
+    var validate;
+    let b;
+    
+        if(req.body.status=== 'Alumnus'){
+            alumnus= true;
+           
+        }
+  
+    Secondname=req.body.secondname;
+    const download_url=req.body.download_url;
+    var firstname =req.body.firstname;
+    var phone_number = req.body.phone_number
+    secondname = req.body.secondname;
+    level =req.body.level
+    var unit = req.body.unit;
+    var status = req.body.status;
+    
+    var month = req.body.m_b
+    var day =req.body.d_b
+    var year = req.body.y_b
+    var email = req.body.email
+    var whatsapp = req.body.whatsapp
+    var alumnus_units= req.body.a_units;
+    var alumnus_excos= req.body.a_excos;
+    var alumnus_department= req.body.a_department;
+     var graduation_year= req.body.grad_year;
+    var facebook = req.body.facebook
+    var twitter = req.body.twitter
+    var set_name = '';
+    var school = req.body.school
+    var quote = req.body.quote
+    
+    var department = req.body.a_department;
+    
+    var role = req.body.executive_role
+    var address = req.body.address
+    var P_A = 'absent';
+    
+    
+    var str = new String(phone_number);
+    var index = str.indexOf('0');
+    var country_number = str.replace(index, '234');
+    var newUser = new User();
+    
+    
+    
+    
+    
+    User.findOne({'firstname': firstname}, function (err, user) {
+    
+     if (err) {
+         // return done(err)
+         return res.redirect('/');
+     }
+    
+    
+    
+     var sttr = new String(firstname);
+     var getname = sttr.charAt(0);
+     const newname = getname.toLocaleUpperCase();
+     Firstname = sttr.replace(getname, newname);
+        
+     newUser.profile_image=download_url
+     newUser.firstname = Firstname;
+     newUser.secondname = secondname;
+     newUser.level = level;
+     newUser.unit = unit;
+    newUser.graduation_year= graduation_year;
+    newUser.alumnus_department=alumnus_department;
+    newUser.alumnus_excos= alumnus_excos;
+    newUser.alumnus_units= alumnus_units;
+     newUser.phone_number = country_number;
+     newUser.status = status;
+     if (month === "January") {
+         newUser.m_b = 0;
+     }
+     if (month === "February") {
+         newUser.m_b = 1;
+     }
+     if (month === "March") {
+         newUser.m_b = 2;
+     }
+     if (month === "April") {
+         newUser.m_b = 3;
+     }
+     if (month === "May") {
+         newUser.m_b = 4;
+     }
+     if (month === "June") {
+         newUser.m_b = 5;
+     }
+     if (month === "July") {
+         newUser.m_b = 6;
+     }
+     if (month === "August") {
+         newUser.m_b = 7;
+     }
+     if (month === "September") {
+         newUser.m_b = 8;
+     }
+     if (month === "October") {
+         newUser.m_b = 9;
+     }
+     if (month === "November") {
+         newUser.m_b = 10;
+     }
+     if (month === "December") {
+         newUser.m_b = 11;
+     }
+     newUser.d_b = day;
+     newUser.y_b = year;
+    
+     newUser.email = email;
+     newUser.whatsapp = whatsapp;
+     newUser.twitter = twitter;
+     newUser.quote = quote;
+     newUser.department = department;
+     if (role === "President") {
+         User.find({
+             'executive_role':
+                 'President'
+         }, function (err, result) {
+             var oe = new OE();
+             oe.oexecutive = result;
+             oe.save();
+    
+    
+             result.forEach(function (res) {
+                 User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
+                     return user;
+                 });
+             });
+         });
+     }
+    
+    
+     if (role === 'Vice President') {
+         User.find({
+             'executive_role':
+                 'Vice President'
+         }, function (err, result) {
+             var oe = new OE();
+             oe.oexecutive = result;
+             oe.save();
+    
+    
+             result.forEach(function (res) {
+                 User.update(res, {$set: {'executive_role': []  , 'executive':'NO'}}, function (err, user) {
+                     return user;
+                 });
+             });
+         });
+     }
+     if (role === 'General Secretary') {
+    
+         User.find({
+             'executive_role':
+    
+                 'General Secretary'
+         }, function (err, result) {
+             var oe = new OE();
+             oe.oexecutive = result;
+             oe.save();
+    
+    
+             result.forEach(function (res) {
+                 User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
+                     return user;
+                 });
+             });
+         });
+     }
+     if (role === 'Assistant General Secretary') {
+    
+         User.find({
+             'executive_role':
+                 'Assistant General Secretary'
+         }, function (err, result) {
+             var oe = new OE();
+             oe.oexecutive = result;
+             oe.save();
+    
+    
+             result.forEach(function (res) {
+                 User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
+                     return user;
+                 });
+             });
+         });
+     }
+    
+     if (role === 'Financial Secretary') {
+    
+        User.find({
+            'executive_role':
+    
+                'Financial Secretary'
+        }, function (err, result) {
+            var oe = new OE();
+            oe.oexecutive = result;
+            oe.save();
+    
+    
+            result.forEach(function (res) {
+                User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
+                    return user;
+                });
+            });
+        });
+    }
+    
+    if (role === 'Treasurer') {
+    
+        User.find({
+            'executive_role':
+    
+                'Treasurer'
+        }, function (err, result) {
+            var oe = new OE();
+            oe.oexecutive = result;
+            oe.save();
+    
+    
+            result.forEach(function (res) {
+                User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
+                    return user;
+                });
+            });
+        });
+    }
+     if (role === 'Brothers Coordinator') {
+         User.find({
+             'executive_role':
+    
+                 'Brothers Coordinator'
+         }, function (err, result) {
+             var oe = new OE();
+             oe.oexecutive = result;
+             oe.save();
+    
+    
+             result.forEach(function (res) {
+                 User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
+                     return user;
+                 });
+             });
+         });
+     }
+     if (role === 'Evangelism Coordinator') {
+         User.find({
+             'executive_role':
+    
+                 'Evangelism Coordinator'
+         }, function (err, result) {
+             var oe = new OE();
+             oe.oexecutive = result;
+             oe.save();
+             result.forEach(function (res) {
+                 User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
+                     return user;
+                 });
+             });
+         });
+     }
+     if (role === 'Assistant Evangelism Coordinator') {
+         User.find({
+             'executive_role':
+    
+                 'Assistant Evangelism Coordinator'
+         }, function (err, result) {
+             var oe = new OE();
+             oe.oexecutive = result;
+             oe.save();
+    
+    
+             result.forEach(function (res) {
+                 User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
+                     return user;
+                 });
+             });
+         });
+     }
+    
+     if (role === 'Choir Coordinator') {
+         User.find({
+             'executive_role':
+    
+                 'Choir Coordinator'
+    
+         }, function (err, result) {
+             var oe = new OE();
+             oe.oexecutive = result;
+             oe.save();
+    
+    
+             result.forEach(function (res) {
+                 User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
+                     return user;
+                 });
+             });
+         });
+     }
+     if (role === 'Assistant Choir Coordinator') {
+         User.find({
+             'executive_role':
+    
+                 'Assistant Choir Coordinator'
+         }, function (err, result) {
+             var oe = new OE();
+             oe.oexecutive = result;
+             oe.save();
+    
+    
+             result.forEach(function (res) {
+                 User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
+                     return user;
+                 });
+             });
+         });
+     }
+    
+     if (role === 'Welfare Coordinator') {
+         User.find({
+             'executive_role':
+    
+                 'Welfare Coordinator'
+         }, function (err, result) {
+             var oe = new OE();
+             oe.oexecutive = result;
+             oe.save();
+    
+    
+             result.forEach(function (res) {
+                 User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
+                     return user;
+                 });
+             });
+         });
+     }
+    
+     if (role === 'Assistant Welfare Coordinator') {
+         User.find({
+             'executive_role':
+    
+                 'Assistant Welfare Coordinator'
+         }, function (err, result) {
+             var oe = new OE();
+             oe.oexecutive = result;
+             oe.save();
+    
+    
+             result.forEach(function (res) {
+                 User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
+                     return user;
+                 });
+             });
+         });
+     }
+     if (role === 'Assistant Welfare Coordinator') {
+         User.find({
+             'executive_role':
+    
+                 'Assistant Welfare Coordinator'
+         }, function (err, result) {
+             var oe = new OE();
+             oe.oexecutive = result;
+             oe.save();
+    
+    
+             result.forEach(function (res) {
+                 User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
+                     return user;
+                 });
+             });
+         });
+     }
+     if (role === 'Publicity Coordinator') {
+         User.find({
+             'executive_role':
+    
+                 'Publicity Coordinator'
+         }, function (err, result) {
+             var oe = new OE();
+             oe.oexecutive = result;
+             oe.save();
+    
+    
+             result.forEach(function (res) {
+                 User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
+                     return user;
+                 });
+             });
+         });
+     }
+    
+     if (role === 'Assistant Publicity Coordinator') {
+         User.find({
+             'executive_role':
+    
+                 'Assistant Publicity Coordinator'
+         }, function (err, result) {
+             var oe = new OE();
+             oe.oexecutive = result;
+             oe.save();
+    
+    
+             result.forEach(function (res) {
+                 User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
+                     return user;
+                 });
+             });
+         });
+     }
+     if (role === 'Academic Coordinator') {
+         User.find({
+             'executive_role':
+    
+                 'Academic Coordinator'
+         }, function (err, result) {
+             var oe = new OE();
+             oe.oexecutive = result;
+             oe.save();
+    
+    
+             result.forEach(function (res) {
+                 User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
+                     return user;
+                 });
+             });
+         });
+     }
+     if (role === 'Assistant Academic Coordinator') {
+         User.find({
+             'executive_role':
+    
+                 'Assistant Academic Coordinator'
+         }, function (err, result) {
+             var oe = new OE();
+             oe.oexecutive = result;
+             oe.save();
+    
+    
+             result.forEach(function (res) {
+                 User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
+                     return user;
+                 });
+             });
+         });
+     }
+     if (role === 'Drama Unit Coordinator') {
+         User.find({
+             'executive_role':
+    
+                 'Drama Unit Coordinator'
+         }, function (err, result) {
+             var oe = new OE();
+             oe.oexecutive = result;
+             oe.save();
+    
+    
+             result.forEach(function (res) {
+                 User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
+                     return user;
+                 });
+             });
+         });
+     }
+     if (role === 'Assistant Drama Unit Coordinator') {
+         User.find({
+             'executive_role':
+    
+                 'Assistant Drama Unit Coordinator'
+         }, function (err, result) {
+             var oe = new OE();
+             oe.oexecutive = result;
+             oe.save();
+    
+    
+             result.forEach(function (res) {
+                 User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
+                     return user;
+                 });
+             });
+         });
+     }
+     if (role === 'Ushering Unit Coordinator') {
+         User.find({
+             'executive_role':
+    
+                 'Ushering Unit Coordinator'
+         }, function (err, result) {
+             var oe = new OE();
+             oe.oexecutive = result;
+             oe.save();
+    
+    
+             result.forEach(function (res) {
+                 User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
+                     return user;
+                 });
+             });
+         });
+     }
+     if (role === 'Assistance Ushering Unit Coordinator') {
+         User.find({
+             'executive_role':
+    
+                 'Assistance Ushering Unit Coordinator'
+         }, function (err, result) {
+             var oe = new OE();
+             oe.oexecutive = result;
+             oe.save();
+    
+    
+             result.forEach(function (res) {
+                 User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
+                     return user;
+                 });
+             });
+         });
+     }
+     if (role === 'Sisters Coordinator') {
+         User.find({
+             'executive_role':
+    
+                 'Sisters Coordinator'
+         }, function (err, result) {
+             var oe = new OE();
+             oe.oexecutive = result;
+             oe.save();
+    
+    
+             result.forEach(function (res) {
+                 User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
+                     return user;
+                 });
+             });
+         });
+     }
+     if (role === 'Assistant Sisters Coordinator') {
+         User.find({
+             'executive_role':
+    
+                 'Assistant Sisters Coordinator'
+         }, function (err, result) {
+             var oe = new OE();
+             oe.oexecutive = result;
+             oe.save();
+    
+    
+             result.forEach(function (res) {
+                 User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
+                     return user;
+                 });
+             });
+         });
+     }
+     if (role === 'Ex-Officio1') {
+         User.find({
+             'executive_role':
+    
+                 'Ex-Officio1'
+         }, function (err, result) {
+             var oe = new OE();
+             oe.oexecutive = result;
+             oe.save();
+    
+    
+             result.forEach(function (res) {
+                 User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
+                     return user;
+                 });
+             });
+         });
+     }
+     if (role === 'Ex-Officio2') {
+         User.find({
+             'executive_role':
+    
+                 'Ex-Officio2'
+         }, function (err, result) {
+             var oe = new OE();
+             oe.oexecutive = result;
+             oe.save();
+    
+    
+             result.forEach(function (res) {
+                 User.update(res, {$set: {'executive_role': [] , 'executive':'NO'}}, function (err, user) {
+                     return user;
+                 });
+             });
+         });
+     }
+    
+    
+     if (role === "None") {
+         newUser.executive_role = '';
+         newUser.executive='NO'
+    
+     }
+     else {
+         newUser.executive_role = role;
+         newUser.executive='YES'
+     }
+    
+     newUser.school = school;
+     newUser.alumnus_excos=req.body.a_excos;
+     newUser.set_name = set_name;
+     newUser.facebook = facebook;
+     newUser.address = address;
+     newUser.P_A = P_A;
+     newUser.wed= "absent";
+     newUser.fri= "absent";
+     newUser.sun= "absent";
+    
+    
+    
+     newUser.save(function (err, user) {
+      
+    
+        
+         if (err) {
+             console.log(err)
+             return res.redirect('/');
+         }
+       
+         var d = new Date();
+         var day = d.getDate();
+         var month = d.getMonth();
+         console.log(user)
+    
+         User.find({"m_b": month, "d_b": day}, function (err, user) {
+             var userchunk = [];
+             var chunk = 1;
+             for (var i = 0; i < user.length; i += chunk) {
+                 userchunk.push(user.slice(i, i + chunk));
+             }
+    
+             return res.render('users/levels' , {note :userchunk, message2: `Congratulations, ${secondname} has been added to the  ${alumnus ?"Alumnus Group": `${level} brethren`}, select level to view profile or select alumni group to view alumnus `});
+         });
+    
+    
+    
+        });
+    });
+})
 
 
    
@@ -4021,6 +3422,9 @@ function isLoggedin(req , res , next){
         return res.json("Sorry this page is meant only for the admin");
     }
 }
+
+
+
 
 
 module.exports = router;

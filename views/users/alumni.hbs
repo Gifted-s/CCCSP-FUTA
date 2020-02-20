@@ -61,6 +61,149 @@
 
         </div>
     {{/each}}
+
+
+
+    <div class="row">
+           
+    {{#each alumnis}}
+                <div class="col-md-4 col-sm-4">
+                  {{#each this}}
+                   <div class="col-sm-6 col-md-4">
+                <div class="thumbnail" style=" width: 370px">
+                    <img style="width: 320px; height: 170px;" src="{{this.profile_image}}" class="img-responsive" alt="...">
+                    <div class="caption">
+                        <div class="description clearfix">
+                            <h3 class="name" style=" font-family: Verdana">{{this.firstname}} {{this.secondname}}</h3><br>
+
+                            <hr style="background-color: rgba(100% , 100%, 100%, 0.6); margin-top:-7px;">
+
+
+                            <!--<p  style="font-family: Verdana; font-weight: lighter; font-size: 123%;" class="pull-left price ">personal Quote: "{{this.quote}}"</p><br>-->
+                            <!--<p><a style="margin-right: 10px; margin-left:-100px; font-weight: bold" href="/users/remove/{{this._id}}" onclick="success()"  class="btn btn-primary pull-right " role="button">Remove Members</a> </p><br>-->
+                            <!--<p><button style=" font-weight: bold" id="show"  class="btn btn-primary pull-left " role="button">View Full profile</button> </p><br>-->
+
+
+
+                            <ul  id="ul" style="border-radius: 0; margin-top: -38px; width: 330px; float:left; background-color: white;">
+                                <!--<button onclick="clear()" id="btn"  style="margin-bottom: 3px; width: 30px; margin-left: 299px;" class=" btn btn-primary">-->
+
+                                <!--<span class="l pull-right" style=" margin-top: -9px; background-color: white; position: absolute; transform: rotate(45deg);width : 2px; height: 18px ; "></span >-->
+                                <!--<span class="r pull-right"  style="  margin-top: -9px; background-color: white;  position:absolute;transform: rotate(-45deg);width : 2px; height: 18px ; "></span>-->
+                                <!--</button>-->
+                                <li style="border-radius: 0; font-size: 120%; font-family: Verdana" class="list-group-item">
+                                    <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid royalblue; ">
+                                        <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color: royalblue;"></div>
+                                    </div> <span style="color: royalblue; font-weight: normal"></span>  Alumni
+                                </li>
+
+                                <li style="font-size: 120%; font-family: Verdana" class="list-group-item">
+                                    <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid royalblue; ">
+                                        <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color: royalblue;"></div>
+                                    </div> <span style="color: royalblue; font-weight:normal"> Graduated from department of:</span> {{this.alumnus_department}}
+                                </li>
+                                 <li style="font-size: 120%; font-family: Verdana" class="list-group-item">
+                                    <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid royalblue; ">
+                                        <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color: royalblue;"></div>
+                                    </div> <span style="color: royalblue; font-weight:normal"> Graduated from the school:</span> {{this.school}}
+                                </li>
+
+                                                           <li style="font-size: 120%; font-family: Verdana" class="list-group-item">
+                                    <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid royalblue; ">
+                                        <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color: royalblue;"></div>
+                                    </div> <span style="color: royalblue; font-weight:normal"> Graduation year:</span> {{this.graduation_year}}
+                                </li>
+
+
+                                <li style="font-size: 120%; font-family: Verdana" class="list-group-item">
+                                    <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid royalblue; ">
+                                        <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color: royalblue;"></div>
+                                    </div><span style="color: royalblue; font-weight:normal"> Personal Quote:</span> "{{this.quote}}"
+                                </li>
+
+
+                                <li style="font-size: 120%; font-family: Verdana" class="list-group-item">
+                                    <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid royalblue; ">
+                                        <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color: royalblue;"></div>
+                                    </div><span style="color: royalblue; font-weight:normal"> Unit:</span> {{this.unit}}, {{this.alumnus_units}}
+                                </li>
+                                <li style="font-size: 120%; font-family: Verdana" class="list-group-item" >
+                                    <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid royalblue;">
+                                        <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color:royalblue;"></div>
+                                    </div><span style="color: royalblue; font-weight: normal"> Phone-number:</span> {{this.phone_number}}
+                                </li>
+                                <li style="font-size: 120%; font-family: Verdana" class="list-group-item" >
+                                    <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid royalblue;">
+                                        <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color: royalblue;"></div>
+                                    </div>
+                                    <span style="color: royalblue; font-weight: normal"> Address: </span>{{this.address}}
+                                </li>
+                                <li style="font-size: 120%; font-family: Verdana" class="list-group-item" >
+
+                                    <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid royalblue;">
+                                        <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color: royalblue;"></div>
+                                    </div><span style="color: royalblue; font-weight: normal"> Status:</span> Alumni
+                                </li>
+                                <li style="font-size: 120%; font-family: Verdana" class="list-group-item" >
+                                    <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid royalblue;">
+                                        <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color: royalblue;"></div>
+                                    </div> <span style="color: royalblue; font-weight: normal">  Past:</span>  {{this.alumnus_excos}}
+                                </li>
+                                <li style="font-size: 120%; font-family: Verdana" class="list-group-item" >
+                                    <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid royalblue;">
+                                        <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color: royalblue;"></div>
+                                    </div> <span style="color: royalblue; font-weight: normal">  Whatsapp no:</span> {{this.whatsapp}}
+                                </li>
+                                <li style="font-size: 120%; font-family: Verdana" class="list-group-item" >
+                                    <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid royalblue;">
+                                        <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color:royalblue;"></div>
+                                    </div><span style="color: royalblue; font-weight: normal">Facebook page:</span> {{this.facebook}}
+                                </li>
+                                <li style="font-size: 120%; font-family: Verdana" class="list-group-item" >
+                                    <div class="pull-right" style=" width: 14px; height: 14px; border: 1px solid royalblue;">
+                                        <div class="pull-right" style="margin: 2px 2px 0 0; width: 8px; height: 8px; background-color: royalblue;"></div>
+                                    </div><span style="color: royalblue; font-weight: normal">  twitter link:</span> {{this.twitter}}
+                                </li>
+
+                            </ul>
+
+
+                            <!--<div class="other_d">-->
+                            <!--<ul>-->
+                            <!--<li>-->
+                            <!--<div style="position: relative; margin-top: 10px; width: 200px; height: 40px; border: 1px solid" >Unit: {{this.unit}}</div>-->
+                            <!--</li>-->
+                            <!--</ul>-->
+                            <!--</div>-->
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+                  {{/each}}
+                </div>
+    {{/each}}
+
+
+
+
+
+                
+               
+
+                   
+         
+                </ul>
+            </div>
+
+
+
+
+        </div>
 </div>
 
 

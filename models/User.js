@@ -28,11 +28,18 @@ var UserSchema = new Schema({
       required:false,
 
     },
+    units:{
+        type:String,
+        required:false,
+  
+      },
+
     unit2:{
         type:String,
         required:false,
 
     },
+    
     phone_number:{
         type:String,
         required:false,
@@ -129,8 +136,28 @@ executive_role:{
         type:String,
         required:false
 
-    }
+    },
+  
+    alumnus_units:{
+        type:String,
+        required:false
+    },
+    alumnus_excos:{
+        type:String,
+        required:false
+    },
+    alumnus_department:{
+        type:String,
+        required:false
+    },
+    graduation_year:{
+        type:Number,
+        required:false
+    },
 
+
+
+    
 });
 var User= module.exports=mongoose.model('User', UserSchema);
 

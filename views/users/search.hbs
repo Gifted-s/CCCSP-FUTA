@@ -20,7 +20,7 @@
                                 <h3 class="name" style=" font-family: Verdana">{{this.firstname}} {{this.secondname}}</h3><br>
 
                                 <hr style="background-color: rgba(100% , 100%, 100%, 0.6); margin-top:-7px;">
-                                <p style="font-family: Verdana; font-weight: normal; font-size: 123%;" class="level">At Level: {{this.level}} Level</p><br>
+                                <p style="font-family: Verdana; font-weight: normal; font-size: 123%;" class="level">Department: {{this.department}} Level</p><br>
                                 <p style="font-family: Verdana; font-weight: normal; font-size: 123%;" class="level">Qoute: {{this.quote}} Level</p><br>
 
                                 <p><a style=" font-weight: bold" href="/users/view/{{this._id}}" onclick="success()"  class="btn btn-primary pull-left " role="button"><i class="fas fa-address-book"></i> View Full profile</a> </p><br>
@@ -36,9 +36,9 @@
     </div>
     {{/each}}
 
-<div style="color:red">
+{{!-- <div style="color:red">
     Related search in the alumni section
-</div>
+</div> --}}
 {{# if user1}}
     {{# each user1}}
 
@@ -140,7 +140,7 @@
     {{/each}}
 {{else}}
     <div>
-        <h3>No related in the alumni section</h3>
+        
     </div>
 {{/if}}
 
@@ -164,8 +164,8 @@
                                     <h3 class="name" style=" font-family: Verdana">{{this.firstname}} {{this.secondname}}</h3><br>
 
                                     <hr style="background-color: rgba(100% , 100%, 100%, 0.6); margin-top:-7px;">
-                                    <p style="font-family: Verdana; font-weight: normal; font-size: 123%;" class="level">At Level: {{this.level}} Level</p><br>
-                                    <p style="font-family: Verdana; font-weight: normal; font-size: 123%;" class="level">Qoute: {{this.quote}} Level</p><br>
+                                    <p style="font-family: Verdana; font-weight: normal; font-size: 123%;" class="level">Unit: {{this.alumnus_units}}, {{this.unit}}</p><br>
+                                    <p style="font-family: Verdana; font-weight: normal; font-size: 123%;" class="level">Quote: {{this.quote}}</p><br>
 
                                     <p><a style=" font-weight: bold" href="/users/view/{{this._id}}" onclick="success()"  class="btn btn-primary pull-left " role="button"><i class="fas fa-address-book"></i> View Full profile</a> </p><br>
 
@@ -181,7 +181,7 @@
         {{/each}}
 
         <div>
-            Related search in the alumni section
+           
         </div>
         {{# if user1}}
             {{# each user1}}
@@ -284,7 +284,7 @@
             {{/each}}
         {{else}}
             <div>
-                <h3>No related in the alumni section</h3>
+               
             </div>
         {{/if}}
 

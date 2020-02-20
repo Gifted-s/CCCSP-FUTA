@@ -153,7 +153,7 @@
 <div class="mobile_view">
 <div class="card" style="width: 100%; margin-top:-70px;padding:20px;">
   <h1 style="text-align: center;"> {{firstname}} {{secondname}}</h1>
-  <img src="{{this.profile_image}}" style="height:100%" class="card-img-top" alt="...">
+  <img src="{{this.profile_image}}" style="width: 300px; height:266px;" class="card-img-top" alt="...">
   
   <div class="card-body">
     
@@ -196,11 +196,11 @@ Quote  : {{quote}}
     </div>
     <hr>
     <div class="tt card-text col-sm-12">
-        Unit in church : {{this.unit}}
+        Unit in church : {{this.unit}}, {{this.units}}
     </div>
     <hr>
     <div class="tt card-text col-sm-12">
-        Executive : {{this.executive}}
+        Executive : {{this.executive}}{{this.alumnus_excos}}
     </div>
     <hr>
     <div class="tt card-text col-sm-12">

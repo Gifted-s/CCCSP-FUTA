@@ -2,13 +2,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
 </header>
 
 {{>sidebar}}
 
 
 <div class="thumbnail att">
-    <form class="form" method="post" enctype="multipart/form-data" action="/users/Register_member">
+
+    <form class="form" method="post"  action="/users/Register_member">
         {{# if hasError}}
             {{# each message}}
             <div class="alert alert-danger">
@@ -74,9 +76,10 @@
             <div class="col-md-3">
                 <label for="id"> Status  <span  style="padding-left:10px;color:red; font-weight: bold; font-size: 110%; margin-top: 2px; position: absolute">*</span>:
                     <select style="width: 230px; height: 40px;border-radius: 0; margin-left: 18px; margin-top: 6px;   border: 1px solid rgba(0, 0, 0, 0.5);" name="status" class="form-control">
-                        <option  name="status" class="form-control">Under-graduate </option>
-                        <option name="status" class="form-control">Post-graduate </option>
-                        <option name="status" class="form-control"> Alumnus </option>
+                        <option  name="status" value="Under-graduate " class="form-control">Under-graduate </option>
+                        <option name="status" value="Post-graduate" class="form-control">Post-graduate </option>
+                        <option name="status" value="Alumnus" class="form-control">Alumnus </option>
+
 
                     </select>
                 </label>
@@ -96,7 +99,8 @@
                           <div class="row">
                               <div class="col-md-12">
 
-                                  <input type="file" name="profile_image" class="form-control">
+                                  <input type="file" name="profile_image" id="fileButton" class="form-control">
+                                  <input type="hidden" name="download_url" id='download_url' />
                               </div>
                           </div>
                           <div class="row" style="margin-top: 10px">
@@ -176,14 +180,14 @@
                               <div class="col-md-4 pull-right" >
                                   <label  for="id"> School  <span  style="padding-left:10px;color:red; font-weight: bold; font-size: 110%; margin-top: 2px; position: absolute">*</span>:
                                       <select style=" height: 40px;border-radius: 0; margin-top: 6px;   border: 1px solid rgba(0, 0, 0, 0.5);" name="school" class="form-control" >
-                                          <option  name="school" class="form-control">SAAT </option>
-                                        <option  name="school" class="form-control">SEET </option>
-                                        <option  name="school" class="form-control">SEMS </option>
-                                        <option  name="school" class="form-control">SET </option>
-                                        <option  name="school" class="form-control">SHHT</option>
-                                        <option  name="school" class="form-control">SMAT </option>
-                                        <option  name="school" class="form-control">SOC </option>
-                                        <option  name="school" class="form-control">SOS </option>
+                                            <option  name="school" value="SAAT" class="form-control">SAAT </option>
+                                            <option  name="school" value="SEET" class="form-control">SEET </option>
+                                            <option  name="school" value="SEMS" class="form-control">SEMS </option>
+                                            <option  name="school" value="SET" class="form-control">SET </option>
+                                            <option  name="school" value="SHHT" class="form-control">SHHT</option>
+                                            <option  name="school" value="SMAT" class="form-control">SMAT </option>
+                                            <option  name="school" value='SOC' class="form-control">SOC </option>
+                                            <option  name="school" value="SOS" class="form-control">SOS </option>
 
 
                                       </select>
@@ -271,6 +275,67 @@
         </div>
 
         </div>
+
+           
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyAc0zU5ZUW3qiYnO6T0bpgj6m5KxZqkJvo",
+    authDomain: "upload-2d878.firebaseapp.com",
+    databaseURL: "https://upload-2d878.firebaseio.com",
+    projectId: "upload-2d878",
+    storageBucket: "upload-2d878.appspot.com",
+    messagingSenderId: "656918762064",
+    appId: "1:656918762064:web:bfd0013720b64b9ea3b755",
+    measurementId: "G-Q76V627KQ2"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+//   firebase.analytics();
+
+  const download_url= document.getElementById('download_url');
+  const fileButton= document.getElementById('fileButton');
+
+  fileButton.addEventListener('change', function(e){
+      console.log('file changed')
+      //get File
+       var file = e.target.files[0]
+
+      //create storage ref
+   var storageRef=   firebase.storage().ref('/image'+ file.name);
+
+
+
+      //uploafd file
+
+    const task = storageRef.put(file);
+console.log(task)
+
+
+      //update progress bar
+
+      task.on('state_changed', 
+      function  progress(snapshot){
+         let percentage= (snapshot.bytesTransferred/ snapshot.totalBytes) * 100;
+        console.log(percentage)
+
+      },
+      function error (err){
+        console.log(err)
+      }
+      ,
+
+      function complete(){
+        task.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+        console.log('File available at', downloadURL);
+        download_url.value=downloadURL;
+  });
+      }
+      )
+
+
+  })
+</script>
 
     </form>
     <div class="mobile_view">
@@ -484,12 +549,20 @@ color: white;
             <span></span>
             <span></span>
         </div>
-    <form class="fo" enctype="multipart/form-data"  action="/users/Register_member" method="post" >
+    <form class="fo"   action="/users/Register_member" method="post" >
 
 
         <div class="row">
             <div class="col-sm-12">
+
+
+
+
+
+
+
             <div style="margin-top: 30px;" class="form-group">
+
                     {{# if hasError}}
                         {{# each message}}
                             <div class="alert alert-danger">
@@ -497,12 +570,16 @@ color: white;
                             </div>
                         {{/each}}
                     {{/if}}
-                    <label for="id">Members first name <span  style="padding-left:10px;color:red; font-weight: bold; font-size: 110%; margin-top: 30pxpx; position: absolute">*</span> :</label>
-                    <input type="text" id ="id" class="form-control" name="firstname" placeholder="Members First name">
+                    <p>Please note that alumnus can register here too</p>
 
-                    <label for="id">Members second name <span  style="padding-left:10px;color:red; font-weight: bold; font-size: 110%; margin-top: 2px; position: absolute">*</span> :</label>
+                
+
+                    <label for="id">Members' or alumnus first name <span  style="padding-left:10px;color:red; font-weight: bold; font-size: 110%; margin-top: 30pxpx; position: absolute">*</span> :</label>
+                    <input type="text" id ="id" class="form-control" name="firstname" placeholder="Members First name">
+                    <label for="id">Members or alumnus second name <span  style="padding-left:10px;color:red; font-weight: bold; font-size: 110%; margin-top: 2px; position: absolute">*</span> :</label>
                     <input id ="id" type="text" class="form-control" name="secondname" placeholder="Members Second name">
                 </div>
+                
             </div>
 
 
@@ -512,19 +589,22 @@ color: white;
                         <div class="col-md-3">
 
                             <!--<input type="text" id ="id" class="form-control" name="level" placeholder="Member's level">-->
-                            <label for="id"> Level  <span  style="padding-left:10px;color:red; font-weight: bold; font-size: 110%; margin-top: 2px; position: absolute">*</span>:
-                                <select style="width: 249px; height: 40px;border-radius: 0; margin-top: 6px;   border: 1px solid rgba(0, 0, 0, 0.5);" name="level" class="form-control">
-                                    <option  name="level" class="form-control">100 </option>
-                                    <option name="level" class="form-control">200 </option>
-                                    <option name="level" class="form-control">300 </option>
-                                    <option name="level" class="form-control">400 </option>
-                                    <option name="level" class="form-control">500 </option>
+                            <label for="id"> Level (for undergraduates)  <span  style="padding-left:10px;color:red; font-weight: bold; font-size: 110%; margin-top: 2px; position: absolute">*</span>:
+                                <select style="width: 249px; height: 40px;border-radius: 0; margin-top: 6px;   border: 1px solid rgba(0, 0, 0, 0.5);" type="number" name="level" class="form-control">
+                                     <option  name="level" class="form-control">100 </option>
+                                     <option name="level" class="form-control">200 </option>
+                                     <option name="level" class="form-control">300 </option>
+                                     <option name="level" class="form-control">400 </option>
+                                     <option name="level" class="form-control">500 </option>
+                                   
                                 </select>
                             </label>
                         </div>
 
                         <div class="col-md-3">
-                            <label for="id"> Unit:
+                          
+
+                            <label for="id"> Unit(select one core unit):
                                 <select style="width: 249px; height: 40px;border-radius: 0; margin-top: 6px;   border: 1px solid rgba(0, 0, 0, 0.5);" name="unit" class="form-control">
                                     <option  name="unit" class="form-control">Drama unit </option>
                                     <option name="unit" class="form-control">Welfare unit </option>
@@ -535,6 +615,13 @@ color: white;
                                     <option name="unit" class="form-control">Ushering unit</option>
                                 </select>
                             </label>
+
+
+                             
+                            <label for="id"> Type in other units here if you are in more than one unit(undergraduate), almnus can also type the units they were while serving in CCCSP FUTA <span  style="padding-left:10px;color:red; font-weight: bold; font-size: 110%; margin-top: 2px; position: absolute">*</span> :</label>
+                            <input id ="id" type="text" class="form-control" name="a_units" placeholder="E.g evangelism, publicity etc">
+                       
+
                         </div>
 
                         <div class="col-md-3">
@@ -543,14 +630,14 @@ color: white;
                         </div>
 
                         <div class="col-md-3">
-                            <label for="id"> Status  <span  style="color:red; font-weight: bold; font-size: 110%; margin-top: 2px; position: absolute">*</span>:
+                            <label for="id" class="text-info"> Status ( this is <b>important</b> )  <span  style="color:red; font-weight: bold; font-size: 110%; margin-top: 2px; position: absolute">*</span>:</label>
                                 <select style="width: 230px; height: 40px;border-radius: 0;  margin-top: 6px;   border: 1px solid rgba(0, 0, 0, 0.5);" name="status" class="form-control">
-                                    <option  name="status" class="form-control">Under-graduate </option>
-                                    <option name="status" class="form-control">Post-graduate </option>
-                                    <option name="status" class="form-control"> Alumnus </option>
+                                    <option  name="status" value="Under-graduate " class="form-control">Under-graduate</option>
+                                    <option name="status" value="Post-graduate" class="form-control">Post-graduate</option>
+                                    <option name="status" value="Alumnus" class="form-control">Alumnus</option>
 
                                 </select>
-                            </label>
+                            
                         </div>
                     </div>
 
@@ -585,8 +672,10 @@ color: white;
                                     <!--</div>-->
                                     <div class="col-md-12">
 
-<label for="id"> Profile Image  <span  style="padding-left:10px;color:red; font-weight: bold; font-size: 110%; margin-top: 2px; position: absolute">*</span>:</label>
-                                        <input type="file" name="profile_image" class="form-control">
+                                    <label for="id"> Profile Image  <span  style="padding-left:10px;color:red; font-weight: bold; font-size: 110%; margin-top: 2px; position: absolute">*</span>:</label>
+                                        <input type="file" name="profile_image" id="fileBtn" class="form-control">
+                                        <input type="hidden" name='download_url' id='download_uri' />
+
                                     </div>
                                     <div class="col-md-4">
                                         <label for="id"> Month of birth  <span  style="padding-left:10px;color:red; font-weight: bold; font-size: 110%; margin-top: 2px; position: absolute">*</span>:
@@ -616,7 +705,7 @@ color: white;
 
                                     <div class="col-md-4">
                                         <label for="id">Year  of birth:</label>
-                                        <input id="id" type="text" name="y_b" class="form-control" placeholder="e.g (2019)">
+                                        <input id="id" type="number" name="y_b" class="form-control" placeholder="e.g (2019)">
                                     </div>
                                 </div>
 
@@ -624,7 +713,7 @@ color: white;
                                 <div  class="row" style="margin-top: 10px" >
 
 
-                                    <label style="margin-left: 20px;" for="id"> Executive Role  <span  style="padding-left:10px;color:red; font-weight: bold; font-size: 110%; margin-top: 2px; position: absolute"></span>:
+                                    <label style="margin-left: 20px;" for="id">Present Executive Role(undergraduate)  <span  style="padding-left:10px;color:red; font-weight: bold; font-size: 110%; margin-top: 2px; position: absolute"></span>:
                                         <select style=" height: 40px;border-radius: 0; margin-top: 6px;   border: 1px solid rgba(0, 0, 0, 0.5);" name="executive_role" class="form-control" >
                                             <option  name="executive_role" class="form-control">None </option>
                                             <option  name="executive_role" class="form-control">President </option>
@@ -658,16 +747,20 @@ color: white;
 
                                     </label>
                                     <div class="col-md-4">
-                                        <label  for="id"> School  <span  style="padding-left:10px;color:red; font-weight: bold; font-size: 110%; margin-top: 2px; position: absolute">*</span>:
+                                          <label for="id">For Alumnus, Select Year of graduation</label>
+                                        <input id="id" type="number" name="grad_year" placeholder="e.g 2020" class="form-control">
+                                         <label for="id">For Alumnus, Excoship positions held by alumnus if any:</label>
+                                        <input id="id" type="text" name="a_excos" placeholder="e.g President, General Secretary" class="form-control">
+                                        <label  for="id"> School or Graduated from the school of  <span  style="padding-left:10px;color:red; font-weight: bold; font-size: 110%; margin-top: 2px; position: absolute">*</span>:
                                             <select style=" height: 40px;border-radius: 0; margin-top: 6px;   border: 1px solid rgba(0, 0, 0, 0.5);" name="school" class="form-control" >
-                                                <option  name="school" class="form-control">SAAT </option>
-                                                <option  name="school" class="form-control">SEET </option>
-                                                 <option  name="school" class="form-control">SEMS </option>
-                                                 <option  name="school" class="form-control">SET </option>
-                                                <option  name="school" class="form-control">SHHT</option>
-                                                 <option  name="school" class="form-control">SMAT </option>
-                                                 <option  name="school" class="form-control">SOC </option>
-                                                <option  name="school" class="form-control">SOS </option>
+                                                <option  name="school" value="SAAT" class="form-control">SAAT </option>
+                                                <option  name="school" value="SEET" class="form-control">SEET </option>
+                                                 <option  name="school" value="SEMS" class="form-control">SEMS </option>
+                                                 <option  name="school" value="SET" class="form-control">SET </option>
+                                                 <option  name="school" value="SHHT" class="form-control">SHHT</option>
+                                                 <option  name="school" value="SMAT" class="form-control">SMAT </option>
+                                                 <option  name="school" value='SOC' class="form-control">SOC </option>
+                                                 <option  name="school" value="SOS" class="form-control">SOS </option>
 
                                                
                                                 
@@ -685,8 +778,8 @@ color: white;
 
                                 <div  class="row" style="margin-top: 10px" >
                                     <div class="col-md-12">
-                                        <label for="id">Department  <span  style="padding-left:10px;color:red; font-weight: bold; font-size: 110%; margin-top: 2px; position: absolute">*</span>:</label>
-                                        <input id="id" type="text" name="department" placeholder="Member's department" class="form-control">
+                                        <label for="id">Department or  Graduated from department of(Alumnus)  <span  style="padding-left:10px;color:red; font-weight: bold; font-size: 110%; margin-top: 2px; position: absolute">*</span>:</label>
+                                        <input id="id" type="text" name="a_department" placeholder="Member's department" class="form-control">
                                     </div>
                                 </div>
                                 <div  class="row" style="margin-top: 10px" >
@@ -765,6 +858,71 @@ color: white;
         </div>
 
     </form>
+
+
+<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+
+
+    
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyAc0zU5ZUW3qiYnO6T0bpgj6m5KxZqkJvo",
+    authDomain: "upload-2d878.firebaseapp.com",
+    databaseURL: "https://upload-2d878.firebaseio.com",
+    projectId: "upload-2d878",
+    storageBucket: "upload-2d878.appspot.com",
+    messagingSenderId: "656918762064",
+    appId: "1:656918762064:web:bfd0013720b64b9ea3b755",
+    measurementId: "G-Q76V627KQ2"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+//   firebase.analytics();
+
+  const download_uri= document.getElementById('download_uri');
+  const fileBtn= document.getElementById('fileBtn');
+
+  fileBtn.addEventListener('change', function(e){
+      console.log('file changed')
+      //get File
+       var file = e.target.files[0]
+
+      //create storage ref
+   var storageRef=   firebase.storage().ref('/image'+ file.name);
+
+
+
+      //uploafd file
+
+    const task = storageRef.put(file);
+
+
+
+      //update progress bar
+
+      task.on('state_changed', 
+      function  progress(snapshot){
+         let percentage= (snapshot.bytesTransferred/ snapshot.totalBytes) * 100;
+        console.log(percentage)
+
+      },
+      function error (err){
+        console.log(err)
+      }
+      ,
+
+      function complete(){
+        task.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+        console.log('File available at', downloadURL);
+        download_uri.value=downloadURL;
+  });
+      }
+      )
+
+
+  })
+</script>
     </div>
     <script>
 //         var d_b= document.getElementById('d_id');
@@ -782,6 +940,7 @@ color: white;
     </footer>
 </div>
 <script type="text/javascript">
+   
     const sidebar = document.getElementById('sidebar');
     function  toggle() {
         sidebar.classList.toggle('active');
@@ -865,6 +1024,12 @@ width: 320px;
        }
        .att{
            margin-top: -30px;
+       }
+       .form-control{
+           margin-top: 10px;
+       }
+       label{
+           margin-top: 8px;
        }
        #sidebar{
            width: 66%;

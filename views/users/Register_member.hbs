@@ -675,7 +675,7 @@ color: white;
                                     <label for="id"> Profile Image  <span  style="padding-left:10px;color:red; font-weight: bold; font-size: 110%; margin-top: 2px; position: absolute">*</span>:</label>
                                         <input type="file" name="profile_image" id="fileBtn" class="form-control">
                                         <input type="hidden" name='download_url' id='download_uri' />
-
+                                     Uploading:<progress value="0" max="100" id="uploader">0%</progress><br/>
                                     </div>
                                     <div class="col-md-4">
                                         <label for="id"> Month of birth  <span  style="padding-left:10px;color:red; font-weight: bold; font-size: 110%; margin-top: 2px; position: absolute">*</span>:
@@ -882,6 +882,7 @@ color: white;
 
   const download_uri= document.getElementById('download_uri');
   const fileBtn= document.getElementById('fileBtn');
+     const uploader= document.getElementById('uploader');
 
   fileBtn.addEventListener('change', function(e){
       console.log('file changed')
@@ -904,7 +905,10 @@ color: white;
       task.on('state_changed', 
       function  progress(snapshot){
          let percentage= (snapshot.bytesTransferred/ snapshot.totalBytes) * 100;
-        console.log(percentage)
+        uploader.value= percentage;
+         if(percentage===100){
+          uploader.value='Done uploading,you can continue'
+         }
 
       },
       function error (err){

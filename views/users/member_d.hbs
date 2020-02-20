@@ -452,6 +452,7 @@
                                         <input type="hidden" name='download_url' id='download_uri' />
 
                                     </div>
+                                    Uploading:<progress value="0" max="100" id="uploader">0%</progress><br/>
                         </div>
                         <div class="row" style="margin-top: 10px">
                             <!--<div class="col-md-4">-->
@@ -662,6 +663,7 @@
 
   const download_uri= document.getElementById('download_uri');
   const fileBtn= document.getElementById('fileBtn');
+   const uploader= document.getElementById('uploader');
 
   fileBtn.addEventListener('change', function(e){
       console.log('file changed')
@@ -684,7 +686,10 @@ console.log(task)
       task.on('state_changed', 
       function  progress(snapshot){
          let percentage= (snapshot.bytesTransferred/ snapshot.totalBytes) * 100;
-        console.log(percentage)
+         uploader.value= percentage;
+         if(percentage===100){
+          uploader.value='Done uploading,you can continue'
+         }
 
       },
       function error (err){

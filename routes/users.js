@@ -2832,10 +2832,10 @@ router.post('/Register_member',(req,res,next)=>{
      newUser.secondname = secondname;
      newUser.level = level;
      newUser.unit = unit;
-    newUser.graduation_year= graduation_year;
-    newUser.alumnus_department=alumnus_department;
-    newUser.alumnus_excos= alumnus_excos;
-    newUser.alumnus_units= alumnus_units;
+     newUser.graduation_year= graduation_year;
+     newUser.alumnus_department=alumnus_department;
+     newUser.alumnus_excos= alumnus_excos;
+     newUser.alumnus_units= alumnus_units;
      newUser.phone_number = country_number;
      newUser.status = status;
      if (month === "January") {

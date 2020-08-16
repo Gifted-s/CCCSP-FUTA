@@ -121,9 +121,9 @@ module.exports = app;
 
 
 
-setInterval(()=>{
-  console.log('alive!!!')
-request('https://celefuta.herokuapp.com/keepAlive');
-}, 
-60000
-)
+// setInterval(()=>{
+//   console.log('alive!!!')
+// request('https://celefuta.herokuapp.com/keepAlive');
+// }, 
+// 60000
+// )

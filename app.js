@@ -27,9 +27,9 @@ var usersRouter = require('./routes/users');
 //  mongoose.connect('mongodb://localhost/peculiar-app', {useNewUrlParser:true}, ()=>{
 //    console.log('Database Connected')
 //  }); 
-//mongodb://cccspfuta:cccspfuta123@ds163164.mlab.com:63164/cccspfuta
-//mongodb+srv://sunkanmi:sunkanmi123@cluster0.hmaeu.mongodb.net/cccspfuta?retryWrites=true&w=majority
-mongoose.connect('mongodb://cccspfuta:cccspfuta123@ds163164.mlab.com:63164/cccspfuta',{useNewUrlParser:true}, ()=>{
+// mongodb://cccspfuta:cccspfuta123@ds163164.mlab.com:63164/cccspfuta
+// mongodb+srv://sunkanmi:sunkanmi123@cluster0.hmaeu.mongodb.net/cccspfuta?retryWrites=true&w=majority
+mongoose.connect('mongodb+srv://sunkanmi:sunkanmi123@cluster0.hmaeu.mongodb.net/cccspfuta?retryWrites=true&w=majority',{useNewUrlParser:true}, ()=>{
   console.log('Connected to database')
 });
 

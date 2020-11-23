@@ -29,7 +29,7 @@ var usersRouter = require('./routes/users');
 //  }); 
 // mongodb://cccspfuta:cccspfuta123@ds163164.mlab.com:63164/cccspfuta
 // mongodb+srv://sunkanmi:sunkanmi123@cluster0.hmaeu.mongodb.net/cccspfuta?retryWrites=true&w=majority
-mongoose.connect('mongodb+srv://cccspfuta:cccspfuta123@cluster0.hmaeu.mongodb.net/cccspfuta?retryWrites=true&w=majority',{useNewUrlParser:true}, ()=>{
+mongoose.connect('mongodb+srv://sunkanmi:sunkanmi123@cluster0.hmaeu.mongodb.net/cccspfuta?retryWrites=true&w=majority',{useNewUrlParser:true}, ()=>{
   console.log('Connected to database')
 });
 

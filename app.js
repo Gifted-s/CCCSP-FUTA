@@ -33,7 +33,7 @@ var usersRouter = require('./routes/users');
 //   console.log('Connected to database')
 // });
 
-mongoose.connect('mongodb://sunkanmi:sunkanmi123@cluster0.hmaeu.mongodb.net/cccspfuta?retryWrites=true&w=majority',{useNewUrlParser:true}, ()=>{
+mongoose.connect('mongodb+srv://sunkanmi:sunkanmi123@cluster0.hmaeu.mongodb.net/cccspfuta?retryWrites=true&w=majority',{useNewUrlParser:true, useUnifiedTopology:true}, ()=>{
   console.log('Connected to database')
 });
 
